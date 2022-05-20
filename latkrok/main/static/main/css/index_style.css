@@ -1,0 +1,47 @@
+.navbar-brand{
+	transition: 0.5s;
+}
+.navbar-brand:hover{
+	transform: scale(1.1);
+}
+.wrap{
+	position: relative;
+	min-height: 60vh;
+}
+#content{
+	margin-top: 100px;
+}
+.blockquote{
+	font-size: 35px;
+}
+.text-center{
+	font-size: 25px;
+}
+#hbtn{
+	background: #45a35f;
+}
+#hbtn:hover{
+	background: #347d49 !important;
+}
+#hover{
+	transition: 0.5s;
+}
+#hover:hover{
+	transform: translateY(-20px);
+}
+.foot{
+	position: relative;
+	width: 100%;
+	left: 0;
+	bottom: 0;
+}
+footer{
+	background: var(--bs-gray-400);
+}
+footer ul li a{
+	font-size: 24px;
+	transition: 0.5s !important;
+}
+footer ul li a:hover{
+	transform: translateY(-10px);
+}

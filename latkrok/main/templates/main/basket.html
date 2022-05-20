@@ -1,0 +1,205 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block link %}
+<link rel="stylesheet" type="text/css" href="{% static 'main/css/basket_style.css' %}">
+{% endblock %}
+
+{% block title %}
+Корзина
+{% endblock %}
+
+{% block content %}
+<div id="liveAlertPlaceholder"></div>
+	<div class="wrap mb-5">
+		<div class="container p-3 rounded-3 border shadow-sm mt-3" style="background: none;">
+			<nav aria-label="breadcrumb" style="background: none;">
+			  <ol class="breadcrumb">
+				  <li class="breadcrumb-item"><a href="{% url 'index' %}">Главная</a></li>
+				  <li class="breadcrumb-item"><a href="{% url 'order' %}">Аренда ковровых покрытий</a></li>
+				  <li class="breadcrumb-item"><a href="{% url 'logo' %}">Коврик с логотипом</a></li>
+				  <li class="breadcrumb-item"><a href="{% url 'special' %}">Спец предложения</a></li>
+				  <li class="breadcrumb-item active" aria-current="page">Корзина</li>
+			  </ol>
+			</nav>
+		</div>
+		<figure class="text-center mt-3">
+			<blockquote class="blockquote">
+				<h3>Корзина</h3>
+			</blockquote>
+		</figure>
+		<div id="cont" class="container-fluid">
+			<div id="basket_id" class="row p-4 pb-4 pl-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg">
+				<ul class="list-group list-group-horizontal">
+					<li class="col-6 col-sm-4 col-md-3 col-xl-2 list-group-item">Изображение</li>
+					<li class="col-6 col-sm-4 col-md-3 col-xl-2 list-group-item">Название</li>
+					<li class="col-6 col-sm-4 col-md-3 col-xl-2 list-group-item">Информация</li>
+					<li class="col-6 col-sm-4 col-md-3 col-xl-2 list-group-item">Количество</li>
+					<li class="col-6 col-sm-4 col-md-3 col-xl-2 list-group-item">Цена единицы</li>
+					<li class="col-6 col-sm-4 col-md-3 col-xl-2 list-group-item">Всего</li>
+				</ul>
+			</div>
+		</div>
+		<div id="input" style="display: none;">
+			<div class="container alert alert-primary text-center" role="alert">
+				<p class="fs-5">После указания своей электронной почты вам будет отправлено письмо с успешным оформлением заказа!</p>
+			</div>
+			<div class="container p-4 rounded-3 border">
+				<figure class="text-center">
+					<blockquote class="blockquote">
+						<p>Заявка на заказ</p>
+					</blockquote>
+				</figure>
+				<hr>
+				<form method="post" onsubmit="window.location.href = '#';" class="row g-3 was-validated">
+					{% csrf_token %}
+				  <div class="col-md-6">
+				    <label for="validationServer01" class="form-label">Имя*</label>
+					<div class="input-group">
+						<span class="input-group-text" id="inputGroupName"><ion-icon name="accessibility-outline"></ion-icon></span>
+				    	{{ form.name }}
+					</div>
+				  </div>
+				  <div class="col-md-6">
+				    <label for="validationServer02" class="form-label">Фамилия*</label>
+					 <div class="input-group">
+						<span class="input-group-text" id="inputGroupLastName"><ion-icon name="accessibility-outline"></ion-icon></span>
+				    	{{ form.lastname }}
+					 </div>
+				  </div>
+				  <div class="col-md-6">
+				    <label for="validationServer03" class="form-label">Номер телефона*</label>
+					<div class="input-group">
+						<span class="input-group-text" id="inputGroupPhone"><ion-icon name="call-outline"></ion-icon></span>
+				    	{{ form.phone }}
+					</div>
+				  </div>
+				  <div class="col-md-6">
+				    <label for="validationServer04" class="form-label">Адрес электронной почты*</label>
+					<div class="input-group">
+						<span class="input-group-text" id="inputGroupMail">@</span>
+				    	{{ form.mail }}
+					</div>
+				  </div>
+				  <div class="col-md-3">
+				    <label for="validationServer05" class="form-label">Город*</label>
+					 <div class="input-group">
+						<span class="input-group-text" id="inputGroupCity"><ion-icon name="navigate-outline"></ion-icon></span>
+				   		{{ form.city }}
+					 </div>
+				  </div>
+				  <div class="col-md-9">
+				    <label for="validationServer06" class="form-label">Адрес*</label>
+					<div class="input-group">
+						<span class="input-group-text" id="inputGroupAddr"><ion-icon name="globe-outline"></ion-icon></span>
+				   		{{ form.addr }}
+					</div>
+				  </div>
+					{{ form.products }}
+				  <div class="col-12">
+				    <div class="form-check">
+				      <input class="form-check-input" type="checkbox" id="validationServer07" required>
+				      <label class="form-check-label" for="validationServer07">
+				       		Я разрешаю связаться с Latkrok*
+				      </label>
+				    </div>
+				  </div>
+				  <div class="col-12">
+				    	<button type="submit" onclick="fill_text()" class="btn btn-primary m-2">Оформить</button>
+				  </div>
+				</form>
+				<span>{{ error.err }}</span>
+			</div>
+		</div>
+	</div>
+{% endblock %}
+
+{% block script %}
+<script type="text/javascript">
+		let basket = document.getElementById("basket_id");
+		let iron_objs = JSON.parse(localStorage.getItem("Iron-Horse_JSON"));
+		let input = document.getElementById("input");
+		let sum_list = [];
+		if (iron_objs !== null){
+			input.style.display = 'block';
+			for (index in iron_objs){
+				let ul_2 = document.createElement("ul");
+				ul_2.className = "list-group list-group-horizontal";
+				ul_2.id = "ul";
+
+				ul_2.innerHTML += '<li class="col-6 col-sm-4 col-md-3 col-xl-2 list-group-item"><img class="img-fluid" src="' + iron_objs[index]['img'] + '"></li>';
+				ul_2.innerHTML += '<li class="col-6 col-sm-4 col-md-3 col-xl-2 list-group-item">' + iron_objs[index]['name'] + '</li>';
+				ul_2.innerHTML += '<li class="col-6 col-sm-4 col-md-3 col-xl-2 list-group-item">' + iron_objs[index]['model'] + '<br>' + iron_objs[index]['color'] + '<br><span style="color: #339c3e;">' + iron_objs[index]['type'] + '</span></li>';
+				ul_2.innerHTML += `<li class="col-6 col-sm-4 col-md-3 col-xl-2 list-group-item"><div class="input-group btn-block" style="max-width: 200px;"><input id="count-${index}" type="text" value="` + iron_objs[index]['count'] + `"` + `size="1" class="form-control">
+					<button type="submit" data-toggle="tooltip" title="" class="btn btn-success" data-original-title="Обновить" onclick="setCount('count-${index}', ${index})"><i class="fa fa-refresh"></i></button>
+                    <button type="button" data-toggle="tooltip" title="" class="btn btn-danger" data-original-title="Удалить" onclick="clearElem(${index})"><i class="fa fa-times-circle"></i></button></div></li>`;
+				ul_2.innerHTML += '<li class="col-6 col-sm-4 col-md-3 col-xl-2 list-group-item">' + iron_objs[index]['prise'] + ' ' + iron_objs[index]['money'] + '</li>';
+				ul_2.innerHTML += '<li class="col-6 col-sm-4 col-md-3 col-xl-2 list-group-item">' + iron_objs[index]['all_prise'] + ' ' + iron_objs[index]['money'] +'</li>';
+				sum_list.push(iron_objs[index]['all_prise']);
+				basket.append(ul_2);
+			}
+			let count_sum = document.createElement("ul");
+			count_sum.className = "list-group list-group-horizontal mt-3";
+			count_sum.innerHTML += '<li class="col-6 col-sm-4 col-md-3 col-xl-2 list-group-item">Вся сумма:</li>';
+			count_sum.innerHTML += '<li class="col-6 col-sm-4 col-md-3 col-xl-2 list-group-item">' + sum(sum_list) + 'грн</li>';
+			basket.append(count_sum);
+
+			btn_row = document.createElement("div");
+			btn_row.className = "d-flex";
+			btn_row.innerHTML += '<button onclick="clearFunc()" class="btn btn-secondary m-2">Очисить корзину</button>';
+			btn_row.innerHTML += '<a href="/order" class="btn btn-primary m-2">Продолжить покупки</a>';
+			basket.append(btn_row);
+		}
+		function sum(list){
+			let sum = 0;
+			for (i=0; i<list.length; i++){
+				sum += list[i];
+			}
+			return sum
+		}
+		function setCount(id, index){
+			let val = document.getElementById(id).value;
+			iron_objs[index]["count"] = val;
+			iron_objs[index]['all_prise'] = val * iron_objs[index]['prise'];
+			localStorage.setItem("Iron-Horse_JSON", JSON.stringify(iron_objs));
+			window.location.reload();
+		}
+		function clearElem(index){
+			iron_objs = iron_objs.filter(function(item){
+				return item != iron_objs[index];
+			});
+			localStorage.setItem("Iron-Horse_JSON", JSON.stringify(iron_objs));
+			window.location.reload();
+		}
+		function clearFunc(){
+			localStorage.removeItem("Iron-Horse_JSON");
+			sum_list.length = 0;
+			window.location.reload();
+		}
+		function fill_text(){
+			let iron_objs = JSON.parse(localStorage.getItem("Iron-Horse_JSON"));
+			let basket = document.getElementById("basket_dt");
+			for (i in iron_objs){
+				basket.innerHTML += `Имя: ${iron_objs[i]['name']},\n`;
+				basket.innerHTML += `Модель: ${iron_objs[i]['model']},\n`;
+				basket.innerHTML += `Цвет: ${iron_objs[i]['color']},\n`;
+				basket.innerHTML += `Тип: ${iron_objs[i]['type']},\n`;
+				basket.innerHTML += `Количество: ${iron_objs[i]['count']},\n`;
+				basket.innerHTML += `Цена одного: ${iron_objs[i]['prise']} ${iron_objs[i]['money']},\n`;
+				basket.innerHTML += `Вся цена: ${iron_objs[i]['all_prise']} ${iron_objs[i]['money']},\n\n\n`;
+			}
+			localStorage.removeItem("Iron-Horse_JSON");
+			sum_list.length = 0;
+			window.location.reload();
+		};
+	</script>
+	<script type="text/javascript">
+		var alertPlaceholder = document.getElementById('liveAlertPlaceholder')
+		function alert(message, type) {
+		 	var wrapper = document.createElement('div')
+		  	wrapper.innerHTML = '<div class="alert alert-' + type + ' alert-dismissible" role="alert">' + message + '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>'
+
+		  	alertPlaceholder.append(wrapper)
+		}
+	</script>
+{% endblock %}

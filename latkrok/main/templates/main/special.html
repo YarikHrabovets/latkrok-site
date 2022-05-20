@@ -1,0 +1,158 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block link %}
+<link rel="stylesheet" type="text/css" href="{% static 'main/css/special_style.css' %}">
+{% endblock %}
+
+{% block title %}
+Спец предложения
+{% endblock %}
+
+{% block content %}
+<div id="liveAlertPlaceholder"></div>
+	<div class="wrap mb-5">
+		<div class="container p-3 rounded-3 border shadow-sm mt-3">
+			<nav aria-label="breadcrumb" style="background: none;">
+			  <ol class="breadcrumb">
+				  <li class="breadcrumb-item"><a href="{% url 'index' %}">Главная</a></li>
+				  <li class="breadcrumb-item"><a href="{% url 'order' %}">Аренда ковровых покрытий</a></li>
+				  <li class="breadcrumb-item"><a href="{% url 'logo' %}">Коврик с логотипом</a></li>
+				  <li class="breadcrumb-item active" aria-current="page">Спец предложения</li>
+				  <li class="breadcrumb-item"><a href="{% url 'basket' %}">Корзина</a></li>
+			  </ol>
+			</nav>
+		</div>
+		<div class="container">
+			<div class="row">
+				{% if specials %}
+					{% for i in specials %}
+						<div class="col-sm-4 mb-3">
+							<div class="card">
+								<img id="pic_{{ forloop.counter }}" src="{{ i.img }}" class="card-img-top" style="max-height: 300px;">
+								<img class="offer_pic" src="{% static 'main/images/offer.png' %}">
+								<div class="card-body">
+									<h5 id="inf_{{ forloop.counter }}" class="card-title">{{ i.title }}</h5>
+									<hr>
+									<p class="card-text">{{ i.info }}</p>
+									<p class="card-text" id="color_{{ forloop.counter }}" style="color: #fd7e14;">{{ i.color }}</p>
+									<div class="d-flex"><p id="prise_{{ forloop.counter }}" class="card-text">{{ i.prise }}</p><p style="margin-left: 3px;">грн</p></div>
+									<a onclick="determine('pic_{{ forloop.counter }}', 'inf_{{ forloop.counter }}', 'color_{{ forloop.counter }}', 'prise_{{ forloop.counter }}', '{{ i.img_1 }}', '{{ i.img_2 }}')" href="#add" class="btn btn-success">Добавить</a>
+								</div>
+							</div>
+						</div>
+					{% endfor %}
+				{% else %}
+					<div class="alert alert-warning shadow-lg text-center" role="alert">
+						<p class="fs-3">Сейчас нет товаров</p>
+					</div>
+				{% endif %}
+			</div>
+		</div>
+		<div id="add" class="add_menu">
+			<div class="container" style="max-width: 700px;">
+				<div class="card" style="background: var(--bs-gray-200);">
+					<div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+						<div class="carousel-inner">
+						   	<div class="carousel-item active" data-bs-interval="10000">
+								<img id="img_boxes_1" class="d-block w-100">
+						    </div>
+							<div class="carousel-item" data-bs-interval="10000">
+								<img id="img_boxes_2" class="d-block w-100">
+						    </div>
+							<div class="carousel-item" data-bs-interval="10000">
+								<img id="img_boxes_3" class="d-block w-100">
+						    </div>
+						</div>
+						<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+						   	<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+						    <span class="visually-hidden">Previous</span>
+						</button>
+						<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+						    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+						    <span class="visually-hidden">Next</span>
+						</button>
+					</div>
+		      		<div class="card-body">
+		        		<h3 id="info_boxes" class="card-title"></h3>
+			        		<div class="d-flex"><h6>Цена:</h6><h6 id="prise_boxes"></h6><h6>грн</p></div>
+			        		<div class="d-flex" style="margin-top: -15px; margin-bottom: 10px;"><h6>Цвет:</h6><h6 id="color_boxes" style="color: #fd7e14;"></h6></div>
+		        		<h6><span style="color: #d42828;">*</span>Количество</h6>
+						<input class="form-control me-2" type="number" name="quantity" value="1" min="1" size="2" id="input-quantity">
+						<div class="btn-group" role="group">
+							<button data-toggle="tooltip" title="" class="btn btn-success" onclick="addNum()"><i class="fa fa-plus-circle"></i></button>
+							<button data-toggle="tooltip" title="" class="btn btn-danger" onclick="minNum()"><i class="fa fa-minus-circle"></i></button>
+						</div>
+		      		</div>
+		      		<div class="d-flex">
+		      			<button onclick="location.href='#'" class=" m-2 btn btn-outline-secondary">Отмена</button>
+		      			<button class="m-2 btn btn-outline-success" onclick="addBasket(img_boxes_1.src, info_boxes.innerHTML, ret_count(),
+		      				color_boxes.innerHTML, Number(prise_boxes.innerHTML))">Добавить</button>
+		      		</div>
+		    	</div>
+		    </div>
+		</div>
+	</div>
+{% endblock %}
+
+{% block script %}
+<script type="text/javascript">
+		function determine(obj1, obj2, obj3, obj4, obj5, obj6){
+			document.getElementById("img_boxes_1").src = document.getElementById(obj1).src;
+			document.getElementById("info_boxes").innerHTML = document.getElementById(obj2).innerHTML;
+			document.getElementById("color_boxes").innerHTML = document.getElementById(obj3).innerHTML;
+			document.getElementById("prise_boxes").innerHTML = document.getElementById(obj4).innerHTML;
+			document.getElementById("img_boxes_2").src = obj5;
+			document.getElementById("img_boxes_3").src = obj6;
+		}
+	</script>
+	<script type="text/javascript">
+		let input = document.getElementById("input-quantity");
+		function addNum(){
+			input.value++;
+		}
+		function minNum(){
+			if (input.value > 1){
+				input.value--;
+			}
+		}
+	</script>
+	<script type="text/javascript">
+		var alertPlaceholder = document.getElementById('liveAlertPlaceholder');
+		let basket_list = JSON.parse(localStorage.getItem("Iron-Horse_JSON"));
+		if (basket_list == null || basket_list == ""){
+			basket_list = [];
+		}
+		function alert(message, type) {
+		 	var wrapper = document.createElement('div')
+		  	wrapper.innerHTML = '<div class="alert alert-' + type + ' alert-dismissible" role="alert">' + message + '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>'
+
+		  	alertPlaceholder.append(wrapper)
+		}
+		function addBasket(src, paragraf, ct, col, pr){
+			try{
+				let basket = {
+					img: src,
+					name: paragraf,
+					model: "Iron-Horse",
+					type: "Спец предложение",
+					money: "грн",
+					color: col,
+					count: ct,
+					prise: pr,
+					all_prise: ct * pr
+				};
+				basket_list.push(basket);
+				localStorage.setItem("Iron-Horse_JSON", JSON.stringify(basket_list));
+				window.location.href="#";
+				alert('Товар успешно добавлен!', 'success');
+			}
+			catch(e){
+				alert('Произошла ошибка!', 'danger');
+			}
+		}
+		function ret_count(){
+			return document.getElementById("input-quantity").value;
+		}
+	</script>
+{% endblock %}

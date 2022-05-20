@@ -1,0 +1,105 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block link %}
+<link rel="stylesheet" type="text/css" href="{% static 'main/css/default_style.css' %}">
+{% endblock %}
+
+{% block title %}
+Аренда ковровых покрытий
+{% endblock %}
+
+{% block content %}
+<div id="liveAlertPlaceholder"></div>
+	<div class="wrap mb-5">
+		<div class="container p-3 rounded-3 border shadow-sm mt-3">
+			<nav aria-label="breadcrumb" style="background: none;">
+			  <ol class="breadcrumb">
+				  <li class="breadcrumb-item"><a href="{% url 'index' %}">Главная</a></li>
+				  <li class="breadcrumb-item active" aria-current="page">Аренда ковровых покрытий</li>
+				  <li class="breadcrumb-item"><a href="{% url 'logo' %}">Коврик с логотипом</a></li>
+				  <li class="breadcrumb-item"><a href="{% url 'special' %}">Спец предложения</a></li>
+				  <li class="breadcrumb-item"><a href="{% url 'basket' %}">Корзина</a></li>
+			  </ol>
+			</nav>
+		</div>
+		<div class="container">
+			<div class="row">
+				{% if orders %}
+					{% for i in orders %}
+						<div class="col-sm-4 mb-3">
+							<div class="card">
+								<img src="{{ i.img.url }}" class="card-img-top" style="max-height: 300px;">
+								<div class="card-body">
+									<h5 id="inf_{{ forloop.counter }}" class="card-title">{{ i.title }}</h5>
+									<hr>
+									<p class="card-text">{{ i.info }}</p>
+									<div class="d-flex"><p  class="card-text">От {{ i.prise_1 }} грн/мес</p></div>
+									<a class="btn btn-success" href="{{ i.get_absolute_url }}">Добавить</a>
+								</div>
+							</div>
+						</div>
+					{% endfor %}
+				{% else %}
+					<div class="alert alert-warning shadow-lg text-center" role="alert">
+						<p class="fs-3">Сейчас нет товаров</p>
+					</div>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+{% endblock %}
+
+{% block script%}
+	<script type="text/javascript">
+		var alertPlaceholder = document.getElementById('liveAlertPlaceholder');
+		let basket_list = JSON.parse(localStorage.getItem("Iron-Horse_JSON"));
+		if (basket_list == null || basket_list == ""){
+			basket_list = [];
+		}
+		function alert(message, type) {
+		 	var wrapper = document.createElement('div')
+		  	wrapper.innerHTML = '<div class="alert alert-' + type + ' alert-dismissible" role="alert">' + message + '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>'
+
+		  	alertPlaceholder.append(wrapper)
+		}
+		function addBasket(src, paragraf, ct, col, pr){
+			try{
+				let basket = {
+					img: src,
+					name: paragraf,
+					model: "Iron-Horse",
+					color: col,
+					type: "Аренда",
+					money: "грн/мес",
+					count: ct,
+					prise: pr,
+					all_prise: ct * pr
+				};
+				basket_list.push(basket);
+				localStorage.setItem("Iron-Horse_JSON", JSON.stringify(basket_list));
+				window.location.href="#";
+				alert('Товар успешно добавлен!', 'success');
+			}
+			catch(e){
+				alert('Произошла ошибка!', 'danger');
+			}
+		}
+		function ret_count(){
+			return document.getElementById("input-quantity").value;
+		}
+		function ret_col(){
+			return document.getElementById("input-option").value;
+		}
+		function check_radio(){
+			let radios = document.getElementsByName('flexRadioDefault');
+			let value;
+			for (let i = 0; i < radios.length; i++){
+				if(radios[i].checked){
+					value = radios[i].value;
+				}
+			}
+			return value;
+		}
+	</script>
+{% endblock %}
