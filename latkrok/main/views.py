@@ -4,6 +4,7 @@ from .models import Order, SpecialOffer, FillUrl
 from .forms import LogoOrdForm, CartDataForm, LogoOrd, Cart
 from .sendScript import send_for_email
 
+
 def index(request):
     return render(request, 'main/index.html')
 
