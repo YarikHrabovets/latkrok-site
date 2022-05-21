@@ -1,6 +1,7 @@
 from .models import LogoOrd, Cart
 from django.forms import ModelForm, TextInput, Textarea
 
+
 class LogoOrdForm(ModelForm):
     class Meta:
         model = LogoOrd

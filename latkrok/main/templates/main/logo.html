@@ -11,142 +11,142 @@
 
 {% block content %}
 <div id="liveAlertPlaceholder"></div>
-	<div class="container p-3 rounded-3 border shadow-sm mt-3">
-			<nav aria-label="breadcrumb" style="background: none;">
-			  <ol class="breadcrumb">
-				  <li class="breadcrumb-item"><a href="{% url 'index' %}">Главная</a></li>
-				  <li class="breadcrumb-item"><a href="{% url 'order' %}">Аренда ковровых покрытий</a></li>
-				  <li class="breadcrumb-item active" aria-current="page">Коврик с логотипом</li>
-				  <li class="breadcrumb-item"><a href="{% url 'special' %}">Спец предложения</a></li>
-				  <li class="breadcrumb-item"><a href="{% url 'basket' %}">Корзина</a></li>
-			  </ol>
-			</nav>
+<div class="container p-3 rounded-3 border shadow-sm mt-3">
+	<nav aria-label="breadcrumb" style="background: none;">
+	  <ol class="breadcrumb">
+		  <li class="breadcrumb-item"><a href="{% url 'index' %}">Главная</a></li>
+		  <li class="breadcrumb-item"><a href="{% url 'order' %}">Аренда ковровых покрытий</a></li>
+		  <li class="breadcrumb-item active" aria-current="page">Коврик с логотипом</li>
+		  <li class="breadcrumb-item"><a href="{% url 'special' %}">Спец предложения</a></li>
+		  <li class="breadcrumb-item"><a href="{% url 'basket' %}">Корзина</a></li>
+	  </ol>
+	</nav>
+</div>
+<div id="carusel" class="container">
+	<div id="carouselControls" class="carousel slide" data-bs-ride="carousel">
+		<div class="carousel-inner">
+			<div class="carousel-item active">
+				<img id="img-carusel" class="d-block w-100" src="{% static 'main/images/IMG_20191030_132807.jpg' %}">
+			</div>
+			<div class="carousel-item">
+				<img id="img-carusel" class="d-block w-100" src="{% static 'main/images/IMG_20211117_124024copy.jpg' %}">
+			</div>
+			<div class="carousel-item">
+				<img id="img-carusel" class="d-block w-100" src="{% static 'main/images/JP Velour.jpg' %}">
+			</div>
+			<div class="carousel-item">
+				<img id="img-carusel" class="d-block w-100" src="{% static 'main/images/IMG_20200402_132943.jpg' %}">
+			</div>
+			<div class="carousel-item">
+				<img id="img-carusel" class="d-block w-100" src="{% static 'main/images/IMG_20160909_100130.1516893689.jpg' %}">
+			</div>
+			<div class="carousel-item">
+				<img id="img-carusel" class="d-block w-100" src="{% static 'main/images/0-02-04-06ee186c6ec08e10c114576990e51277eccd1356aa7b25ed0ef0eda776800e33_full-removebg-preview.png' %}">
+			</div>
+			<div class="carousel-item">
+				<img id="img-carusel" class="d-block w-100" src="{% static 'main/images/зображення_viber_2021-09-27_15-07-56-349.jpg' %}">
+			</div>
+			<div class="carousel-item">
+				<img id="img-carusel" class="d-block w-100" src="{% static 'main/images/IMG_6036 - копия.0.jpg' %}">
+			</div>
+			<div class="carousel-item">
+				<img id="img-carusel" class="d-block w-100" src="{% static 'main/images/2016-06-30 15.17.22-1.jpg' %}">
+			</div>
 		</div>
-	<div id="carusel" class="container">
-		<div id="carouselControls" class="carousel slide" data-bs-ride="carousel">
-	    	<div class="carousel-inner">
-	    		<div class="carousel-item active">
-	        		<img id="img-carusel" class="d-block w-100" src="{% static 'main/images/IMG_20191030_132807.jpg' %}">
-	      		</div>
-	    		<div class="carousel-item">
-	        		<img id="img-carusel" class="d-block w-100" src="{% static 'main/images/IMG_20211117_124024copy.jpg' %}">
-	      		</div>
-	      		<div class="carousel-item">
-	      			<img id="img-carusel" class="d-block w-100" src="{% static 'main/images/JP Velour.jpg' %}">
-	      		</div>
-	      		<div class="carousel-item">
-	      			<img id="img-carusel" class="d-block w-100" src="{% static 'main/images/IMG_20200402_132943.jpg' %}">
-	      		</div>
-	      		<div class="carousel-item">
-	      			<img id="img-carusel" class="d-block w-100" src="{% static 'main/images/IMG_20160909_100130.1516893689.jpg' %}">
-	      		</div>
-	      		<div class="carousel-item">
-	      			<img id="img-carusel" class="d-block w-100" src="{% static 'main/images/0-02-04-06ee186c6ec08e10c114576990e51277eccd1356aa7b25ed0ef0eda776800e33_full-removebg-preview.png' %}">
-	      		</div>
-	      		<div class="carousel-item">
-	      			<img id="img-carusel" class="d-block w-100" src="{% static 'main/images/зображення_viber_2021-09-27_15-07-56-349.jpg' %}">
-	      		</div>
-	      		<div class="carousel-item">
-	      			<img id="img-carusel" class="d-block w-100" src="{% static 'main/images/IMG_6036 - копия.0.jpg' %}">
-	      		</div>
-	      		<div class="carousel-item">
-	      			<img id="img-carusel" class="d-block w-100" src="{% static 'main/images/2016-06-30 15.17.22-1.jpg' %}">
-	      		</div>
-	    	</div>
-	    	<button class="carousel-control-prev" type="button" data-bs-target="#carouselControls" data-bs-slide="prev">
-    			<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    			<span class="visually-hidden">Previous</span>
-  			</button>
-  			<button class="carousel-control-next" type="button" data-bs-target="#carouselControls" data-bs-slide="next">
-    			<span class="carousel-control-next-icon" aria-hidden="true"></span>
-    			<span class="visually-hidden">Next</span>
-  			</button>
-	    </div>
+		<button class="carousel-control-prev" type="button" data-bs-target="#carouselControls" data-bs-slide="prev">
+			<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+			<span class="visually-hidden">Previous</span>
+		</button>
+		<button class="carousel-control-next" type="button" data-bs-target="#carouselControls" data-bs-slide="next">
+			<span class="carousel-control-next-icon" aria-hidden="true"></span>
+			<span class="visually-hidden">Next</span>
+		</button>
 	</div>
-    <hr class="featurette-divider">
-    <div class="container">
-		<div class="row featurette">
-	      <div class="col-md-7">
-	        <h2 class="featurette-heading">Jet-Print<span class="text-muted">  спроектирована для персонализации.</span></h2>
-	        <p class="lead">Профессиональный коврик с логотипом, предназначеный для размещения перед входом в компанию или ресепшн. В совершенстве задерживает пыль и грязь, а также контролирует влагу в помещениях. Идеальный у входов в здания общественной полезности и компаний, которые хотят сохранить свои входы чистыми и представительными. Имея 2-летнюю гарантию на производственные дефекты, а также при использовании новейшей технологии быстрой цветной печати, коврик Jet-Print будет выглядеть, как новый, даже после многих циклов стирки и использования его для ежедневного пешего движения</p>
-	      </div>
-	      <div class="col-md-5">
-	      		<img src="{% static 'main/images/Mat placement.jpg' %}" class="img-fluid">
-	      </div>
-	    </div>
-	    <hr class="featurette-divider">
-	    <div class="row featurette">
-	    	<div class="col-md-6">
-	      		<img src="{% static 'main/images/Jet-Print Light технические детали.jpg' %}" class="img-fluid">
-	      	</div>
-	      	<div class="col-md-6">
-	      		<img src="{% static 'main/images/Jet-Print-text.jpg' %}" class="img-fluid">
-	      	</div>
-	    </div>
-	    <hr class="featurette-divider">
-	    <div class="row featurette">
-	      <div class="col-md-12 pt-3">
-	      		<img src="{% static 'main/images/Jet-Print Light цвета.jpg' %}" class="img-fluid">
-	      </div>
-	      <div class="col-md-12">
-	      	<h2 class="text-muted">Сделать запрос</h2>
-	      	<hr>
-			<div class="container alert alert-primary text-center mb-5" role="alert">
-				<p class="fs-5">После указания своей электронной почты вам будет отправлено письмо с успешным оформлением заказа!</p>
-			</div>
-	      	<div class="container p-4 rounded-3 border">
-				<form method="post" onsubmit="return alert('Ваша заявка отправлена!', 'success')" class="row g-3 was-validated">
-				 {% csrf_token %}
-				  <div class="col-md-6">
-				    <label for="validationServer01" class="form-label">Имя*</label>
-				    <div class="input-group">
-						<span class="input-group-text" id="inputGroupName"><ion-icon name="accessibility-outline"></ion-icon></span>
-						{{ form.name }}
-					</div>
-				  </div>
-				  <div class="col-md-6">
-				    <label for="validationServer02" class="form-label">Фамилия*</label>
-					 <div class="input-group">
-						<span class="input-group-text" id="inputGroupLastName"><ion-icon name="accessibility-outline"></ion-icon></span>
-						{{ form.lastname }}
-					 </div>
-				  </div>
-				  <div class="col-md-6">
-					<label for="validationServer03" class="form-label">Адрес электронной почты*</label>
-					<div class="input-group">
-						<span class="input-group-text" id="inputGroupPrepend">@</span>
-						{{ form.email }}
-					</div>
-				  </div>
-				  <div class="col-md-6">
-					<label for="validationServer04" class="form-label">Номер телефона*</label>
-					<div class="input-group">
-						<span class="input-group-text" id="inputGroupLastName"><ion-icon name="call-outline"></ion-icon></span>
-						{{ form.phone }}
-					</div>
-				  </div>
-				   <div class="col-12">
-				    <label for="validationServer05" class="form-label">Детали запроса: продукт, размер, цвет, количество и т.д.*</label>
-					<div class="input-group">
-						<span class="input-group-text" id="inputGroupLastName"><ion-icon name="reader-outline"></ion-icon></span>
-				    	{{ form.text }}
-					</div>
-				  </div>
-				  <div class="col-12">
-				    <div class="form-check">
-				      <input class="form-check-input" type="checkbox" id="validationServer06" required>
-				      <label class="form-check-label" for="validationServer06">
-				       		Я разрешаю связаться с Latkrok*
-				      </label>
-				    </div>
-				  </div>
-				  <button type="submit" class="btn btn-primary m-2">Отправить</button>
-				</form>
-				<span>{{ error.err }}</span>
-			</div>
-	      </div>
-	    </div>
+</div>
+<hr class="featurette-divider">
+<div class="container">
+	<div class="row featurette">
+	  <div class="col-md-7">
+		<h2 class="featurette-heading">Jet-Print<span class="text-muted">  спроектирована для персонализации.</span></h2>
+		<p class="lead">Профессиональный коврик с логотипом, предназначеный для размещения перед входом в компанию или ресепшн. В совершенстве задерживает пыль и грязь, а также контролирует влагу в помещениях. Идеальный у входов в здания общественной полезности и компаний, которые хотят сохранить свои входы чистыми и представительными. Имея 2-летнюю гарантию на производственные дефекты, а также при использовании новейшей технологии быстрой цветной печати, коврик Jet-Print будет выглядеть, как новый, даже после многих циклов стирки и использования его для ежедневного пешего движения</p>
+	  </div>
+	  <div class="col-md-5">
+			<img src="{% static 'main/images/Mat placement.jpg' %}" class="img-fluid">
+	  </div>
 	</div>
+	<hr class="featurette-divider">
+	<div class="row featurette">
+		<div class="col-md-6">
+			<img src="{% static 'main/images/Jet-Print Light технические детали.jpg' %}" class="img-fluid">
+		</div>
+		<div class="col-md-6">
+			<img src="{% static 'main/images/Jet-Print-text.jpg' %}" class="img-fluid">
+		</div>
+	</div>
+	<hr class="featurette-divider">
+	<div class="row featurette">
+	  <div class="col-md-12 pt-3">
+			<img src="{% static 'main/images/Jet-Print Light цвета.jpg' %}" class="img-fluid">
+	  </div>
+	  <div class="col-md-12">
+		<h2 class="text-muted">Сделать запрос</h2>
+		<hr>
+		<div class="container alert alert-primary text-center mb-5" role="alert">
+			<p class="fs-5">После указания своей электронной почты вам будет отправлено письмо с успешным оформлением заказа!</p>
+		</div>
+		<div class="container p-4 rounded-3 border">
+			<form method="post" onsubmit="return alert('Ваша заявка отправлена!', 'success')" class="row g-3 was-validated">
+			 {% csrf_token %}
+			  <div class="col-md-6">
+				<label for="validationServer01" class="form-label">Имя*</label>
+				<div class="input-group">
+					<span class="input-group-text" id="inputGroupName"><ion-icon name="accessibility-outline"></ion-icon></span>
+					{{ form.name }}
+				</div>
+			  </div>
+			  <div class="col-md-6">
+				<label for="validationServer02" class="form-label">Фамилия*</label>
+				 <div class="input-group">
+					<span class="input-group-text" id="inputGroupLastName"><ion-icon name="accessibility-outline"></ion-icon></span>
+					{{ form.lastname }}
+				 </div>
+			  </div>
+			  <div class="col-md-6">
+				<label for="validationServer03" class="form-label">Адрес электронной почты*</label>
+				<div class="input-group">
+					<span class="input-group-text" id="inputGroupPrepend">@</span>
+					{{ form.email }}
+				</div>
+			  </div>
+			  <div class="col-md-6">
+				<label for="validationServer04" class="form-label">Номер телефона*</label>
+				<div class="input-group">
+					<span class="input-group-text" id="inputGroupLastName"><ion-icon name="call-outline"></ion-icon></span>
+					{{ form.phone }}
+				</div>
+			  </div>
+			   <div class="col-12">
+				<label for="validationServer05" class="form-label">Детали запроса: продукт, размер, цвет, количество и т.д.*</label>
+				<div class="input-group">
+					<span class="input-group-text" id="inputGroupLastName"><ion-icon name="reader-outline"></ion-icon></span>
+					{{ form.text }}
+				</div>
+			  </div>
+			  <div class="col-12">
+				<div class="form-check">
+				  <input class="form-check-input" type="checkbox" id="validationServer06" required>
+				  <label class="form-check-label" for="validationServer06">
+						Я разрешаю связаться с Latkrok*
+				  </label>
+				</div>
+			  </div>
+			  <button type="submit" class="btn btn-primary m-2">Отправить</button>
+			</form>
+			<span>{{ error.err }}</span>
+		</div>
+	  </div>
+	</div>
+</div>
 {% endblock %}
 {% block script %}
 <script type="text/javascript">

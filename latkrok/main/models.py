@@ -1,6 +1,7 @@
 from django.db import models
 from django.urls import reverse
 
+
 class Order(models.Model):
     title = models.CharField('Название', max_length=75, db_index=True)
     slug = models.SlugField('URL', max_length=255, unique=True, db_index=True)

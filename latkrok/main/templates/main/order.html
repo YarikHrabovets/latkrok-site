@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block link %}
-<link rel="stylesheet" type="text/css" href="{% static 'main/css/default_style.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'main/css/order_style.css' %}">
 {% endblock %}
 
 {% block title %}
@@ -11,43 +11,41 @@
 
 {% block content %}
 <div id="liveAlertPlaceholder"></div>
-	<div class="wrap mb-5">
-		<div class="container p-3 rounded-3 border shadow-sm mt-3">
-			<nav aria-label="breadcrumb" style="background: none;">
-			  <ol class="breadcrumb">
-				  <li class="breadcrumb-item"><a href="{% url 'index' %}">Главная</a></li>
-				  <li class="breadcrumb-item active" aria-current="page">Аренда ковровых покрытий</li>
-				  <li class="breadcrumb-item"><a href="{% url 'logo' %}">Коврик с логотипом</a></li>
-				  <li class="breadcrumb-item"><a href="{% url 'special' %}">Спец предложения</a></li>
-				  <li class="breadcrumb-item"><a href="{% url 'basket' %}">Корзина</a></li>
-			  </ol>
-			</nav>
-		</div>
-		<div class="container">
-			<div class="row">
-				{% if orders %}
-					{% for i in orders %}
-						<div class="col-sm-4 mb-3">
-							<div class="card">
-								<img src="{{ i.img.url }}" class="card-img-top" style="max-height: 300px;">
-								<div class="card-body">
-									<h5 id="inf_{{ forloop.counter }}" class="card-title">{{ i.title }}</h5>
-									<hr>
-									<p class="card-text">{{ i.info }}</p>
-									<div class="d-flex"><p  class="card-text">От {{ i.prise_1 }} грн/мес</p></div>
-									<a class="btn btn-success" href="{{ i.get_absolute_url }}">Добавить</a>
-								</div>
-							</div>
+<div class="container p-3 rounded-3 border shadow-sm mt-3">
+	<nav aria-label="breadcrumb" style="background: none;">
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item"><a href="{% url 'index' %}">Главная</a></li>
+			<li class="breadcrumb-item active" aria-current="page">Аренда ковровых покрытий</li>
+			<li class="breadcrumb-item"><a href="{% url 'logo' %}">Коврик с логотипом</a></li>
+			<li class="breadcrumb-item"><a href="{% url 'special' %}">Спец предложения</a></li>
+			<li class="breadcrumb-item"><a href="{% url 'basket' %}">Корзина</a></li>
+		</ol>
+	</nav>
+</div>
+<div class="container">
+	<div class="row">
+		{% if orders %}
+			{% for i in orders %}
+				<div class="col-sm-4 mb-3">
+					<div class="card">
+						<img src="{{ i.img.url }}" class="card-img-top" style="max-height: 300px;">
+						<div class="card-body">
+							<h5 id="inf_{{ forloop.counter }}" class="card-title">{{ i.title }}</h5>
+							<hr>
+							<p class="card-text">{{ i.info }}</p>
+							<div class="d-flex pb-3"><p  class="card-text">От {{ i.prise_1 }} грн/мес</p></div>
+							<a class="btn btn-success" href="{{ i.get_absolute_url }}">Добавить</a>
 						</div>
-					{% endfor %}
-				{% else %}
-					<div class="alert alert-warning shadow-lg text-center" role="alert">
-						<p class="fs-3">Сейчас нет товаров</p>
 					</div>
-				{% endif %}
+				</div>
+			{% endfor %}
+		{% else %}
+			<div class="alert alert-warning shadow-lg text-center" role="alert">
+				<p class="fs-3">Сейчас нет товаров</p>
 			</div>
-		</div>
+		{% endif %}
 	</div>
+</div>
 {% endblock %}
 
 {% block script%}

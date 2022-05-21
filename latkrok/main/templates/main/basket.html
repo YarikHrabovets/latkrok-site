@@ -11,107 +11,105 @@
 
 {% block content %}
 <div id="liveAlertPlaceholder"></div>
-	<div class="wrap mb-5">
-		<div class="container p-3 rounded-3 border shadow-sm mt-3" style="background: none;">
-			<nav aria-label="breadcrumb" style="background: none;">
-			  <ol class="breadcrumb">
-				  <li class="breadcrumb-item"><a href="{% url 'index' %}">Главная</a></li>
-				  <li class="breadcrumb-item"><a href="{% url 'order' %}">Аренда ковровых покрытий</a></li>
-				  <li class="breadcrumb-item"><a href="{% url 'logo' %}">Коврик с логотипом</a></li>
-				  <li class="breadcrumb-item"><a href="{% url 'special' %}">Спец предложения</a></li>
-				  <li class="breadcrumb-item active" aria-current="page">Корзина</li>
-			  </ol>
-			</nav>
-		</div>
-		<figure class="text-center mt-3">
+<div class="container p-3 rounded-3 border shadow-sm mt-3" style="background: none;">
+	<nav aria-label="breadcrumb" style="background: none;">
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item"><a href="{% url 'index' %}">Главная</a></li>
+			<li class="breadcrumb-item"><a href="{% url 'order' %}">Аренда ковровых покрытий</a></li>
+			<li class="breadcrumb-item"><a href="{% url 'logo' %}">Коврик с логотипом</a></li>
+			<li class="breadcrumb-item"><a href="{% url 'special' %}">Спец предложения</a></li>
+			<li class="breadcrumb-item active" aria-current="page">Корзина</li>
+		</ol>
+	</nav>
+</div>
+<figure class="text-center mt-3">
+	<blockquote class="blockquote">
+		<h3>Корзина</h3>
+	</blockquote>
+</figure>
+<div id="cont" class="container-fluid">
+	<div id="basket_id" class="row p-4 pb-4 pl-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg">
+		<ul class="list-group list-group-horizontal">
+			<li class="col-6 col-sm-4 col-md-3 col-xl-2 list-group-item">Изображение</li>
+			<li class="col-6 col-sm-4 col-md-3 col-xl-2 list-group-item">Название</li>
+			<li class="col-6 col-sm-4 col-md-3 col-xl-2 list-group-item">Информация</li>
+			<li class="col-6 col-sm-4 col-md-3 col-xl-2 list-group-item">Количество</li>
+			<li class="col-6 col-sm-4 col-md-3 col-xl-2 list-group-item">Цена единицы</li>
+			<li class="col-6 col-sm-4 col-md-3 col-xl-2 list-group-item">Всего</li>
+		</ul>
+	</div>
+</div>
+<div id="input" style="display: none;">
+	<div class="container alert alert-primary text-center" role="alert">
+		<p class="fs-5">После указания своей электронной почты вам будет отправлено письмо с успешным оформлением заказа!</p>
+	</div>
+	<div class="container p-4 rounded-3 border">
+		<figure class="text-center">
 			<blockquote class="blockquote">
-				<h3>Корзина</h3>
+				<p>Заявка на заказ</p>
 			</blockquote>
 		</figure>
-		<div id="cont" class="container-fluid">
-			<div id="basket_id" class="row p-4 pb-4 pl-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg">
-				<ul class="list-group list-group-horizontal">
-					<li class="col-6 col-sm-4 col-md-3 col-xl-2 list-group-item">Изображение</li>
-					<li class="col-6 col-sm-4 col-md-3 col-xl-2 list-group-item">Название</li>
-					<li class="col-6 col-sm-4 col-md-3 col-xl-2 list-group-item">Информация</li>
-					<li class="col-6 col-sm-4 col-md-3 col-xl-2 list-group-item">Количество</li>
-					<li class="col-6 col-sm-4 col-md-3 col-xl-2 list-group-item">Цена единицы</li>
-					<li class="col-6 col-sm-4 col-md-3 col-xl-2 list-group-item">Всего</li>
-				</ul>
+		<hr>
+		<form method="post" onsubmit="window.location.href = '#';" class="row g-3 was-validated">
+			{% csrf_token %}
+		  <div class="col-md-6">
+			<label for="validationServer01" class="form-label">Имя*</label>
+			<div class="input-group">
+				<span class="input-group-text" id="inputGroupName"><ion-icon name="accessibility-outline"></ion-icon></span>
+				{{ form.name }}
 			</div>
-		</div>
-		<div id="input" style="display: none;">
-			<div class="container alert alert-primary text-center" role="alert">
-				<p class="fs-5">После указания своей электронной почты вам будет отправлено письмо с успешным оформлением заказа!</p>
+		  </div>
+		  <div class="col-md-6">
+			<label for="validationServer02" class="form-label">Фамилия*</label>
+			 <div class="input-group">
+				<span class="input-group-text" id="inputGroupLastName"><ion-icon name="accessibility-outline"></ion-icon></span>
+				{{ form.lastname }}
+			 </div>
+		  </div>
+		  <div class="col-md-6">
+			<label for="validationServer03" class="form-label">Номер телефона*</label>
+			<div class="input-group">
+				<span class="input-group-text" id="inputGroupPhone"><ion-icon name="call-outline"></ion-icon></span>
+				{{ form.phone }}
 			</div>
-			<div class="container p-4 rounded-3 border">
-				<figure class="text-center">
-					<blockquote class="blockquote">
-						<p>Заявка на заказ</p>
-					</blockquote>
-				</figure>
-				<hr>
-				<form method="post" onsubmit="window.location.href = '#';" class="row g-3 was-validated">
-					{% csrf_token %}
-				  <div class="col-md-6">
-				    <label for="validationServer01" class="form-label">Имя*</label>
-					<div class="input-group">
-						<span class="input-group-text" id="inputGroupName"><ion-icon name="accessibility-outline"></ion-icon></span>
-				    	{{ form.name }}
-					</div>
-				  </div>
-				  <div class="col-md-6">
-				    <label for="validationServer02" class="form-label">Фамилия*</label>
-					 <div class="input-group">
-						<span class="input-group-text" id="inputGroupLastName"><ion-icon name="accessibility-outline"></ion-icon></span>
-				    	{{ form.lastname }}
-					 </div>
-				  </div>
-				  <div class="col-md-6">
-				    <label for="validationServer03" class="form-label">Номер телефона*</label>
-					<div class="input-group">
-						<span class="input-group-text" id="inputGroupPhone"><ion-icon name="call-outline"></ion-icon></span>
-				    	{{ form.phone }}
-					</div>
-				  </div>
-				  <div class="col-md-6">
-				    <label for="validationServer04" class="form-label">Адрес электронной почты*</label>
-					<div class="input-group">
-						<span class="input-group-text" id="inputGroupMail">@</span>
-				    	{{ form.mail }}
-					</div>
-				  </div>
-				  <div class="col-md-3">
-				    <label for="validationServer05" class="form-label">Город*</label>
-					 <div class="input-group">
-						<span class="input-group-text" id="inputGroupCity"><ion-icon name="navigate-outline"></ion-icon></span>
-				   		{{ form.city }}
-					 </div>
-				  </div>
-				  <div class="col-md-9">
-				    <label for="validationServer06" class="form-label">Адрес*</label>
-					<div class="input-group">
-						<span class="input-group-text" id="inputGroupAddr"><ion-icon name="globe-outline"></ion-icon></span>
-				   		{{ form.addr }}
-					</div>
-				  </div>
-					{{ form.products }}
-				  <div class="col-12">
-				    <div class="form-check">
-				      <input class="form-check-input" type="checkbox" id="validationServer07" required>
-				      <label class="form-check-label" for="validationServer07">
-				       		Я разрешаю связаться с Latkrok*
-				      </label>
-				    </div>
-				  </div>
-				  <div class="col-12">
-				    	<button type="submit" onclick="fill_text()" class="btn btn-primary m-2">Оформить</button>
-				  </div>
-				</form>
-				<span>{{ error.err }}</span>
+		  </div>
+		  <div class="col-md-6">
+			<label for="validationServer04" class="form-label">Адрес электронной почты*</label>
+			<div class="input-group">
+				<span class="input-group-text" id="inputGroupMail">@</span>
+				{{ form.mail }}
 			</div>
-		</div>
+		  </div>
+		  <div class="col-md-3">
+			<label for="validationServer05" class="form-label">Город*</label>
+			 <div class="input-group">
+				<span class="input-group-text" id="inputGroupCity"><ion-icon name="navigate-outline"></ion-icon></span>
+				{{ form.city }}
+			 </div>
+		  </div>
+		  <div class="col-md-9">
+			<label for="validationServer06" class="form-label">Адрес*</label>
+			<div class="input-group">
+				<span class="input-group-text" id="inputGroupAddr"><ion-icon name="globe-outline"></ion-icon></span>
+				{{ form.addr }}
+			</div>
+		  </div>
+			{{ form.products }}
+		  <div class="col-12">
+			<div class="form-check">
+			  <input class="form-check-input" type="checkbox" id="validationServer07" required>
+			  <label class="form-check-label" for="validationServer07">
+					Я разрешаю связаться с Latkrok*
+			  </label>
+			</div>
+		  </div>
+		  <div class="col-12">
+				<button type="submit" onclick="fill_text()" class="btn btn-primary m-2">Оформить</button>
+		  </div>
+		</form>
+		<span>{{ error.err }}</span>
 	</div>
+</div>
 {% endblock %}
 
 {% block script %}
