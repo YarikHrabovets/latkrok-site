@@ -21,6 +21,12 @@ class LatkrokOrderProduct(DetailView):
     slug_url_kwarg = 'order_slug'
     context_object_name = 'order'
 
+    def get_context_data(self, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['prise_fields'] = [f'prise_{i}' for i in range(1, 10)]
+
+        return context
+
 
 def logo(request):
     err = ''
@@ -63,6 +69,7 @@ class LatkrokSpecialProduct(DetailView):
     slug_url_kwarg = 'special_slug'
     context_object_name = 'special'
 
+
 def basket(request):
     err = ''
     if request.method == 'POST':
@@ -91,11 +98,14 @@ def basket(request):
     }
     return render(request, 'main/basket.html', context)
 
+
 def about(request):
     return render(request, 'main/about.html')
 
+
 def contacts(request):
     return render(request, 'main/contacts.html')
+
 
 def maker(request):
     field_name = 'url'

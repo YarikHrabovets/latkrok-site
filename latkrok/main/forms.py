@@ -5,7 +5,7 @@ from django.forms import ModelForm, TextInput, Textarea
 class LogoOrdForm(ModelForm):
     class Meta:
         model = LogoOrd
-        fields = ['name', 'lastname', 'email', 'phone', 'text']
+        fields = ['name', 'lastname', 'email', 'phone', 'details']
         widgets = {
             'name': TextInput(attrs={
                 'class': 'form-control is-invalid',
@@ -30,10 +30,11 @@ class LogoOrdForm(ModelForm):
             })
         }
 
+
 class CartDataForm(ModelForm):
     class Meta:
         model = Cart
-        fields = ['name', 'lastname', 'phone', 'mail', 'city', 'addr', 'products']
+        fields = ['name', 'lastname', 'phone', 'email', 'city', 'addr', 'details']
         widgets = {
             'name': TextInput(attrs={
                 'class': 'form-control is-invalid',

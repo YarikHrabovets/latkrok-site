@@ -2,41 +2,7 @@
 	justify-content: center;
 	margin-top: 100px;
 }
-.add_menu:not(:target)
-{
-	display: none;
-}
-.add_menu:target
-{
-	display: block;
-	position: fixed;
-	top: -50px;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	background: rgba(0, 0, 0, .5);
-	z-index: 3;
-	overflow-y: scroll;
-}
-.add_menu img{
-	position: relative;
-	top: 0;
-	left: 0;
-	width: 100%;
-	max-height: 450px;
-	border: 1px solid black;
-}
-.carousel-control-prev{
-	left: -4%;
-}
-.carousel-control-next{
-	right: -4%;
-}
-#liveAlertPlaceholder{
-	top: 70px;
-	right: 0;
-	z-index: 2;
-}
+
 .offer_pic{
 	position: absolute;
 	top: 0;

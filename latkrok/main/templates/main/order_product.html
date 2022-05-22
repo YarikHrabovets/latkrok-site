@@ -3,31 +3,40 @@
 {% load main_tags %}
 
 {% block title %}
-{{ order }}
+{{ order.title }}
 {% endblock %}
 
 {% block content %}
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
+    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"></path>
+  </symbol>
+  <symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">
+    <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"></path>
+  </symbol>
+</svg>
 <div class="container mt-3">
+    <div id="liveAlertPlaceholder"></div>
     <div class="row">
         <div class="col-sm-8">
             <div class="shadow p-1 mb-5 bg-body rounded">
-                <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+                <div id="carousel" class="carousel slide">
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <img src="{{ order.img.url }}" class="d-block w-100 rounded" alt="1 картинка">
+                            <img src="{{ order.img_1.url }}" class="d-block w-100 rounded" id="productImg" alt="1 картинка">
                         </div>
                         <div class="carousel-item">
-                            <img src="{{ order.img_1.url }}" class="d-block w-100 rounded" alt="2 картинка">
+                            <img src="{{ order.img_2.url }}" class="d-block w-100 rounded" alt="2 картинка">
                         </div>
                         <div class="carousel-item">
-                            <img src="{{ order.img_2.url }}" class="d-block w-100 rounded" alt="3 картинка">
+                            <img src="{{ order.img_3.url }}" class="d-block w-100 rounded" alt="3 картинка">
                         </div>
                     </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                         <span class="visually-hidden">Previous</span>
                     </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+                    <button class="carousel-control-next" type="button" data-bs-target="#carousel" data-bs-slide="next">
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
                         <span class="visually-hidden">Next</span>
                     </button>
@@ -41,9 +50,9 @@
                     <button class="nav-link" id="char-tab" data-bs-toggle="tab" data-bs-target="#char" type="button" role="tab" aria-controls="char" aria-selected="false">Характеристики</button>
                 </li>
             </ul>
-            <div class="tab-content" id="myTabContent">
+            <div class="tab-content shadow-sm p-3 mb-5 bg-body rounded" id="myTabContent">
                 <div class="tab-pane mt-3 fade show active" id="description" role="tabpanel" aria-labelledby="description-tab">
-                    <p>{{ order.info }}</p>
+                    <p>{{ order.description }}</p>
                 </div>
                 <div class="tab-pane fade" id="char" role="tabpanel" aria-labelledby="char-tab">
                     <table class="table table-bordered">
@@ -75,27 +84,58 @@
             </div>
         </div>
         <div class="col-sm-4">
-            <h5>{{ order.title }}</h5>
+            <h5 id="productTitle">{{ order.title }}</h5>
             <div class="shadow-none p-2 ps-3 mb-2 bg-light rounded">
                 <ul class="list-unstyled mt-2">
                     <li>Бренд: <a href="https://latkrok.com.ua/ru/bermud" style="text-decoration: none; color: #009577;">Kleen-tex</a></li>
                     <li>Код товара: <span class="text-muted">Iron-Horse</span></li>
-                    <li>Доступность: <span style="color: #008002;">На складе</span></li>
+                    <li>Доступность:
+                        {% if order.status %}
+                            <span style="color: #008002;">На складе</span>
+                        {% else %}
+                            <span style="color: red;">Нет в наличие</span>
+                        {% endif %}
+                    </li>
                 </ul>
             </div>
-            <hr>
-            <p class="fs-5">Доступные опции</p>
-            <div class="shadow-none p-2 ps-3 mb-2 bg-light rounded">
-                {% for i in 9|get_range %}
+            <p class="fs-5 mt-5">Доступные опции</p>
+            <div class="shadow-none p-3 mb-3 bg-light rounded">
+                <p><span style="color: red;">*</span>Количество обменов ковров</p>
+                <hr>
+                {% for i in prise_fields %}
                     <div class="form-check">
-                        {% with prise='option_{{ i }}' %}
-                        <input class="form-check-input" type="radio" name="prise" id="flexRadioDefault1" value="{{ order.prise }}">
-                        <label class="form-check-label" for="flexRadioDefault1">
-                            {{ order.prise|verbose_name }}
+                        {% if i == 'prise_1' %}
+                            <input class="form-check-input" type="radio" name="prise_radio" id="{{ i }}" value="{% value i order.slug %}" checked>
+                        {% else %}
+                            <input class="form-check-input" type="radio" name="prise_radio" id="{{ i }}" value="{% value i order.slug %}">
+                        {% endif %}
+                        <label class="form-check-label" for="{{ i }}">
+                            {{ i|name }}  ({% value i order.slug %} грн/мес)
                         </label>
-                        {% endwith %}
                     </div>
                 {% endfor %}
+            </div>
+            <div id="selector" class="shadow-none p-3 mb-3 bg-light rounded">
+                <p><span style="color: red;">*</span>Цвет</p>
+                <select id="colorSelector" class="form-select" aria-label="Color selector">
+                    <option selected>--- Выберете цвет ---</option>
+                    <option value="1">Сталь</option>
+                    <option value="2">Гранит</option>
+                    <option value="3">Кедр</option>
+                </select>
+            </div>
+            <div class="shadow-none p-3 mb-3 bg-light rounded">
+                <p><span style="color: red;">*</span>Кол-во</p>
+                <div class="input-group">
+                    <input type="number" name="quantity" value="1" id="inputQuantity" class="form-control">
+                    <div class="btn-group input-group-text" role="group">
+                        <button id="increase" type="button" data-toggle="tooltip" class="btn btn-default" title="Increase"><i class="fa fa-plus"></i></button>
+                        <button id="decrease" type="button" data-toggle="tooltip" class="btn btn-default" title="Decrease"><i class="fa fa-minus"></i></button>
+                    </div>
+                </div>
+                <div style="display: flex; justify-content: center;">
+                    <button type="button" class="btn btn-success mt-3" id="submit">Добавить в корзину</button>
+                </div>
             </div>
         </div>
     </div>
@@ -103,19 +143,5 @@
 {% endblock %}
 
 {% block script %}
-<script type="text/javascript">
-    let description_btn = document.querySelector('#description-tab');
-    let char_btn = document.querySelector('#char-tab');
-
-    char_btn.style.color = '#2e7d41';
-
-    description_btn.onclick = () => {
-        char_btn.style.color = '#2e7d41';
-        description_btn.style.color = '#000';
-    }
-    char_btn.onclick = () => {
-        description_btn.style.color = '#2e7d41';
-        char_btn.style.color = '#000';
-    }
-</script>
+<script src="{% static 'main/js/order_product.js' %}"></script>
 {% endblock %}
