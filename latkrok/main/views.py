@@ -18,7 +18,7 @@ def get_search_context(is_ord=False, is_spec=False, **kwargs) -> dict:
         'specials': spec,
         'static_urls': {
             'главная': reverse('index'), 'оренда': reverse('order'), 'лого': reverse('logo'),
-            'спец предложения': reverse('special'), 'корзина': reverse('basket'), 'про нас': reverse('about'),
+            'спец предложения': reverse('special'), 'корзина': reverse('cart'), 'про нас': reverse('about'),
             'контакты': reverse('contacts'), 'производитель': reverse('maker')
         }
     }
@@ -103,7 +103,7 @@ class LatkrokSpecialProduct(DetailView):
         return get_search_context(kwargs=context)
 
 
-def basket(request):
+def cart(request):
     err = ''
     if request.method == 'POST':
         form = CartDataForm(request.POST)
@@ -129,7 +129,7 @@ def basket(request):
         'form': form,
         'error': err
     }
-    return render(request, 'main/basket.html', context=get_search_context(kwargs=context))
+    return render(request, 'main/cart.html', context=get_search_context(kwargs=context))
 
 
 def about(request):

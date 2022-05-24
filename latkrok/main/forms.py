@@ -48,7 +48,7 @@ class CartDataForm(ModelForm):
                 'class': 'form-control is-invalid',
                 'id': 'validationServer03'
             }),
-            'mail': TextInput(attrs={
+            'email': TextInput(attrs={
                 'class': 'form-control is-invalid',
                 'id': 'validationServer04'
             }),

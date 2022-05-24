@@ -25,7 +25,7 @@ function alert(icon, message, type) {
     wrapper.innerHTML = `<div class="alert alert-${type} alert-dismissible" role="alert">
         ${icon}
         ${message}
-        <a href="/basket" class="alert-link">Корзина</a>
+        <a href="/cart" class="alert-link">Корзина</a>
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`;
 
     alertPlaceholder.append(wrapper);
@@ -41,7 +41,6 @@ char_btn.onclick = () => {
 }
 
 increase_btn.onclick = () => {
-    console.log(input.value, input.max);
     if (input.value < Number(input.max)){
         input.value++;
     } else {

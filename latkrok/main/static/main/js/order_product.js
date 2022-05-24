@@ -26,7 +26,7 @@ function alert(icon, message, type, islink) {
         wrapper.innerHTML = `<div class="alert alert-${type} alert-dismissible" role="alert">
         ${icon}
         ${message}
-        <a href="/basket" class="alert-link">Корзина</a>
+        <a href="/cart" class="alert-link">Корзина</a>
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`;
     } else {
         wrapper.innerHTML = `<div class="alert alert-${type} alert-dismissible" role="alert">
@@ -48,13 +48,16 @@ char_btn.onclick = () => {
 }
 
 increase_btn.onclick = () => {
-    if (input.value < 50){
+    if (input.value < Number(input.max)){
         input.value++;
+    } else {
+        document.querySelector('#tip').style.display = 'block';
     }
 }
 
 decrease_btn.onclick = () => {
     if (input.value > 1){
+        document.querySelector('#tip').style.display = 'none';
         input.value--;
     }
 }
@@ -62,6 +65,9 @@ decrease_btn.onclick = () => {
 input.addEventListener('change', () => {
     if (input.value < 1) {
         input.value = 1
+    } else if (input.value >= Number(input.max)) {
+        input.value = input.max;
+        document.querySelector('#tip').style.display = 'block';
     }
 })
 

@@ -41,6 +41,7 @@ class SpecialOffer(models.Model):
     img_2 = models.ImageField(_('Доп картинка'), upload_to='photo')
     img_3 = models.ImageField(_('Доп картинка'), upload_to='photo')
     color = models.CharField(_('Цвет'), max_length=20)
+    color_hex = models.CharField(_('Код цвета'), max_length=20)
     prise = models.IntegerField(_('Цена'))
     count = models.IntegerField(_('Количество'))
     status = models.BooleanField(_('Доступность'), default=True)

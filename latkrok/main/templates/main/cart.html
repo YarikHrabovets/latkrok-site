@@ -77,7 +77,7 @@
 			<label for="validationServer04" class="form-label">Адрес электронной почты*</label>
 			<div class="input-group">
 				<span class="input-group-text" id="inputGroupMail">@</span>
-				{{ form.mail }}
+				{{ form.email }}
 			</div>
 		  </div>
 		  <div class="col-md-3">
@@ -114,7 +114,7 @@
 
 {% block script %}
 <script type="text/javascript">
-		let basket = document.getElementById("basket_id");
+		let cart = document.getElementById("basket_id");
 		let iron_objs = JSON.parse(localStorage.getItem("Iron-Horse_JSON"));
 		let input = document.getElementById("input");
 		let sum_list = [];
@@ -130,23 +130,23 @@
 				ul_2.innerHTML += '<li class="col-6 col-sm-4 col-md-3 col-xl-2 list-group-item">' + iron_objs[index]['model'] + '<br>' + iron_objs[index]['color'] + '<br><span style="color: #339c3e;">' + iron_objs[index]['type'] + '</span></li>';
 				ul_2.innerHTML += `<li class="col-6 col-sm-4 col-md-3 col-xl-2 list-group-item"><div class="input-group btn-block" style="max-width: 200px;"><input id="count-${index}" type="text" value="` + iron_objs[index]['count'] + `"` + `size="1" class="form-control">
 					<button type="submit" data-toggle="tooltip" title="" class="btn btn-success" data-original-title="Обновить" onclick="setCount('count-${index}', ${index})"><i class="fa fa-refresh"></i></button>
-                    <button type="button" data-toggle="tooltip" title="" class="btn btn-danger" data-original-title="Удалить" onclick="clearElem(${index})"><i class="fa fa-times-circle"></i></button></div></li>`;
+                    <button type="button" data-toggle="tooltip" title="" class="btn btn-danger" data-original-title="Удалить" onclick="clearElem(${index}, ${iron_objs.length})"><i class="fa fa-times-circle"></i></button></div></li>`;
 				ul_2.innerHTML += '<li class="col-6 col-sm-4 col-md-3 col-xl-2 list-group-item">' + iron_objs[index]['prise'] + ' ' + iron_objs[index]['money'] + '</li>';
 				ul_2.innerHTML += '<li class="col-6 col-sm-4 col-md-3 col-xl-2 list-group-item">' + iron_objs[index]['all_prise'] + ' ' + iron_objs[index]['money'] +'</li>';
 				sum_list.push(iron_objs[index]['all_prise']);
-				basket.append(ul_2);
+				cart.append(ul_2);
 			}
 			let count_sum = document.createElement("ul");
 			count_sum.className = "list-group list-group-horizontal mt-3";
 			count_sum.innerHTML += '<li class="col-6 col-sm-4 col-md-3 col-xl-2 list-group-item">Вся сумма:</li>';
 			count_sum.innerHTML += '<li class="col-6 col-sm-4 col-md-3 col-xl-2 list-group-item">' + sum(sum_list) + 'грн</li>';
-			basket.append(count_sum);
+			cart.append(count_sum);
 
 			btn_row = document.createElement("div");
 			btn_row.className = "d-flex";
 			btn_row.innerHTML += '<button onclick="clearFunc()" class="btn btn-secondary m-2">Очисить корзину</button>';
 			btn_row.innerHTML += '<a href="/order" class="btn btn-primary m-2">Продолжить покупки</a>';
-			basket.append(btn_row);
+			cart.append(btn_row);
 		}
 		function sum(list){
 			let sum = 0;
@@ -162,12 +162,16 @@
 			localStorage.setItem("Iron-Horse_JSON", JSON.stringify(iron_objs));
 			window.location.reload();
 		}
-		function clearElem(index){
-			iron_objs = iron_objs.filter(function(item){
-				return item != iron_objs[index];
-			});
-			localStorage.setItem("Iron-Horse_JSON", JSON.stringify(iron_objs));
-			window.location.reload();
+		function clearElem(index, len){
+			if (len == 1) {
+				clearFunc();
+			} else {
+				iron_objs = iron_objs.filter(function(item){
+					return item != iron_objs[index];
+				});
+				localStorage.setItem("Iron-Horse_JSON", JSON.stringify(iron_objs));
+				window.location.reload();
+			}
 		}
 		function clearFunc(){
 			localStorage.removeItem("Iron-Horse_JSON");
@@ -176,15 +180,15 @@
 		}
 		function fill_text(){
 			let iron_objs = JSON.parse(localStorage.getItem("Iron-Horse_JSON"));
-			let basket = document.getElementById("basket_dt");
+			let cart = document.getElementById("basket_dt");
 			for (i in iron_objs){
-				basket.innerHTML += `Имя: ${iron_objs[i]['name']},\n`;
-				basket.innerHTML += `Модель: ${iron_objs[i]['model']},\n`;
-				basket.innerHTML += `Цвет: ${iron_objs[i]['color']},\n`;
-				basket.innerHTML += `Тип: ${iron_objs[i]['type']},\n`;
-				basket.innerHTML += `Количество: ${iron_objs[i]['count']},\n`;
-				basket.innerHTML += `Цена одного: ${iron_objs[i]['prise']} ${iron_objs[i]['money']},\n`;
-				basket.innerHTML += `Вся цена: ${iron_objs[i]['all_prise']} ${iron_objs[i]['money']},\n\n\n`;
+				cart.innerHTML += `Имя: ${iron_objs[i]['name']},\n`;
+				cart.innerHTML += `Модель: ${iron_objs[i]['model']},\n`;
+				cart.innerHTML += `Цвет: ${iron_objs[i]['color']},\n`;
+				cart.innerHTML += `Тип: ${iron_objs[i]['type']},\n`;
+				cart.innerHTML += `Количество: ${iron_objs[i]['count']},\n`;
+				cart.innerHTML += `Цена одного: ${iron_objs[i]['prise']} ${iron_objs[i]['money']},\n`;
+				cart.innerHTML += `Вся цена: ${iron_objs[i]['all_prise']} ${iron_objs[i]['money']},\n\n\n`;
 			}
 			localStorage.removeItem("Iron-Horse_JSON");
 			sum_list.length = 0;

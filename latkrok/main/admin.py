@@ -51,7 +51,7 @@ class SpecialAdmin(admin.ModelAdmin):
     fieldsets = (
         (None, {
             'fields': ('title', 'slug', 'description', 'img_1', 'img_2', 'img_3',
-                       'color', 'prise', 'count')
+                       'color', 'color_hex', 'prise', 'count')
         }),
         ('Статус', {
             'fields': ('status',)

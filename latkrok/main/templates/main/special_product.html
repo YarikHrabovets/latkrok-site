@@ -98,26 +98,35 @@
                     </li>
                 </ul>
             </div>
-            <div id="selector" class="shadow-none p-3 mb-3 bg-light rounded">
-                <p class="fs-5">Цвет: <span id="color" style="color: {{ special.color }};">{{ special.color }}</span></p>
-            </div>
-            <div class="shadow-none p-3 mb-3 bg-light rounded">
-                <p class="fs-5">Цена: <span id="prise">{{ special.prise }}</span> грн</p>
-            </div>
-            <div class="shadow-none p-3 mb-3 bg-light rounded">
-                <p><span style="color: red;">*</span>Кол-во</p>
-                <p id="tip" style="display: none; color: red;"><svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>Максимальное кол-во: {{ special.count }}</p>
-                <div class="input-group">
-                    <input type="number" name="quantity" value="1" max="{{ special.count }}" id="inputQuantity" class="form-control">
-                    <div class="btn-group input-group-text" role="group">
-                        <button id="increase" type="button" data-toggle="tooltip" class="btn btn-default" title="Increase"><i class="fa fa-plus"></i></button>
-                        <button id="decrease" type="button" data-toggle="tooltip" class="btn btn-default" title="Decrease"><i class="fa fa-minus"></i></button>
+            {% if special.status %}
+                <div class="shadow-none p-3 mb-3 bg-light rounded">
+                    <p class="fs-5 mb-0">Цвет: <span id="color" style="color: {{ special.color_hex }};">{{ special.color }}</span></p>
+                </div>
+                <div class="shadow-none p-3 mb-3 bg-light rounded">
+                    <p class="fs-5 mb-0">Цена: <span id="prise" class="text-muted">{{ special.prise }}</span><span class="text-muted"> грн/шт</span></p>
+                </div>
+                <div class="shadow-none p-3 mb-3 bg-light rounded">
+                    <p><span style="color: red;">*</span>Кол-во</p>
+                    <p id="tip" style="display: none; color: red;"><svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>Максимальное кол-во: {{ special.count }}</p>
+                    <div class="input-group">
+                        <input type="number" name="quantity" value="1" max="{{ special.count }}" id="inputQuantity" class="form-control">
+                        <div class="btn-group input-group-text p-0" role="group">
+                            <button id="increase" type="button" data-toggle="tooltip" class="btn btn-default" title="Increase" style="border-right: 1px solid #ccc; border-radius: 0;"><i class="fa fa-plus"></i></button>
+                            <button id="decrease" type="button" data-toggle="tooltip" class="btn btn-default" title="Decrease"><i class="fa fa-minus"></i></button>
+                        </div>
+                    </div>
+                    <div style="display: flex; justify-content: center;">
+                        <button type="button" class="btn btn-success mt-3" id="submit">Добавить в корзину</button>
                     </div>
                 </div>
-                <div style="display: flex; justify-content: center;">
-                    <button type="button" class="btn btn-success mt-3" id="submit">Добавить в корзину</button>
+            {% else %}
+                 <div class="alert alert-warning" role="alert">
+                    <h4 class="alert-heading">На данный момент такого товара нет на складе!</h4>
+                    <p>Но мы обещаем что скоро появится, проверьте снова эту страницу позже.</p>
+                    <hr>
+                    <p class="mb-0">Для связи с нами перейдите на страницу <a href="{% url 'contacts' %}" class="alert-link">контакты</a></p>
                 </div>
-            </div>
+            {% endif %}
         </div>
     </div>
 </div>

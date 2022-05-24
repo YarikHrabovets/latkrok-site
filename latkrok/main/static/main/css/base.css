@@ -19,17 +19,17 @@ body {
   background: #f1f1f1;
 }
 
-input {
+#elastic {
     height: 3em;
     width: 100%;
     border-radius: 4px;
 }
 
-input:focus {
+#elastic:focus {
     box-shadow: 1px 1px 2px 0 green;
 }
 
-i.fa {
+.i-search.fa {
     width: 25px;
     height: 25px;
     line-height: 25px;
@@ -40,7 +40,7 @@ i.fa {
     top: 26px;
 }
 
-i.fa + input {
+.i-search.fa + #elastic {
     padding-left: 25px;
 }
 
