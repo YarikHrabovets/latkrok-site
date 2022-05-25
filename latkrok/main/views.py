@@ -1,8 +1,8 @@
 from django.shortcuts import render
-from django.urls import reverse
-from django.views.generic import ListView, DetailView
+from django.urls import reverse, reverse_lazy
+from django.views.generic import ListView, DetailView, CreateView
 from .models import Order, SpecialOffer, FillUrl
-from .forms import LogoOrdForm, CartDataForm, LogoOrd, Cart
+from .forms import *
 from .sendScript import send_for_email
 
 
@@ -103,33 +103,14 @@ class LatkrokSpecialProduct(DetailView):
         return get_search_context(kwargs=context)
 
 
-def cart(request):
-    err = ''
-    if request.method == 'POST':
-        form = CartDataForm(request.POST)
-        if form.is_valid():
-            form.save()
-            try:
-                field_email = 'mail'
-                field_fn = 'name'
-                field_ln = 'lastname'
-                field_text = 'products'
-                obj = Cart.objects.last()
-                value_email = getattr(obj, field_email)
-                value_fn = getattr(obj, field_fn)
-                value_ln = getattr(obj, field_ln)
-                value_text = getattr(obj, field_text)
-                send_for_email(value_email, value_fn, value_ln, value_text)
-            except:
-                return render(request, 'main/error.html')
-        else:
-            err = 'form is not valid'
-    form = CartDataForm()
-    context = {
-        'form': form,
-        'error': err
-    }
-    return render(request, 'main/cart.html', context=get_search_context(kwargs=context))
+class LatkrokCart(CreateView):
+    form_class = CartForm
+    template_name = 'main/cart.html'
+    success_url = reverse_lazy('index')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        return get_search_context(kwargs=context)
 
 
 def about(request):

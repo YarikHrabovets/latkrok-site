@@ -112,7 +112,7 @@ LANGUAGES = (
     ('ru', 'Russian'),
 )
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Kiev'
 
 USE_I18N = True
 

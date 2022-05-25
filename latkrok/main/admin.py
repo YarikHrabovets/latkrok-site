@@ -7,6 +7,16 @@ from .models import *
 class CartAdmin(admin.ModelAdmin):
     list_display = ('name', 'lastname', 'status', 'time_create')
 
+    fieldsets = (
+        (None, {
+            'fields': ('name', 'lastname', 'phone', 'email', 'city', 'addr',
+                       'details')
+        }),
+        ('Статус', {
+            'fields': ('status',)
+        }),
+    )
+
     formfield_overrides = {
         models.TextField: {'widget': Textarea(attrs={
             'style': 'font-size: 17px;',

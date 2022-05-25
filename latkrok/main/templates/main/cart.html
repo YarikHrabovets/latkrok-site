@@ -50,7 +50,7 @@
 			</blockquote>
 		</figure>
 		<hr>
-		<form method="post" onsubmit="window.location.href = '#';" class="row g-3 was-validated">
+		<form class="row g-3 was-validated" action="{% url 'cart' %}" method="post">
 			{% csrf_token %}
 		  <div class="col-md-6">
 			<label for="validationServer01" class="form-label">Имя*</label>
@@ -94,7 +94,7 @@
 				{{ form.addr }}
 			</div>
 		  </div>
-			{{ form.products }}
+			{{ form.details }}
 		  <div class="col-12">
 			<div class="form-check">
 			  <input class="form-check-input" type="checkbox" id="validationServer07" required>
@@ -107,7 +107,6 @@
 				<button type="submit" onclick="fill_text()" class="btn btn-primary m-2">Оформить</button>
 		  </div>
 		</form>
-		<span>{{ error.err }}</span>
 	</div>
 </div>
 {% endblock %}
@@ -192,7 +191,6 @@
 			}
 			localStorage.removeItem("Iron-Horse_JSON");
 			sum_list.length = 0;
-			window.location.reload();
 		};
 	</script>
 	<script type="text/javascript">
