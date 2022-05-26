@@ -5,11 +5,11 @@ from .models import *
 
 @admin.register(Cart)
 class CartAdmin(admin.ModelAdmin):
-    list_display = ('name', 'lastname', 'status', 'time_create')
+    list_display = ('first_name', 'last_name', 'status', 'time_create')
 
     fieldsets = (
         (None, {
-            'fields': ('name', 'lastname', 'phone', 'email', 'city', 'addr',
+            'fields': ('first_name', 'last_name', 'phone', 'email', 'city', 'address',
                        'details')
         }),
         ('Статус', {
@@ -26,7 +26,7 @@ class CartAdmin(admin.ModelAdmin):
 
 @admin.register(LogoOrd)
 class LogoAdmin(admin.ModelAdmin):
-    list_display = ('name', 'lastname', 'status', 'time_create')
+    list_display = ('first_name', 'last_name', 'status', 'time_create')
 
     formfield_overrides = {
         models.TextField: {'widget': Textarea(attrs={
@@ -38,7 +38,7 @@ class LogoAdmin(admin.ModelAdmin):
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):
     list_display = ('title', 'status')
-    search_fields = ('name', 'description')
+    search_fields = ('first_name', 'description')
     prepopulated_fields = {'slug': ('title',)}
 
     fieldsets = (
@@ -55,7 +55,7 @@ class OrderAdmin(admin.ModelAdmin):
 @admin.register(SpecialOffer)
 class SpecialAdmin(admin.ModelAdmin):
     list_display = ('title', 'status')
-    search_fields = ('name', 'description')
+    search_fields = ('first_name', 'description')
     prepopulated_fields = {'slug': ('title',)}
 
     fieldsets = (

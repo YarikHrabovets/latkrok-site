@@ -1,17 +1,13 @@
 {% extends 'main/base.html' %}
 {% load static %}
 
-{% block link %}
-<link rel="stylesheet" type="text/css" href="{% static 'main/css/maker_style.css' %}">
-{% endblock %}
-
 {% block title %}
 Производитель
 {% endblock %}
 
 {% block content %}
 <img class="img-fluid" src="{{ url }}">
-<div id="cont" class="container p-3 rounded-3 border shadow-lg">
+<div class="container p-3 mt-5 rounded-3 border shadow-lg">
 	<h1>Производитель</h1>
 	<hr>
 	<h4>Мы официальные дистрибьюторы Kleen-Tex!</h4>

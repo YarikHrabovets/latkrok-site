@@ -53,35 +53,6 @@ class LatkrokOrderProduct(DetailView):
         return get_search_context(kwargs=context)
 
 
-def logo(request):
-    err = ''
-    if request.method == 'POST':
-        form = LogoOrdForm(request.POST)
-        if form.is_valid():
-            form.save()
-            try:
-                field_email = 'email'
-                field_fn = 'name'
-                field_ln = 'lastname'
-                field_text = 'text'
-                obj = LogoOrd.objects.last()
-                value_email = getattr(obj, field_email)
-                value_fn = getattr(obj, field_fn)
-                value_ln = getattr(obj, field_ln)
-                value_text = getattr(obj, field_text)
-                send_for_email(value_email, value_fn, value_ln, value_text)
-            except:
-                return render(request, 'main/error.html')
-        else:
-            err = 'form is not valid'
-    form = LogoOrdForm()
-    context = {
-        'form': form,
-        'error': err
-    }
-    return render(request, 'main/logo.html', context=get_search_context(kwargs=context))
-
-
 class LatkrokSpecial(ListView):
     model = SpecialOffer
     template_name = 'main/special.html'
@@ -103,14 +74,32 @@ class LatkrokSpecialProduct(DetailView):
         return get_search_context(kwargs=context)
 
 
-class LatkrokCart(CreateView):
-    form_class = CartForm
-    template_name = 'main/cart.html'
-    success_url = reverse_lazy('index')
+class LatkrokLogo(CreateView):
+    form_class = LogoForm
+    template_name = 'main/logo.html'
+    success_url = reverse_lazy('logo_success')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         return get_search_context(kwargs=context)
+
+
+class LatkrokCart(CreateView):
+    form_class = CartForm
+    template_name = 'main/cart.html'
+    success_url = reverse_lazy('cart_success')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        return get_search_context(kwargs=context)
+
+
+def cart_success(request):
+    return render(request, 'main/success.html', context={'redirect_from_cart': True})
+
+
+def logo_success(request):
+    return render(request, 'main/success.html', context={'redirect_from_cart': False})
 
 
 def about(request):
@@ -124,5 +113,5 @@ def contacts(request):
 def maker(request):
     field_name = 'url'
     obj = FillUrl.objects.first()
-    field_value = getattr(obj, field_name)
+    field_value = getattr(obj, field_name) if obj else ''
     return render(request, 'main/maker.html', context=get_search_context(kwargs={'url': field_value}))

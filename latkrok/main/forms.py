@@ -1,58 +1,66 @@
-import re
-
 from .models import LogoOrd, Cart
 from django.forms import ModelForm, TextInput, Textarea
 from django.core.exceptions import ValidationError
 
 
-class LogoOrdForm(ModelForm):
+class LogoForm(ModelForm):
     class Meta:
         model = LogoOrd
-        fields = ['name', 'lastname', 'email', 'phone', 'details']
+        fields = ['first_name', 'last_name', 'email', 'phone', 'details']
         widgets = {
-            'name': TextInput(attrs={
-                'class': 'form-control is-invalid',
-                'id': 'validationServer01'
-            }),
-            'lastname': TextInput(attrs={
-                'class': 'form-control is-invalid',
-                'id': 'validationServer02'
-            }),
-            'email': TextInput(attrs={
-                'class': 'form-control is-invalid',
-                'id': 'validationServer03',
-                'aria-describedby': 'inputGroupPrepend'
-            }),
-            'phone': TextInput(attrs={
-                'class': 'form-control is-invalid',
-                'id': 'validationServer04'
-            }),
-            'text': Textarea(attrs={
-                'class': 'form-control is-invalid',
-                'id': 'validationServer05'
-            })
+            'first_name': TextInput(attrs={'class': 'form-control is-invalid', 'id': 'first_name'}),
+            'last_name': TextInput(attrs={'class': 'form-control is-invalid', 'id': 'last_name'}),
+            'email': TextInput(attrs={'class': 'form-control is-invalid', 'id': 'email', 'aria-describedby': 'inputGroupPrepend'}),
+            'phone': TextInput(attrs={'type': 'number', 'class': 'form-control is-invalid', 'id': 'phone'}),
+            'details': Textarea(attrs={'class': 'form-control is-invalid', 'id': 'details'})
         }
+
+    def clean_first_name(self):
+        first_name = self.cleaned_data['first_name']
+        if any(map(str.isdigit, first_name)):
+            raise ValidationError('Введите коректное имя')
+
+        return first_name
+
+    def clean_last_name(self):
+        last_name = self.cleaned_data['last_name']
+        if any(map(str.isdigit, last_name)):
+            raise ValidationError('Введите коректную фамилию')
+
+        return last_name
 
 
 class CartForm(ModelForm):
-
     class Meta:
         model = Cart
-        fields = ['name', 'lastname', 'phone', 'email', 'city', 'addr', 'details']
+        fields = ['first_name', 'last_name', 'phone', 'email', 'city', 'address', 'details']
         widgets = {
-            'name': TextInput(attrs={'class': 'form-control is-invalid', 'id': 'validationServer01'}),
-            'lastname': TextInput(attrs={'class': 'form-control is-invalid', 'id': 'validationServer02'}),
-            'phone': TextInput(attrs={'class': 'form-control is-invalid', 'id': 'validationServer03'}),
-            'email': TextInput(attrs={'class': 'form-control is-invalid', 'id': 'validationServer04'}),
-            'city': TextInput(attrs={'class': 'form-control is-invalid', 'id': 'validationServer05'}),
-            'addr': TextInput(attrs={'class': 'form-control', 'id': 'validationServer06 is-invalid'}),
-            'details': Textarea(attrs={'style': 'visibility: hidden; width: 1px; height: 1px;', 'id': 'basket_dt'})
+            'first_name': TextInput(attrs={'type': 'text', 'class': 'form-control is-invalid', 'id': 'first_name'}),
+            'last_name': TextInput(attrs={'type': 'text', 'class': 'form-control is-invalid', 'id': 'last_name'}),
+            'phone': TextInput(attrs={'type': 'number', 'class': 'form-control is-invalid', 'id': 'phone'}),
+            'email': TextInput(attrs={'class': 'form-control is-invalid', 'id': 'email'}),
+            'city': TextInput(attrs={'type': 'text', 'class': 'form-control is-invalid', 'id': 'city'}),
+            'address': TextInput(attrs={'class': 'form-control', 'id': 'address is-invalid'}),
+            'details': Textarea(attrs={'style': 'visibility: hidden; width: 1px; height: 1px;', 'id': 'details'})
         }
 
-    def clean_email(self):
-        pattern = r'(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)'
-        email = self.cleaned_data['email']
-        if re.match(pattern, email) is not None:
-            return email
+    def clean_first_name(self):
+        first_name = self.cleaned_data['first_name']
+        if any(map(str.isdigit, first_name)):
+            raise ValidationError('Введите коректное имя')
 
-        raise ValidationError('Введите коректную почту')
+        return first_name
+
+    def clean_last_name(self):
+        last_name = self.cleaned_data['last_name']
+        if any(map(str.isdigit, last_name)):
+            raise ValidationError('Введите коректную фамилию')
+
+        return last_name
+
+    def clean_city(self):
+        city = self.cleaned_data['city']
+        if any(map(str.isdigit, city)):
+            raise ValidationError('Введите коректный город')
+
+        return city

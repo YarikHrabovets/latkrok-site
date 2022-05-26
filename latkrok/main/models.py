@@ -58,10 +58,10 @@ class SpecialOffer(models.Model):
 
 
 class LogoOrd(models.Model):
-    name = models.CharField('Имя', max_length=15)
-    lastname = models.CharField('Фамилия', max_length=20)
-    email = models.CharField('Адрес электронной почты', max_length=50)
+    first_name = models.CharField('Имя', max_length=15)
+    last_name = models.CharField('Фамилия', max_length=20)
     phone = models.CharField('Номер телефона', max_length=20)
+    email = models.EmailField('Адрес электронной почты', max_length=50)
     details = models.TextField('Детали запроса')
     status = models.BooleanField('Статус заказа', default=False)
     time_create = models.DateTimeField('Время создания', auto_now_add=True)
@@ -71,26 +71,27 @@ class LogoOrd(models.Model):
         verbose_name_plural = 'Лого заказы'
 
     def __str__(self):
-        return f'заказ: {self.name} {self.lastname}'
+        return f'заказ: {self.first_name} {self.last_name}'
 
 
 class Cart(models.Model):
-    name = models.CharField('Имя', max_length=15)
-    lastname = models.CharField('Фамилия', max_length=20)
+    first_name = models.CharField('Имя', max_length=15)
+    last_name = models.CharField('Фамилия', max_length=20)
     phone = models.CharField('Номер телефона', max_length=13)
-    email = models.CharField('Почта', max_length=50)
+    email = models.EmailField('Почта', max_length=50)
     city = models.CharField('Город', max_length=20)
-    addr = models.CharField('Адрес', max_length=70)
-    details = models.TextField('Детали запроса')
+    address = models.CharField('Адрес', max_length=70)
+    details = models.TextField('Детали')
     status = models.BooleanField('Статус заказа', default=False)
     time_create = models.DateTimeField('Время создания', auto_now_add=True)
 
     class Meta:
-        verbose_name = 'Корзина'
-        verbose_name_plural = 'Корзины'
+        ordering = ('-time_create',)
+        verbose_name = 'Заказ на оренду'
+        verbose_name_plural = 'Заказы на оренду'
 
     def __str__(self):
-        return f'корзина: {self.name} {self.lastname}'
+        return f'заказ: {self.first_name} {self.last_name}'
 
 
 class FillUrl(models.Model):

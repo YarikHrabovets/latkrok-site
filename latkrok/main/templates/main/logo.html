@@ -95,41 +95,45 @@
 			<p class="fs-5">После указания своей электронной почты вам будет отправлено письмо с успешным оформлением заказа!</p>
 		</div>
 		<div class="container p-4 rounded-3 border">
-			<form method="post" onsubmit="return alert('Ваша заявка отправлена!', 'success')" class="row g-3 was-validated">
+			<form class="row g-3 was-validated" method="post">
 			 {% csrf_token %}
 			  <div class="col-md-6">
-				<label for="validationServer01" class="form-label">Имя*</label>
+				<label for="first_name" class="form-label">Имя*</label>
 				<div class="input-group">
 					<span class="input-group-text" id="inputGroupName"><ion-icon name="accessibility-outline"></ion-icon></span>
-					{{ form.name }}
+					{{ form.first_name }}
 				</div>
+				<span style="color: #bf1515;">{{ form.first_name.errors }}</span>
 			  </div>
 			  <div class="col-md-6">
-				<label for="validationServer02" class="form-label">Фамилия*</label>
+				<label for="last_name" class="form-label">Фамилия*</label>
 				 <div class="input-group">
 					<span class="input-group-text" id="inputGroupLastName"><ion-icon name="accessibility-outline"></ion-icon></span>
-					{{ form.lastname }}
+					{{ form.last_name }}
 				 </div>
+				 <span style="color: #bf1515;">{{ form.last_name.errors }}</span>
 			  </div>
 			  <div class="col-md-6">
-				<label for="validationServer03" class="form-label">Адрес электронной почты*</label>
+				<label for="email" class="form-label">Адрес электронной почты*</label>
 				<div class="input-group">
 					<span class="input-group-text" id="inputGroupPrepend">@</span>
 					{{ form.email }}
 				</div>
+				<span style="color: #bf1515;">{{ form.email.errors }}</span>
 			  </div>
 			  <div class="col-md-6">
-				<label for="validationServer04" class="form-label">Номер телефона*</label>
+				<label for="phone" class="form-label">Номер телефона*</label>
 				<div class="input-group">
 					<span class="input-group-text" id="inputGroupLastName"><ion-icon name="call-outline"></ion-icon></span>
 					{{ form.phone }}
 				</div>
+				<span style="color: #bf1515;">{{ form.phone.errors }}</span>
 			  </div>
 			   <div class="col-12">
-				<label for="validationServer05" class="form-label">Детали запроса: продукт, размер, цвет, количество и т.д.*</label>
+				<label for="details" class="form-label">Детали запроса: продукт, размер, цвет, количество и т.д.*</label>
 				<div class="input-group">
 					<span class="input-group-text" id="inputGroupLastName"><ion-icon name="reader-outline"></ion-icon></span>
-					{{ form.text }}
+					{{ form.details }}
 				</div>
 			  </div>
 			  <div class="col-12">
@@ -142,7 +146,6 @@
 			  </div>
 			  <button type="submit" class="btn btn-primary m-2">Отправить</button>
 			</form>
-			<span>{{ error.err }}</span>
 		</div>
 	  </div>
 	</div>
