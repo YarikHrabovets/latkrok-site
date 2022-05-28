@@ -99,6 +99,13 @@
 			</div>
 			<span style="color: #bf1515;">{{ form.address.errors }}</span>
 		  </div>
+		  <div class="col-md-9">
+			<label for="captcha" class="form-label">Капча*</label>
+			<div class="input-group">
+				{{ form.captcha }}
+		  	</div>
+			<span style="color: #bf1515;">{{ form.captcha.errors }}</span>
+		  </div>
 			{{ form.details }}
 			<span style="color: #bf1515;">{{ form.details.errors }}</span>
 		  <div class="col-12">

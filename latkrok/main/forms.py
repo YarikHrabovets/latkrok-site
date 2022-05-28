@@ -1,9 +1,12 @@
 from .models import LogoOrd, Cart
 from django.forms import ModelForm, TextInput, Textarea
 from django.core.exceptions import ValidationError
+from captcha.fields import CaptchaField
 
 
 class LogoForm(ModelForm):
+    captcha = CaptchaField()
+
     class Meta:
         model = LogoOrd
         fields = ['first_name', 'last_name', 'email', 'phone', 'details']
@@ -31,6 +34,8 @@ class LogoForm(ModelForm):
 
 
 class CartForm(ModelForm):
+    captcha = CaptchaField()
+
     class Meta:
         model = Cart
         fields = ['first_name', 'last_name', 'phone', 'email', 'city', 'address', 'details']

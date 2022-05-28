@@ -23,7 +23,7 @@
 	</nav>
 </div>
 <div id="carusel" class="container">
-	<div id="carouselControls" class="carousel slide" data-bs-ride="carousel">
+	<div id="carouselControls" class="carousel slide">
 		<div class="carousel-inner">
 			<div class="carousel-item active">
 				<img id="img-carusel" class="d-block w-100" src="{% static 'main/images/IMG_20191030_132807.jpg' %}">
@@ -32,7 +32,7 @@
 				<img id="img-carusel" class="d-block w-100" src="{% static 'main/images/IMG_20211117_124024copy.jpg' %}">
 			</div>
 			<div class="carousel-item">
-				<img id="img-carusel" class="d-block w-100" src="{% static 'main/images/JP Velour.jpg' %}">
+				<img id="img-carusel" class="d-block w-100" src="{% static 'main/images/JP_Velour.jpg' %}">
 			</div>
 			<div class="carousel-item">
 				<img id="img-carusel" class="d-block w-100" src="{% static 'main/images/IMG_20200402_132943.jpg' %}">
@@ -71,13 +71,13 @@
 		<p class="lead">Профессиональный коврик с логотипом, предназначеный для размещения перед входом в компанию или ресепшн. В совершенстве задерживает пыль и грязь, а также контролирует влагу в помещениях. Идеальный у входов в здания общественной полезности и компаний, которые хотят сохранить свои входы чистыми и представительными. Имея 2-летнюю гарантию на производственные дефекты, а также при использовании новейшей технологии быстрой цветной печати, коврик Jet-Print будет выглядеть, как новый, даже после многих циклов стирки и использования его для ежедневного пешего движения</p>
 	  </div>
 	  <div class="col-md-5">
-			<img src="{% static 'main/images/Mat placement.jpg' %}" class="img-fluid">
+			<img src="{% static 'main/images/Mat-placement.jpg' %}" class="img-fluid">
 	  </div>
 	</div>
 	<hr class="featurette-divider">
 	<div class="row featurette">
 		<div class="col-md-6">
-			<img src="{% static 'main/images/Jet-Print Light технические детали.jpg' %}" class="img-fluid">
+			<img src="{% static 'main/images/Jet-Print-Light-d.jpg' %}" class="img-fluid">
 		</div>
 		<div class="col-md-6">
 			<img src="{% static 'main/images/Jet-Print-text.jpg' %}" class="img-fluid">
@@ -86,7 +86,7 @@
 	<hr class="featurette-divider">
 	<div class="row featurette">
 	  <div class="col-md-12 pt-3">
-			<img src="{% static 'main/images/Jet-Print Light цвета.jpg' %}" class="img-fluid">
+			<img src="{% static 'main/images/Jet-Print-Light.jpg' %}" class="img-fluid">
 	  </div>
 	  <div class="col-md-12">
 		<h2 class="text-muted">Сделать запрос</h2>
@@ -135,6 +135,13 @@
 					<span class="input-group-text" id="inputGroupLastName"><ion-icon name="reader-outline"></ion-icon></span>
 					{{ form.details }}
 				</div>
+			  </div>
+			  <div class="col-md-9">
+				<label for="captcha" class="form-label">Капча*</label>
+				<div class="input-group">
+					{{ form.captcha }}
+				</div>
+				<span style="color: #bf1515;">{{ form.captcha.errors }}</span>
 			  </div>
 			  <div class="col-12">
 				<div class="form-check">
