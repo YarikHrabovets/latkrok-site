@@ -1,9 +1,30 @@
-#carusel{
-	margin-top: 50px;
-	max-width: 800px;
+.collection {
+    display: none;
 }
-#img-carusel{
-	max-height: 900px;
-	border: 2px solid black;
+
+.collection:target {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgb(0, 0, 0, .7);
+    z-index: 100;
+}
+
+.my-carousel {
+	max-width: 800px;
 	border-radius: 2px;
+}
+.img-carousel {
+	max-height: 700px;
+	border-radius: 2px;
+}
+
+.close {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
 }

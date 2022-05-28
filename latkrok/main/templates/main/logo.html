@@ -10,7 +10,6 @@
 {% endblock %}
 
 {% block content %}
-<div id="liveAlertPlaceholder"></div>
 <div class="container p-3 rounded-3 border shadow-sm mt-3">
 	<nav aria-label="breadcrumb" style="background: none;">
 	  <ol class="breadcrumb">
@@ -22,50 +21,56 @@
 	  </ol>
 	</nav>
 </div>
-<div id="carusel" class="container">
-	<div id="carouselControls" class="carousel slide">
-		<div class="carousel-inner">
-			<div class="carousel-item active">
-				<img id="img-carusel" class="d-block w-100" src="{% static 'main/images/IMG_20191030_132807.jpg' %}">
+<div class="m-5" style="display: flex; justify-content: center;">
+	<a href="#carousel-collection" class="btn btn-outline-secondary" role="button">Смотреть колекцию</a>
+</div>
+<div class="collection" id="carousel-collection">
+	<a href="#" type="button" class="close btn-close btn-close-white" aria-label="Close"></a>
+	<div class="my-carousel container m-5">
+		<div id="carouselControls" class="carousel slide">
+			<div class="carousel-inner">
+				<div class="carousel-item active">
+					<img class="img-carousel d-block w-100" src="{% static 'main/images/IMG_20211117_124024copy.jpg' %}">
+				</div>
+				<div class="carousel-item">
+					<img class="img-carousel d-block w-100" src="{% static 'main/images/viber-image-2019-05-13-13.14.07.jpg' %}">
+				</div>
+				<div class="carousel-item">
+					<img class="img-carousel d-block w-100" src="{% static 'main/images/JP_Velour.jpg' %}">
+				</div>
+				<div class="carousel-item">
+					<img class="img-carousel d-block w-100" src="{% static 'main/images/IMG_20200402_132943.jpg' %}">
+				</div>
+				<div class="carousel-item">
+					<img class="img-carousel d-block w-100" src="{% static 'main/images/IMG_20160909_100130.1516893689.jpg' %}">
+				</div>
+				<div class="carousel-item">
+					<img class="img-carousel d-block w-100" src="{% static 'main/images/0-02-04-06ee186c6ec08e10c114576990e51277eccd1356aa7b25ed0ef0eda776800e33_full-removebg-preview.png' %}">
+				</div>
+				<div class="carousel-item">
+					<img class="img-carousel d-block w-100" src="{% static 'main/images/viber_2021-09-27_15-07-56-349.jpg' %}">
+				</div>
+				<div class="carousel-item">
+					<img class="img-carousel d-block w-100" src="{% static 'main/images/IMG_6036.jpg' %}">
+				</div>
+				<div class="carousel-item">
+					<img class="img-carousel d-block w-100" src="{% static 'main/images/2016-06-30-15.17.22-1.jpg' %}">
+				</div>
 			</div>
-			<div class="carousel-item">
-				<img id="img-carusel" class="d-block w-100" src="{% static 'main/images/IMG_20211117_124024copy.jpg' %}">
-			</div>
-			<div class="carousel-item">
-				<img id="img-carusel" class="d-block w-100" src="{% static 'main/images/JP_Velour.jpg' %}">
-			</div>
-			<div class="carousel-item">
-				<img id="img-carusel" class="d-block w-100" src="{% static 'main/images/IMG_20200402_132943.jpg' %}">
-			</div>
-			<div class="carousel-item">
-				<img id="img-carusel" class="d-block w-100" src="{% static 'main/images/IMG_20160909_100130.1516893689.jpg' %}">
-			</div>
-			<div class="carousel-item">
-				<img id="img-carusel" class="d-block w-100" src="{% static 'main/images/0-02-04-06ee186c6ec08e10c114576990e51277eccd1356aa7b25ed0ef0eda776800e33_full-removebg-preview.png' %}">
-			</div>
-			<div class="carousel-item">
-				<img id="img-carusel" class="d-block w-100" src="{% static 'main/images/зображення_viber_2021-09-27_15-07-56-349.jpg' %}">
-			</div>
-			<div class="carousel-item">
-				<img id="img-carusel" class="d-block w-100" src="{% static 'main/images/IMG_6036 - копия.0.jpg' %}">
-			</div>
-			<div class="carousel-item">
-				<img id="img-carusel" class="d-block w-100" src="{% static 'main/images/2016-06-30 15.17.22-1.jpg' %}">
-			</div>
+			<button class="carousel-control-prev" type="button" data-bs-target="#carouselControls" data-bs-slide="prev">
+				<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+				<span class="visually-hidden">Previous</span>
+			</button>
+			<button class="carousel-control-next" type="button" data-bs-target="#carouselControls" data-bs-slide="next">
+				<span class="carousel-control-next-icon" aria-hidden="true"></span>
+				<span class="visually-hidden">Next</span>
+			</button>
 		</div>
-		<button class="carousel-control-prev" type="button" data-bs-target="#carouselControls" data-bs-slide="prev">
-			<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-			<span class="visually-hidden">Previous</span>
-		</button>
-		<button class="carousel-control-next" type="button" data-bs-target="#carouselControls" data-bs-slide="next">
-			<span class="carousel-control-next-icon" aria-hidden="true"></span>
-			<span class="visually-hidden">Next</span>
-		</button>
 	</div>
 </div>
-<hr class="featurette-divider">
+<hr>
 <div class="container">
-	<div class="row featurette">
+	<div class="row">
 	  <div class="col-md-7">
 		<h2 class="featurette-heading">Jet-Print<span class="text-muted">  спроектирована для персонализации.</span></h2>
 		<p class="lead">Профессиональный коврик с логотипом, предназначеный для размещения перед входом в компанию или ресепшн. В совершенстве задерживает пыль и грязь, а также контролирует влагу в помещениях. Идеальный у входов в здания общественной полезности и компаний, которые хотят сохранить свои входы чистыми и представительными. Имея 2-летнюю гарантию на производственные дефекты, а также при использовании новейшей технологии быстрой цветной печати, коврик Jet-Print будет выглядеть, как новый, даже после многих циклов стирки и использования его для ежедневного пешего движения</p>
@@ -74,8 +79,8 @@
 			<img src="{% static 'main/images/Mat-placement.jpg' %}" class="img-fluid">
 	  </div>
 	</div>
-	<hr class="featurette-divider">
-	<div class="row featurette">
+	<hr class="mt-5">
+	<div class="row">
 		<div class="col-md-6">
 			<img src="{% static 'main/images/Jet-Print-Light-d.jpg' %}" class="img-fluid">
 		</div>
@@ -83,10 +88,10 @@
 			<img src="{% static 'main/images/Jet-Print-text.jpg' %}" class="img-fluid">
 		</div>
 	</div>
-	<hr class="featurette-divider">
-	<div class="row featurette">
+	<hr class="mt-5">
+	<div class="row">
 	  <div class="col-md-12 pt-3">
-			<img src="{% static 'main/images/Jet-Print-Light.jpg' %}" class="img-fluid">
+		  <img src="{% static 'main/images/Jet-Print-Light.jpg' %}" class="img-fluid">
 	  </div>
 	  <div class="col-md-12">
 		<h2 class="text-muted">Сделать запрос</h2>
@@ -157,15 +162,4 @@
 	  </div>
 	</div>
 </div>
-{% endblock %}
-{% block script %}
-<script type="text/javascript">
-		var alertPlaceholder = document.getElementById('liveAlertPlaceholder');
-		function alert(message, type) {
-		 	var wrapper = document.createElement('div');
-		  	wrapper.innerHTML = '<div class="alert alert-' + type + ' alert-dismissible" role="alert">' + message + '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>';
-
-		  	alertPlaceholder.append(wrapper);
-		}
-</script>
 {% endblock %}
