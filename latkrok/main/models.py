@@ -36,7 +36,7 @@ class Order(models.Model):
 class SpecialOffer(models.Model):
     title = models.CharField(_('Название'), max_length=75, db_index=True)
     slug = models.SlugField('URL', max_length=255, unique=True, db_index=True)
-    description = models.TextField(_('Описание'))
+    description = models.TextField(_('Описание'), db_index=True)
     img_1 = models.ImageField(_('Картинка'), upload_to='photo')
     img_2 = models.ImageField(_('Доп картинка'), upload_to='photo')
     img_3 = models.ImageField(_('Доп картинка'), upload_to='photo')
@@ -92,6 +92,25 @@ class Cart(models.Model):
 
     def __str__(self):
         return f'заказ: {self.first_name} {self.last_name}'
+
+
+class Article(models.Model):
+    title = models.CharField('Статья', max_length=75, db_index=True)
+    slug = models.SlugField('URL', max_length=255, unique=True, db_index=True)
+    img = models.ImageField('Картинка', upload_to='articles_photo')
+    content = models.TextField('Контент', db_index=True)
+    time_create = models.DateTimeField('Время создания', auto_now_add=True)
+
+    class Meta:
+        ordering = ('-time_create',)
+        verbose_name = 'Статья'
+        verbose_name_plural = 'Статьи'
+
+    def __str__(self):
+        return f'статья: {self.title}'
+
+    def get_absolute_url(self):
+        return reverse('detail_article', kwargs={'article_slug': self.slug})
 
 
 class FillUrl(models.Model):

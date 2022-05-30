@@ -14,4 +14,6 @@ urlpatterns = [
     path('about/', about, name='about'),
     path('contacts/', contacts, name='contacts'),
     path('maker/', maker, name='maker'),
+    path('articles/', LatkrokArticle.as_view(), name='articles'),
+    path('article/<slug:article_slug>/', LatkrokDetailArticle.as_view(), name='detail_article')
 ]

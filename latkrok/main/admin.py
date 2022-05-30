@@ -1,6 +1,7 @@
 from django.contrib import admin
 from django.forms import Textarea
 from .models import *
+from modeltranslation.admin import TranslationAdmin
 
 
 @admin.register(Cart)
@@ -36,7 +37,7 @@ class LogoAdmin(admin.ModelAdmin):
 
 
 @admin.register(Order)
-class OrderAdmin(admin.ModelAdmin):
+class OrderAdmin(TranslationAdmin):
     list_display = ('title', 'status')
     search_fields = ('first_name', 'description')
     prepopulated_fields = {'slug': ('title',)}
@@ -53,7 +54,7 @@ class OrderAdmin(admin.ModelAdmin):
 
 
 @admin.register(SpecialOffer)
-class SpecialAdmin(admin.ModelAdmin):
+class SpecialAdmin(TranslationAdmin):
     list_display = ('title', 'status')
     search_fields = ('first_name', 'description')
     prepopulated_fields = {'slug': ('title',)}
@@ -67,6 +68,13 @@ class SpecialAdmin(admin.ModelAdmin):
             'fields': ('status',)
         }),
     )
+
+
+@admin.register(Article)
+class ArticleAdmin(TranslationAdmin):
+    list_display = ('title', 'time_create')
+    search_fields = ('title', 'time_create')
+    prepopulated_fields = {'slug': ('title',)}
 
 
 admin.site.register(FillUrl)

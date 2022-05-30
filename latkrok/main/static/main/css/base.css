@@ -11,14 +11,6 @@ body {
 	transform: scale(1.1);
 }
 
-.search-href {
-  padding: 7px;
-  border: 1px solid grey;
-  float: right;
-  width: 20%;
-  background: #f1f1f1;
-}
-
 #elastic {
     height: 3em;
     width: 100%;

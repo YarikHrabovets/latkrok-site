@@ -12,6 +12,16 @@
     height: 100%;
     background: rgb(0, 0, 0, .7);
     z-index: 100;
+    animation: showCollection 1s;
+}
+
+@keyframes showCollection {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
 .my-carousel {

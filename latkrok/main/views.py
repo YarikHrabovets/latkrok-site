@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.urls import reverse, reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView
-from .models import Order, SpecialOffer, FillUrl
+from .models import *
 from .forms import *
 from .sendScript import send_for_email
 
@@ -90,6 +90,27 @@ class LatkrokCart(CreateView):
     success_url = reverse_lazy('cart_success')
 
     def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        return get_search_context(kwargs=context)
+
+
+class LatkrokArticle(ListView):
+    model = Article
+    template_name = 'main/list_article.html'
+    context_object_name = 'articles'
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        return get_search_context(is_spec=True, kwargs=context)
+
+
+class LatkrokDetailArticle(DetailView):
+    model = Article
+    template_name = 'main/article.html'
+    slug_url_kwarg = 'article_slug'
+    context_object_name = 'article'
+
+    def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
         return get_search_context(kwargs=context)
 

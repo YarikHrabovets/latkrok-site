@@ -1,4 +1,6 @@
 {% load static %}
+{% load i18n %}
+{% load static i18n %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,17 +31,46 @@
       					</div>
       					<hr>
       					<div class="offcanvas-body">
-      						<form class="pb-3">
+      						<div class="dropdown d-flex">
 								<button type="button" class="form-control" aria-label="Search" data-bs-toggle="modal" data-bs-target="#search-input" style="max-width: 15rem;">
 									<span style="float: left;">
-										<svg width="20" height="20" class="DocSearch-Search-Icon" viewBox="0 0 20 20">
+										<svg width="20" height="20" viewBox="0 0 20 20">
 											<path d="M14.386 14.386l4.0877 4.0877-4.0877-4.0877c-2.9418 2.9419-7.7115 2.9419-10.6533 0-2.9419-2.9418-2.9419-7.7115 0-10.6533 2.9418-2.9419 7.7115-2.9419 10.6533 0 2.9419 2.9418 2.9419 7.7115 0 10.6533z" stroke="currentColor" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"></path>
 										</svg>
 									</span>
 									<span style="float: left;">Поиск</span></span>
 								</button>
-							</form>
-	      					<ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+								<button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false"></button>
+								<ul class="dropdown-menu">
+									<li class="dropdown-item">
+										<form class="input-group" action="{% url 'set_language' %}" method="post">
+											{% csrf_token %}
+											<input type="hidden" value="{{ redirect_to }}">
+											<select class="form-select form-select-sm" name="language">
+												{% get_current_language as LANGUAGE_CODE %}
+												{% get_available_languages as LANGUAGES %}
+												{% get_language_info_list for LANGUAGES as languages %}
+												{% for language in languages %}
+													<option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected {% endif %}>
+														{{ language.name_local }}
+													</option>
+												{% endfor %}
+											</select>
+											<input type="submit" class="btn btn-outline-success btn-sm" value="Ok">
+										</form>
+									</li>
+									<li><hr class="dropdown-divider"></li>
+									<li>
+										<a href="{% url 'articles' %}" class="dropdown-item">
+											<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-book" viewBox="0 0 16 16">
+												<path d="M1 2.828c.885-.37 2.154-.769 3.388-.893 1.33-.134 2.458.063 3.112.752v9.746c-.935-.53-2.12-.603-3.213-.493-1.18.12-2.37.461-3.287.811V2.828zm7.5-.141c.654-.689 1.782-.886 3.112-.752 1.234.124 2.503.523 3.388.893v9.923c-.918-.35-2.107-.692-3.287-.81-1.094-.111-2.278-.039-3.213.492V2.687zM8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783z"/>
+											</svg>
+											Статьи
+										</a>
+									</li>
+								</ul>
+							</div>
+	      					<ul class="navbar-nav justify-content-end flex-grow-1 pe-3 mt-3">
 		          				<li class="nav-item">
 									<a class="nav-link" href="{% url 'order' %}">
 										<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-grid" viewBox="0 0 16 16">
@@ -82,7 +113,7 @@
 									<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-grid d-block mx-auto mb-1" viewBox="0 0 16 16">
 									  <path d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5v-3zM2.5 2a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zm6.5.5A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zM1 10.5A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zm6.5.5A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3z"/>
 									</svg>
-									Аренда ковровых покрытий
+									{% trans 'Аренда ковровых покрытий' %}
 								</a>
 							</li>
 							<li class="nav-item">
@@ -90,7 +121,7 @@
 									<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-boxes d-block mx-auto mb-1" viewBox="0 0 16 16">
 								  		<path d="M7.752.066a.5.5 0 0 1 .496 0l3.75 2.143a.5.5 0 0 1 .252.434v3.995l3.498 2A.5.5 0 0 1 16 9.07v4.286a.5.5 0 0 1-.252.434l-3.75 2.143a.5.5 0 0 1-.496 0l-3.502-2-3.502 2.001a.5.5 0 0 1-.496 0l-3.75-2.143A.5.5 0 0 1 0 13.357V9.071a.5.5 0 0 1 .252-.434L3.75 6.638V2.643a.5.5 0 0 1 .252-.434L7.752.066ZM4.25 7.504 1.508 9.071l2.742 1.567 2.742-1.567L4.25 7.504ZM7.5 9.933l-2.75 1.571v3.134l2.75-1.571V9.933Zm1 3.134 2.75 1.571v-3.134L8.5 9.933v3.134Zm.508-3.996 2.742 1.567 2.742-1.567-2.742-1.567-2.742 1.567Zm2.242-2.433V3.504L8.5 5.076V8.21l2.75-1.572ZM7.5 8.21V5.076L4.75 3.504v3.134L7.5 8.21ZM5.258 2.643 8 4.21l2.742-1.567L8 1.076 5.258 2.643ZM15 9.933l-2.75 1.571v3.134L15 13.067V9.933ZM3.75 14.638v-3.134L1 9.933v3.134l2.75 1.571Z"/>
 									</svg>
-									Коврик с логотипом
+									{% trans 'Коврик с логотипом' %}
 								</a>
 							</li>
 							<li class="nav-item">
@@ -98,7 +129,7 @@
 									<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-grid d-block mx-auto mb-1" viewBox="0 0 16 16">
 									  <path d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5v-3zM2.5 2a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zm6.5.5A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zM1 10.5A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zm6.5.5A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3z"/>
 									</svg>
-									Спец предложения
+									{% trans 'Спец предложения' %}
 								</a>
 							</li>
 							<li class="nav-item">
@@ -106,20 +137,49 @@
 									<svg xmlns="http://www.w3.org/2000/svg" class="bi bi-bag d-block mx-auto mb-1" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
 									  <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z"/>
 									</svg>
-									Корзина
+									{% trans 'Корзина' %}
 								</a>
 							</li>
 						</ul>
-						<form>
+						<div class="dropdown d-flex">
 							<button type="button" class="form-control" aria-label="Search" data-bs-toggle="modal" data-bs-target="#search-input" style="width: 15rem;">
 								<span style="float: left;">
-									<svg width="20" height="20" class="DocSearch-Search-Icon" viewBox="0 0 20 20">
+									<svg width="20" height="20" viewBox="0 0 20 20">
 										<path d="M14.386 14.386l4.0877 4.0877-4.0877-4.0877c-2.9418 2.9419-7.7115 2.9419-10.6533 0-2.9419-2.9418-2.9419-7.7115 0-10.6533 2.9418-2.9419 7.7115-2.9419 10.6533 0 2.9419 2.9418 2.9419 7.7115 0 10.6533z" stroke="currentColor" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"></path>
 									</svg>
 								</span>
 								<span style="float: left;">Поиск</span></span>
 							</button>
-						</form>
+							<button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false"></button>
+							<ul class="dropdown-menu">
+								<li class="dropdown-item">
+									<form class="input-group" action="{% url 'set_language' %}" method="post">
+										{% csrf_token %}
+										<input type="hidden" value="{{ redirect_to }}">
+										<select class="form-select form-select-sm" name="language">
+											{% get_current_language as LANGUAGE_CODE %}
+											{% get_available_languages as LANGUAGES %}
+											{% get_language_info_list for LANGUAGES as languages %}
+											{% for language in languages %}
+												<option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected {% endif %}>
+													{{ language.name_local }}
+												</option>
+											{% endfor %}
+										</select>
+										<input type="submit" class="btn btn-outline-success btn-sm" value="Ok">
+									</form>
+								</li>
+								<li><hr class="dropdown-divider"></li>
+								<li>
+									<a href="{% url 'articles' %}" class="dropdown-item">
+										<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-book" viewBox="0 0 16 16">
+											<path d="M1 2.828c.885-.37 2.154-.769 3.388-.893 1.33-.134 2.458.063 3.112.752v9.746c-.935-.53-2.12-.603-3.213-.493-1.18.12-2.37.461-3.287.811V2.828zm7.5-.141c.654-.689 1.782-.886 3.112-.752 1.234.124 2.503.523 3.388.893v9.923c-.918-.35-2.107-.692-3.287-.81-1.094-.111-2.278-.039-3.213.492V2.687zM8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783z"/>
+										</svg>
+										Статьи
+									</a>
+								</li>
+							</ul>
+						</div>
 					</div>
 				</div>
 			</nav>

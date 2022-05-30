@@ -1,0 +1,27 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+{% if articles %}
+    <style>
+        div > a:hover {
+            background-color: #E9ECEF !important;
+        }
+    </style>
+    <div class="container p-sm-5 mt-5 shadow p-3 mb-5 bg-body rounded">
+        <p class="text-muted">Список статей</p>
+        <div class="list-group">
+            {% for i in articles %}
+                {% if forloop.counter|divisibleby:2 %}
+                    <a class="list-group-item dropdown-item bg-light" href="{{ i.get_absolute_url }}">{{ i.title }}</a>
+                {% else %}
+                    <a class="list-group-item dropdown-item" href="{{ i.get_absolute_url }}">{{ i.title }}</a>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+{% else %}
+    <div class="alert alert-warning shadow-lg text-center" role="alert">
+        <p class="fs-3">Сейчас нету статей</p>
+    </div>
+{% endif %}
+{% endblock %}
