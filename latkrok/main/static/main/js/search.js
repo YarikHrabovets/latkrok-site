@@ -7,17 +7,17 @@ searchLine.oninput = () => {
 	    items.forEach(function(item) {
 	        if (item.innerText.search(val) == -1) {
 	            item.classList.add('hide');
-	            item.querySelector('a').innerHTML = item.querySelector('a').innerText;
+	            item.querySelector('a div.col-11').innerHTML = item.querySelector('a div.col-11').innerText;
 	        } else {
 	            item.classList.remove('hide');
-	            let str = item.querySelector('a').innerText;
-	            item.querySelector('a').innerHTML = insertSpan(str, item.innerText.search(val), val.length);
+	            let str = item.querySelector('a div.col-11').innerText;
+	            item.querySelector('a div.col-11').innerHTML = insertSpan(str, item.innerText.search(val), val.length);
 	        }
 	    })
 	} else {
 	    items.forEach(function(item) {
 	        item.classList.remove('hide');
-	        item.querySelector('a').innerHTML = item.querySelector('a').innerText;
+	        item.querySelector('a div.col-11').innerHTML = item.querySelector('a div.col-11').innerText;
 	})
 	}
 }

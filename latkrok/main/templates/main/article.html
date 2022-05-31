@@ -1,0 +1,30 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block title %}
+{{ article.title }}
+{% endblock %}
+
+{% block content %}
+<style>
+    @media only screen and (max-width: 768px) {
+        img {
+            display: block;
+        }
+    }
+</style>
+<p class="fs-2 mt-5 text-muted" style="display: flex; justify-content: center;">{{ article.title }}</p>
+<hr>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 pb-3">
+            <img src="{{ article.img.url }}" class="img-thumbnail" style="position: -webkit-sticky; position: sticky; top: 5em;">
+        </div>
+        <div class="col-md-8">
+            <p class="fs-5 pb-3">{{ article.content|linebreaksbr }}</p>
+            <p>{{ article.time_create }}</p>
+            <a href="{% url 'articles' %}" class="btn btn-outline-primary btn-lg" role="button">Назад к статьям</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

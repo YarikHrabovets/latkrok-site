@@ -18,17 +18,17 @@ Latkrok
     </div>
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <img class="d-block w-100" src="https://www.kleen-tex.ru/uploads/tx_templavoila/1920x440__-_EcoAbsorb_04.jpg">
+        <img class="d-block w-100" src="{% static 'main/images/EcoAbsorb.jpeg' %}">
       </div>
       <div class="carousel-item">
-        <img class="d-block w-100" src="https://latkrok.com.ua/image/cache/catalog/slide/1920x440_HL_02-1920x440.jpg">
+        <img class="d-block w-100" src="{% static 'main/images/HL_02-1920x440.jpeg' %}">
       </div>
       <div class="carousel-item">
-      	<img class="d-block w-100" src="https://www.kleen-tex.ru/uploads/tx_templavoila/Web_Banner_1_1920x440_-_RU_01.jpg">
+      	<img class="d-block w-100" src="{% static 'main/images/Web_Banner.jpeg' %}">
       </div>
      </div>
     </div>
-<div class="container overflow-hidden">
+<div class="container">
 	<div class="row">
 		<div class="col-md-6 mt-5">
 			<div class="col mb-3">
@@ -40,11 +40,11 @@ Latkrok
 		</div>
 		<div class="col-md-6 mt-5">
 			<div class="col">
-				<iframe src="https://www.youtube.com/embed/jTdxPEA_sxI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+				<iframe class="img-thumbnail" src="https://www.youtube.com/embed/jTdxPEA_sxI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 			</div>
 			<div class="col">
-				<a id="hbtn" class="btn btn btn-lg mt-2" href="https://t.me/Latkrok" role="button">Уточнить</a>
-				<a id="hbtn" class="btn btn btn-lg mt-2" href="https://t.me/Latkrok" role="button">Консультация</a>
+				<a class="btn btn-success btn-lg mt-2" href="https://t.me/Latkrok" role="button" style="color: #000;">Уточнить</a>
+				<a class="btn btn-success btn-lg mt-2" href="https://t.me/Latkrok" role="button" style="color: #000;">Консультация</a>
 			</div>
 		</div>
 	</div>
@@ -85,7 +85,7 @@ Latkrok
 		</div>
 	</div>
 	<div class="container text-center mt-5">
-		<a id="hbtn" class="btn btn btn-lg mt-2" href="{% url 'order' %}">Перейти к аренде</a>
+		<a class="btn btn-success btn-lg mt-2" href="{% url 'order' %}" style="color: #000;">Перейти к аренде</a>
 	</div>
 </div>
 <div class="container p-3 rounded-3 border shadow-lg text-center mt-5">Стирка ковров</div>
@@ -93,17 +93,17 @@ Latkrok
 	<div class="row g-2">
 		<div class="col mt-4">
 			<div class="container">
-				<img id="hover" class="img-fluid" src="{% static 'main/images/car2.jpg' %}">
+				<img class="img-thumbnail" src="{% static 'main/images/car2.jpg' %}">
 			</div>
 		</div>
 		<div class="col mt-4">
 			<div class="container">
-				<img id="hover" class="img-fluid" src="{% static 'main/images/car1.jpg' %}">
+				<img class="img-thumbnail" src="{% static 'main/images/car1.jpg' %}">
 			</div>
 		</div>
 		<div class="col mt-4">
 			<div class="container">
-				<img id="hover" class="img-fluid" src="{% static 'main/images/car_3.jpeg' %}">
+				<img class="img-thumbnail" src="{% static 'main/images/car_3.jpeg' %}">
 			</div>
 		</div>
   </div>
@@ -113,17 +113,17 @@ Latkrok
 	<div class="row g-2">
 		<div class="col mt-4">
 			<div class="container">
-				<img id="hover" class="img-fluid" src="{% static 'main/images/man_1.jpeg' %}">
+				<img class="img-thumbnail" src="{% static 'main/images/man_1.jpeg' %}">
 			</div>
 		</div>
 		<div class="col mt-4">
 			<div class="container">
-				<img id="hover" class="img-fluid" src="{% static 'main/images/man_2.jpeg' %}">
+				<img class="img-thumbnail" src="{% static 'main/images/man_2.jpeg' %}">
 			</div>
 		</div>
 		<div class="col mt-4">
 			<div class="container">
-				<img id="hover" class="img-fluid" src="{% static 'main/images/man_3.jpeg' %}">
+				<img class="img-thumbnail" src="{% static 'main/images/man_3.jpeg' %}">
 			</div>
 		</div>
 	</div>
@@ -141,46 +141,22 @@ Latkrok
 					<div class="row g-2">
 						<div class="col mt-5">
 							<div class="container">
-								<img id="hover" class="img-fluid" src="{% static 'main/images/logo_novus.png' %}">
+								<img class="img-fluid" src="{% static 'main/images/logo_novus.png' %}">
 							</div>
 						</div>
 						<div class="col mt-5">
 							<div class="container">
-								<img id="hover" class="img-fluid" src="{% static 'main/images/logo_procredit_bank.png' %}">
+								<img class="img-fluid" src="{% static 'main/images/logo_procredit_bank.png' %}">
 							</div>
 						</div>
 						<div class="col mt-5">
 							<div class="container">
-								<img id="hover" class="img-fluid" src="{% static 'main/images/logo_siplo.svg' %}">
+								<img class="img-fluid" src="{% static 'main/images/logo_siplo.svg' %}">
 							</div>
 						</div>
 						<div class="col mt-5">
 							<div class="container">
-								<img id="hover" class="img-fluid" src="{% static 'main/images/ochakovski_logo-opt.svg' %}">
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="container">
-					<div class="row g-2">
-						<div class="col mt-5">
-							<div class="container">
-								<img id="hover" class="img-fluid" src="{% static 'main/images/Oschadbank.png' %}">
-							</div>
-						</div>
-						<div class="col mt-5">
-							<div class="container">
-								<img id="hover" class="img-fluid" src="{% static 'main/images/logo_airport-removebg-preview.png' %}">
-							</div>
-						</div>
-						<div class="col mt-5">
-							<div class="container">
-								<img id="hover" class="img-fluid" src="{% static 'main/images/logo_credit365.png' %}">
-							</div>
-						</div>
-						<div class="col mt-5">
-							<div class="container">
-								<img id="hover" class="img-fluid" src="{% static '/main/images/logo_eig.png' %}">
+								<img class="img-fluid" src="{% static 'main/images/ochakovski_logo-opt.svg' %}">
 							</div>
 						</div>
 					</div>
@@ -189,46 +165,22 @@ Latkrok
 					<div class="row g-2">
 						<div class="col mt-5">
 							<div class="container">
-								<img id="hover" class="img-fluid" src="{% static 'main/images/logo_04.gif' %}">
+								<img class="img-fluid" src="{% static 'main/images/Oschadbank.png' %}">
 							</div>
 						</div>
 						<div class="col mt-5">
 							<div class="container">
-								<img id="hover" class="img-fluid" src="{% static 'main/images/logo_05.gif' %}">
+								<img class="img-fluid" src="{% static 'main/images/logo_airport-removebg-preview.png' %}">
 							</div>
 						</div>
 						<div class="col mt-5">
 							<div class="container">
-								<img id="hover" class="img-fluid" src="{% static 'main/images/logo_06.gif' %}">
+								<img class="img-fluid" src="{% static 'main/images/logo_credit365.png' %}">
 							</div>
 						</div>
 						<div class="col mt-5">
 							<div class="container">
-								<img id="hover" class="img-fluid" src="{% static 'main/images/logo_07.gif' %}">
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="container">
-					<div class="row g-2">
-						<div class="col mt-5">
-							<div class="container">
-								<img id="hover" class="img-fluid" src="{% static 'main/images/logo_08.gif' %}">
-							</div>
-						</div>
-						<div class="col mt-5">
-							<div class="container">
-								<img id="hover" class="img-fluid" src="{% static 'main/images/logo_09.gif' %}">
-							</div>
-						</div>
-						<div class="col mt-5">
-							<div class="container">
-								<img id="hover" class="img-fluid" src="{% static 'main/images/logo_10.gif' %}">
-							</div>
-						</div>
-						<div class="col mt-5">
-							<div class="container">
-								<img id="hover" class="img-fluid" src="{% static 'main/images/logo-grey.svg' %}">
+								<img class="img-fluid" src="{% static '/main/images/logo_eig.png' %}">
 							</div>
 						</div>
 					</div>
@@ -237,22 +189,22 @@ Latkrok
 					<div class="row g-2">
 						<div class="col mt-5">
 							<div class="container">
-								<img id="hover" class="img-fluid" src="{% static 'main/images/logo_01.gif' %}">
+								<img class="img-fluid" src="{% static 'main/images/logo_04.gif' %}">
 							</div>
 						</div>
 						<div class="col mt-5">
 							<div class="container">
-								<img id="hover" class="img-fluid" src="{% static 'main/images/logo_02.gif' %}">
+								<img class="img-fluid" src="{% static 'main/images/logo_05.gif' %}">
 							</div>
 						</div>
 						<div class="col mt-5">
 							<div class="container">
-								<img id="hover" class="img-fluid" src="{% static 'main/images/logo_03.gif' %}">
+								<img class="img-fluid" src="{% static 'main/images/logo_06.gif' %}">
 							</div>
 						</div>
 						<div class="col mt-5">
 							<div class="container">
-								<img id="hover" class="img-fluid" src="{% static 'main/images/logo_korolenkivska_gray.png' %}">
+								<img class="img-fluid" src="{% static 'main/images/logo_07.gif' %}">
 							</div>
 						</div>
 					</div>
@@ -261,17 +213,65 @@ Latkrok
 					<div class="row g-2">
 						<div class="col mt-5">
 							<div class="container">
-								<img id="hover" class="img-fluid" src="{% static 'main/images/logo_fora.png' %}">
+								<img class="img-fluid" src="{% static 'main/images/logo_08.gif' %}">
 							</div>
 						</div>
 						<div class="col mt-5">
 							<div class="container">
-								<img id="hover" class="img-fluid" src="{% static 'main/images/logo_estro.png' %}">
+								<img class="img-fluid" src="{% static 'main/images/logo_09.gif' %}">
 							</div>
 						</div>
 						<div class="col mt-5">
 							<div class="container">
-								<img id="hover" class="img-fluid" src="{% static 'main/images/logo_jysk.png' %}">
+								<img class="img-fluid" src="{% static 'main/images/logo_10.gif' %}">
+							</div>
+						</div>
+						<div class="col mt-5">
+							<div class="container">
+								<img class="img-fluid" src="{% static 'main/images/logo-grey.svg' %}">
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="container">
+					<div class="row g-2">
+						<div class="col mt-5">
+							<div class="container">
+								<img class="img-fluid" src="{% static 'main/images/logo_01.gif' %}">
+							</div>
+						</div>
+						<div class="col mt-5">
+							<div class="container">
+								<img class="img-fluid" src="{% static 'main/images/logo_02.gif' %}">
+							</div>
+						</div>
+						<div class="col mt-5">
+							<div class="container">
+								<img class="img-fluid" src="{% static 'main/images/logo_03.gif' %}">
+							</div>
+						</div>
+						<div class="col mt-5">
+							<div class="container">
+								<img class="img-fluid" src="{% static 'main/images/logo_korolenkivska_gray.png' %}">
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="container">
+					<div class="row g-2">
+						<div class="col mt-5">
+							<div class="container">
+								<img class="img-fluid" src="{% static 'main/images/logo_fora.png' %}">
+							</div>
+						</div>
+						<div class="col mt-5">
+							<div class="container">
+								<img class="img-fluid" src="{% static 'main/images/logo_estro.png' %}">
+							</div>
+						</div>
+						<div class="col mt-5">
+							<div class="container">
+								<img class="img-fluid" src="{% static 'main/images/logo_jysk.png' %}">
 							</div>
 						</div>
 					</div>

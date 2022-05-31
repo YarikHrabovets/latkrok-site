@@ -3,21 +3,21 @@ from django.urls import reverse, reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView
 from .models import *
 from .forms import *
-from .sendScript import send_for_email
 
 
 def get_search_context(is_ord=False, is_spec=False, **kwargs) -> dict:
     ord, spec = '', ''
     if not is_ord:
-        ord = Order.objects.all()
+        ord = Order.objects.filter(status=True)
     if not is_spec:
-        spec = SpecialOffer.objects.all()
+        spec = SpecialOffer.objects.filter(status=True)
 
     context = {
         'orders': ord,
         'specials': spec,
+        'articles': Article.objects.all(),
         'static_urls': {
-            'главная': reverse('index'), 'оренда': reverse('order'), 'лого': reverse('logo'),
+            'главная': reverse('index'), 'оренда': reverse('order'), 'лого': reverse('logo'), 'статьи': reverse('articles'),
             'спец предложения': reverse('special'), 'корзина': reverse('cart'), 'про нас': reverse('about'),
             'контакты': reverse('contacts'), 'производитель': reverse('maker')
         }
@@ -132,7 +132,4 @@ def contacts(request):
 
 
 def maker(request):
-    field_name = 'url'
-    obj = FillUrl.objects.first()
-    field_value = getattr(obj, field_name) if obj else ''
-    return render(request, 'main/maker.html', context=get_search_context(kwargs={'url': field_value}))
+    return render(request, 'main/maker.html', context=get_search_context())

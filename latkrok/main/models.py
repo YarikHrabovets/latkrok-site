@@ -111,14 +111,3 @@ class Article(models.Model):
 
     def get_absolute_url(self):
         return reverse('detail_article', kwargs={'article_slug': self.slug})
-
-
-class FillUrl(models.Model):
-    url = models.URLField('Url')
-
-    def __str__(self):
-        return 'url'
-
-    class Meta:
-        verbose_name = 'Url'
-        verbose_name_plural = 'Url'

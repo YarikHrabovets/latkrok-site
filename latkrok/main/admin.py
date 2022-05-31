@@ -75,6 +75,3 @@ class ArticleAdmin(TranslationAdmin):
     list_display = ('title', 'time_create')
     search_fields = ('title', 'time_create')
     prepopulated_fields = {'slug': ('title',)}
-
-
-admin.site.register(FillUrl)

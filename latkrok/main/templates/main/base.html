@@ -198,27 +198,35 @@
 						</div>
 						<ul id="search-items" class="list-group fs-6 mt-3" style="max-height: 300px; overflow-y: scroll;">
 							{% for order in orders %}
-								<li class="list-group-item">
-									<div class="row">
-										<div class="col-1"><i style="position: absolute; top: 20%; left: 5px;" class="fa fa-tasks i-search" aria-hidden="true"></i></div>
-										<div class="col-11 text"><a style="text-decoration: none;" class="text-muted" href="{{ order.get_absolute_url }}">{{ order.title }}</a></div>
-									</div>
+								<li class="list-group-item list-group-item-action">
+									<a href="{{ order.get_absolute_url }}" class="row text-muted" style="text-decoration: none;">
+										<div class="col-1" style="color: #000;"><i style="position: absolute; top: 20%; left: 5px;" class="fa fa-tasks i-search" aria-hidden="true"></i></div>
+										<div class="col-11 text">{{ order.title }}</div>
+									</a>
 								</li>
 							{% endfor %}
 							{% for special in specials %}
-								<li class="list-group-item">
-									<div class="row">
-										<div class="col-1"><i style="position: absolute; top: 20%; left: 5px;" class="fa fa-tasks i-search" aria-hidden="true"></i></div>
-										<div class="col-11 text"><a style="text-decoration: none;" class="text-muted" href="{{ special.get_absolute_url }}">{{ special.title }}</a></div>
-									</div>
+								<li class="list-group-item list-group-item-action">
+									<a href="{{ special.get_absolute_url }}" class="row text-muted" style="text-decoration: none;">
+										<div class="col-1" style="color: #000;"><i style="position: absolute; top: 20%; left: 5px;" class="fa fa-tasks i-search" aria-hidden="true"></i></div>
+										<div class="col-11 text">{{ special.title }}</div>
+									</a>
+								</li>
+							{% endfor %}
+							{% for article in articles %}
+								<li class="list-group-item list-group-item-action">
+									<a href="{{ article.get_absolute_url }}" class="row text-muted" style="text-decoration: none;">
+										<div class="col-1" style="color: #000;"><i style="position: absolute; top: 20%; left: 5px;" class="fa fa-book i-search" aria-hidden="true"></i></div>
+										<div class="col-11 text">{{ article.title }}</div>
+									</a>
 								</li>
 							{% endfor %}
 							{% for key, value in static_urls.items %}
-								<li class="list-group-item">
-									<div class="row">
-										<div class="col-1"><i style="position: absolute; top: 20%; left: 5px;" class="fa fa-code-fork i-search" aria-hidden="true"></i></div>
-										<div class="col-11 text"><a style="text-decoration: none;" class="text-muted" href="{{ value }}">{{ key }}</a></div>
-									</div>
+								<li class="list-group-item list-group-item-action">
+									<a href="{{ value }}" class="row text-muted" style="text-decoration: none;">
+										<div class="col-1" style="color: #000;"><i style="position: absolute; top: 20%; left: 5px;" class="fa fa-code-fork i-search" aria-hidden="true"></i></div>
+										<div class="col-11 text">{{ key }}</div>
+									</a>
 								</li>
 							{% endfor %}
 						</ul>
