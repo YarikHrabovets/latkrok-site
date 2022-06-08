@@ -1,23 +1,25 @@
 {% extends 'main/base.html' %}
 {% load static %}
+{% load i18n %}
+{% load static i18n %}
 
 {% block link %}
 <link rel="stylesheet" type="text/css" href="{% static 'main/css/order_style.css' %}">
 {% endblock %}
 
 {% block title %}
-Аренда ковровых покрытий
+{% trans 'Оренда килимових покриттів' %}
 {% endblock %}
 
 {% block content %}
 <div class="container p-3 rounded-3 border shadow-sm mt-3">
 	<nav aria-label="breadcrumb" style="background: none;">
 		<ol class="breadcrumb">
-			<li class="breadcrumb-item"><a href="{% url 'index' %}">Главная</a></li>
-			<li class="breadcrumb-item active" aria-current="page">Аренда ковровых покрытий</li>
-			<li class="breadcrumb-item"><a href="{% url 'logo' %}">Коврик с логотипом</a></li>
-			<li class="breadcrumb-item"><a href="{% url 'special' %}">Спец предложения</a></li>
-			<li class="breadcrumb-item"><a href="{% url 'cart' %}">Корзина</a></li>
+			<li class="breadcrumb-item"><a href="{% url 'index' %}">{% trans 'Головна' %}</a></li>
+			<li class="breadcrumb-item active" aria-current="page">{% trans 'Оренда килимових покриттів' %}</li>
+			<li class="breadcrumb-item"><a href="{% url 'logo' %}">{% trans 'Килимок з логотипом' %}</a></li>
+			<li class="breadcrumb-item"><a href="{% url 'special' %}">{% trans 'Спецпропозиції' %}</a></li>
+			<li class="breadcrumb-item"><a href="{% url 'cart' %}">{% trans 'Кошик' %}</a></li>
 		</ol>
 	</nav>
 </div>
@@ -32,15 +34,15 @@
 							<h5 class="card-title">{{ i.title }}</h5>
 							<hr>
 							<p class="card-text">{{ i.description|truncatechars:100 }}</p>
-							<div class="d-flex pb-3"><p  class="card-text">От {{ i.prise_1 }} грн/мес</p></div>
-							<a class="btn btn-success" href="{{ i.get_absolute_url }}">Добавить</a>
+							<div class="d-flex pb-3"><p  class="card-text">{% trans 'Від' %} {{ i.prise_1 }}грн/міс {% trans '(ціна з ПДВ)' %}</p></div>
+							<a class="btn btn-success" href="{{ i.get_absolute_url }}">{% trans 'Деталі' %}</a>
 						</div>
 					</div>
 				</div>
 			{% endfor %}
 		{% else %}
 			<div class="alert alert-warning shadow-lg text-center" role="alert">
-				<p class="fs-3">Сейчас нет товаров</p>
+				<p class="fs-3">{% trans 'Зараз немає товарів' %}</p>
 			</div>
 		{% endif %}
 	</div>

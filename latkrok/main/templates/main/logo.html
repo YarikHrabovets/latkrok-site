@@ -1,28 +1,30 @@
 {% extends 'main/base.html' %}
 {% load static %}
+{% load i18n %}
+{% load static i18n %}
 
 {% block link %}
 <link rel="stylesheet" type="text/css" href="{% static 'main/css/logo_style.css' %}">
 {% endblock %}
 
 {% block title %}
-Коврик с логотипом
+{% trans 'Килимок з логотипом' %}
 {% endblock %}
 
 {% block content %}
 <div class="container p-3 rounded-3 border shadow-sm mt-3">
 	<nav aria-label="breadcrumb" style="background: none;">
 	  <ol class="breadcrumb">
-		  <li class="breadcrumb-item"><a href="{% url 'index' %}">Главная</a></li>
-		  <li class="breadcrumb-item"><a href="{% url 'order' %}">Аренда ковровых покрытий</a></li>
-		  <li class="breadcrumb-item active" aria-current="page">Коврик с логотипом</li>
-		  <li class="breadcrumb-item"><a href="{% url 'special' %}">Спец предложения</a></li>
-		  <li class="breadcrumb-item"><a href="{% url 'cart' %}">Корзина</a></li>
+		  <li class="breadcrumb-item"><a href="{% url 'index' %}">{% trans 'Головна' %}</a></li>
+		  <li class="breadcrumb-item"><a href="{% url 'order' %}">{% trans 'Оренда килимових покриттів' %}</a></li>
+		  <li class="breadcrumb-item active" aria-current="page">{% trans 'Килимок з логотипом' %}</li>
+		  <li class="breadcrumb-item"><a href="{% url 'special' %}">{% trans 'Спецпропозиції' %}</a></li>
+		  <li class="breadcrumb-item"><a href="{% url 'cart' %}">{% trans 'Кошик' %}</a></li>
 	  </ol>
 	</nav>
 </div>
 <div class="m-5" style="display: flex; justify-content: center;">
-	<a href="#carousel-collection" class="btn btn-outline-secondary" role="button">Смотреть колекцию</a>
+	<a href="#carousel-collection" class="btn btn-outline-secondary" role="button">{% trans 'Дивитись колекцію' %}</a>
 </div>
 <div class="collection" id="carousel-collection">
 	<a href="#" type="button" class="close btn-close btn-close-white" aria-label="Close"></a>
@@ -72,8 +74,8 @@
 <div class="container">
 	<div class="row">
 	  <div class="col-md-7">
-		<h2 class="featurette-heading">Jet-Print<span class="text-muted">  спроектирована для персонализации.</span></h2>
-		<p class="lead">Профессиональный коврик с логотипом, предназначеный для размещения перед входом в компанию или ресепшн. В совершенстве задерживает пыль и грязь, а также контролирует влагу в помещениях. Идеальный у входов в здания общественной полезности и компаний, которые хотят сохранить свои входы чистыми и представительными. Имея 2-летнюю гарантию на производственные дефекты, а также при использовании новейшей технологии быстрой цветной печати, коврик Jet-Print будет выглядеть, как новый, даже после многих циклов стирки и использования его для ежедневного пешего движения</p>
+		<h2 class="featurette-heading">Jet-Print<span class="text-muted">  {% trans 'спроектований для персоналізації.' %}</span></h2>
+		<p class="lead">{% trans 'Професійний килимок з логотипом призначений для розміщення перед входом до компанії або ресепшн. Досконало затримує пил і бруд, а також контролює вологу в приміщеннях. Ідеальний біля входів до будівель суспільної корисності та компаній, які хочуть зберегти свої входи чистими та представницькими. Маючи 2-річну гарантію на виробничі дефекти, а також при використанні новітньої технології швидкого кольорового друку, килимок Jet-Print виглядатиме як новий, навіть після багатьох циклів прання та використання його для щоденного пішого руху' %}</p>
 	  </div>
 	  <div class="col-md-5">
 			<img src="{% static 'main/images/Mat-placement.jpg' %}" class="img-fluid">
@@ -94,16 +96,16 @@
 		  <img src="{% static 'main/images/Jet-Print-Light.jpg' %}" class="img-fluid">
 	  </div>
 	  <div class="col-md-12">
-		<h2 class="text-muted">Сделать запрос</h2>
+		<h2 class="text-muted">{% trans 'Зробити запит' %}</h2>
 		<hr>
 		<div class="container alert alert-primary text-center mb-5" role="alert">
-			<p class="fs-5">После указания своей электронной почты вам будет отправлено письмо с успешным оформлением заказа!</p>
+			<p class="fs-5">{% trans 'Після вказівки своєї електронної пошти вам буде надіслано листа з успішним оформленням замовлення!' %}</p>
 		</div>
 		<div class="container p-4 rounded-3 border">
 			<form class="row g-3 was-validated" method="post">
 			 {% csrf_token %}
 			  <div class="col-md-6">
-				<label for="first_name" class="form-label">Имя*</label>
+				<label for="first_name" class="form-label">{% trans "Ім'я*" %}</label>
 				<div class="input-group">
 					<span class="input-group-text" id="inputGroupName"><ion-icon name="accessibility-outline"></ion-icon></span>
 					{{ form.first_name }}
@@ -111,7 +113,7 @@
 				<span style="color: #bf1515;">{{ form.first_name.errors }}</span>
 			  </div>
 			  <div class="col-md-6">
-				<label for="last_name" class="form-label">Фамилия*</label>
+				<label for="last_name" class="form-label">{% trans 'Прізвище*' %}</label>
 				 <div class="input-group">
 					<span class="input-group-text" id="inputGroupLastName"><ion-icon name="accessibility-outline"></ion-icon></span>
 					{{ form.last_name }}
@@ -119,7 +121,7 @@
 				 <span style="color: #bf1515;">{{ form.last_name.errors }}</span>
 			  </div>
 			  <div class="col-md-6">
-				<label for="email" class="form-label">Адрес электронной почты*</label>
+				<label for="email" class="form-label">{% trans 'Адреса електронної пошти*' %}</label>
 				<div class="input-group">
 					<span class="input-group-text" id="inputGroupPrepend">@</span>
 					{{ form.email }}
@@ -127,7 +129,7 @@
 				<span style="color: #bf1515;">{{ form.email.errors }}</span>
 			  </div>
 			  <div class="col-md-6">
-				<label for="phone" class="form-label">Номер телефона*</label>
+				<label for="phone" class="form-label">{% trans 'Номер телефону*' %}</label>
 				<div class="input-group">
 					<span class="input-group-text" id="inputGroupLastName"><ion-icon name="call-outline"></ion-icon></span>
 					{{ form.phone }}
@@ -135,14 +137,14 @@
 				<span style="color: #bf1515;">{{ form.phone.errors }}</span>
 			  </div>
 			   <div class="col-12">
-				<label for="details" class="form-label">Детали запроса: продукт, размер, цвет, количество и т.д.*</label>
+				<label for="details" class="form-label">{% trans 'Деталі запиту: продукт, розмір, колір, кількість тощо.*' %}</label>
 				<div class="input-group">
 					<span class="input-group-text" id="inputGroupLastName"><ion-icon name="reader-outline"></ion-icon></span>
 					{{ form.details }}
 				</div>
 			  </div>
 			  <div class="col-md-9">
-				<label for="captcha" class="form-label">Капча*</label>
+				<label for="captcha" class="form-label">{% trans 'Капча*' %}</label>
 				<div class="input-group">
 					{{ form.captcha }}
 				</div>
@@ -152,11 +154,11 @@
 				<div class="form-check">
 				  <input class="form-check-input" type="checkbox" id="validationServer06" required>
 				  <label class="form-check-label" for="validationServer06">
-						Я разрешаю связаться с Latkrok*
+						{% trans "Я дозволяю зв'язатися із Latkrok*" %}
 				  </label>
 				</div>
 			  </div>
-			  <button type="submit" class="btn btn-primary m-2">Отправить</button>
+			  <button type="submit" class="btn btn-primary m-2 mx-auto">{% trans 'Надіслати' %}</button>
 			</form>
 		</div>
 	  </div>

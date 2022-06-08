@@ -25,7 +25,7 @@ function alert(icon, message, type) {
     wrapper.innerHTML = `<div class="alert alert-${type} alert-dismissible" role="alert">
         ${icon}
         ${message}
-        <a href="/cart" class="alert-link">Корзина</a>
+        <a href="/cart" class="alert-link">Кошик</a>
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`;
 
     alertPlaceholder.append(wrapper);
@@ -69,7 +69,7 @@ submit_btn.onclick = () => {
         img: document.querySelector('#productImg').src,
         name: document.querySelector('#productTitle').innerHTML,
         model: "Iron-Horse",
-        type: "Спец предложение",
+        type: "Спеціальна пропозиція",
         money: "грн",
         color: document.querySelector('#color').innerHTML,
         count: document.querySelector('#inputQuantity').value,
@@ -79,5 +79,5 @@ submit_btn.onclick = () => {
     cartList.push(cart);
     localStorage.setItem("Iron-Horse_JSON", JSON.stringify(cartList));
     window.location.href = '#';
-    alert('<svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>', 'Товар успешно добавлен!', 'success');
+    alert('<svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>', 'Товар успішно доданий!', 'success');
 }

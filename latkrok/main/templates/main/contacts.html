@@ -1,23 +1,25 @@
 {% extends 'main/base.html' %}
 {% load static %}
+{% load i18n %}
+{% load static i18n %}
 
 {% block link %}
 <link rel="stylesheet" type="text/css" href="{% static 'main/css/contacts_style.css' %}">
 {% endblock %}
 
 {% block title %}
-Контакты
+{% trans 'Контакти' %}
 {% endblock %}
 
 {% block content %}
 <img class="img-fluid" src="{% static 'main/images/contact-us.jpeg' %}">
-<h1 class="text-muted text-center fs-1 mt-4">Свяжитесь с нами!</h1>
+<h1 class="text-muted text-center fs-1 mt-4">{% trans "Зв'яжіться з нами!" %}</h1>
 <hr>
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-lg-3 mb-5">
 			<div class="d-flex">
-				<h2 class="text-muted">Номера</h2>
+				<h2 class="text-muted">{% trans 'Номера' %}</h2>
 				<a id="icon" class="text-muted"><ion-icon name="call"></ion-icon></a>
 			</div>
 			<hr>
@@ -26,7 +28,7 @@
 		</div>
 		<div class="col-lg-3 mb-5">
 			<div class="d-flex">
-				<h2 class="text-muted">Почта</h2>
+				<h2 class="text-muted">{% trans 'Пошта' %}</h2>
 				<a id="icon" class="text-muted"><ion-icon name="mail"></ion-icon></a>
 			</div>
 			<hr>
@@ -34,7 +36,7 @@
 		</div>
 		<div class="col-lg-3 mb-5">
 			<div class="d-flex">
-				<h2 class="text-muted">Быстрая связь</h2>
+				<h2 class="text-muted">{% trans "Швидкий зв'язок" %}</h2>
 				<a id="icon" class="text-muted"><ion-icon name="flash"></ion-icon></a>
 			</div>
 			<hr>
@@ -43,12 +45,15 @@
 		</div>
 		<div class="col-lg-3 mb-5">
 			<div class="d-flex">
-				<h2 class="text-muted">График работы</h2>
+				<h2 class="text-muted">{% trans 'Графік роботи' %}</h2>
 				<a id="icon" class="text-muted"><ion-icon name="bar-chart"></ion-icon></a>
 			</div>
 			<hr>
-			<p class="fs-5">Будние: с 9:00 до 20:00</p>
+			<p class="fs-5">{% trans 'Будні: з 9:00 до 20:00' %}</p>
 		</div>
 	</div>
+</div>
+<div class="container ratio" style="--bs-aspect-ratio: 50%;">
+	<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1372.2976270404542!2d30.818746410119193!3d50.52842023101831!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d4d984add5c3b9%3A0x189f683afb9fbdfe!2z0JvQsNGC0LrRgNC-0Lo!5e0!3m2!1sru!2sua!4v1654599768158!5m2!1sru!2sua" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 </div>
 {% endblock %}

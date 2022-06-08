@@ -21,14 +21,14 @@ if (iron_objs !== null) {
     }
     let total_sum = document.createElement("ul");
     total_sum.className = "list-group list-group-horizontal mt-3";
-    total_sum.innerHTML += '<li class="col-6 col-sm-4 col-md-3 col-xl-2 list-group-item">Вся сумма:</li>';
-    total_sum.innerHTML += '<li class="col-6 col-sm-4 col-md-3 col-xl-2 list-group-item">' + sum(prise_list) + 'грн</li>';
+    total_sum.innerHTML += '<li class="col-6 col-sm-4 col-md-3 col-xl-2 list-group-item">Вся сума:</li>';
+    total_sum.innerHTML += '<li class="col-6 col-sm-4 col-md-3 col-xl-2 list-group-item">' + sum(prise_list) + ' грн</li>';
     cart.append(total_sum);
 
     btn_row = document.createElement("div");
     btn_row.className = "d-flex";
-    btn_row.innerHTML += '<button onclick="clearFunc()" class="btn btn-secondary m-2">Очисить корзину</button>';
-    btn_row.innerHTML += '<a href="/order" class="btn btn-primary m-2">Продолжить покупки</a>';
+    btn_row.innerHTML += '<button onclick="clearFunc()" class="btn btn-secondary m-2">Очистити кошик</button>';
+    btn_row.innerHTML += '<a href="/order" class="btn btn-primary m-2">Продовжити покупки</a>';
     cart.append(btn_row);
 }
 function sum(list){

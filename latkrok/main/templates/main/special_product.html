@@ -1,6 +1,8 @@
 {% extends 'main/base.html' %}
 {% load static %}
 {% load main_tags %}
+{% load i18n %}
+{% load static i18n %}
 
 {% block title %}
 {{ special.title }}
@@ -55,31 +57,23 @@
                     <p>{{ special.description }}</p>
                 </div>
                 <div class="tab-pane fade" id="char" role="tabpanel" aria-labelledby="char-tab">
-                    <table class="table table-bordered">
-                        <thead>
-                            <tr>
-                                <td colspan="2"><strong>Материал</strong></td>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Пряжа</td>
-                                <td>Волокно High-Twist Nylon (HTN) – окрашенные насквозь</td>
-                            </tr>
-                            <tr>
-                                <td>Основание</td>
-                                <td>100% нитриловый каучук</td>
-                            </tr>
-                            <tr>
-                                <td>Высота ворса</td>
-                                <td>10 мм</td>
-                            </tr>
-                            <tr>
-                                <td>Общая высота мата</td>
-                                <td>11 мм</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <p>{% trans 'Чому вибрати килимок Jet-Print?' %}</p>
+                    <ul>
+                        <li>{% trans 'Простий у догляді' %}</li>
+                        <li>{% trans 'Можливість нанесення унікального лого' %}</li>
+                        <li>{% trans 'Хороші очисні властивості' %}</li>
+                        <li>{% trans 'Протиковзка гума (основа)' %}</li>
+                        <li>{% trans 'Протестовано згідно з EN 13501-1' %}</li>
+                        <li>{% trans 'Не містить PVC' %}</li>
+                        <li>{% trans 'Не вигоряє' %}</li>
+                    </ul>
+                    <p>{% trans 'Характеристика матеріалу:' %}</p>
+                    <ul>
+                        <li>{% trans 'Пряжа - Волокно High-Twist Nylon (HTN) – пофарбовані наскрізь' %}</li>
+                        <li>{% trans 'Основа - 100% нітриловий каучук' %}</li>
+                        <li>{% trans 'Висота ворсу – 10 мм.' %}</li>
+                        <li>{% trans 'Загальна висота мату - 11 мм' %}</li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -87,27 +81,27 @@
             <h5 id="productTitle">{{ special.title }}</h5>
             <div class="shadow-none p-2 ps-3 mb-2 bg-light rounded">
                 <ul class="list-unstyled mt-2">
-                    <li>Бренд: <a href="https://latkrok.com.ua/ru/bermud" style="text-decoration: none; color: #009577;">Kleen-tex</a></li>
-                    <li>Код товара: <span class="text-muted">Iron-Horse</span></li>
-                    <li>Доступность:
+                    <li>{% trans 'Бренд:' %} <a href="https://latkrok.com.ua/ru/bermud" style="text-decoration: none; color: #009577;">Kleen-tex</a></li>
+                    <li>{% trans 'Код товару:' %} <span class="text-muted">Iron-Horse</span></li>
+                    <li>{% trans 'Доступність:' %}
                         {% if special.status %}
-                            <span style="color: #008002;">На складе</span>
+                            <span style="color: #008002;">{% trans 'На складі' %}</span>
                         {% else %}
-                            <span style="color: red;">Нет в наличие</span>
+                            <span style="color: red;">{% trans 'Немає у наявності' %}</span>
                         {% endif %}
                     </li>
                 </ul>
             </div>
             {% if special.status %}
                 <div class="shadow-none p-3 mb-3 bg-light rounded">
-                    <p class="fs-5 mb-0">Цвет: <span id="color" style="color: {{ special.color_hex }};">{{ special.color }}</span></p>
+                    <p class="fs-5 mb-0">{% trans 'Колір:' %} <span id="color" style="color: {{ special.color_hex }};">{{ special.color }}</span></p>
                 </div>
                 <div class="shadow-none p-3 mb-3 bg-light rounded">
-                    <p class="fs-5 mb-0">Цена: <span id="prise" class="text-muted">{{ special.prise }}</span><span class="text-muted"> грн/шт</span></p>
+                    <p class="fs-5 mb-0">{% trans 'Ціна:' %} <span id="prise" class="text-muted">{{ special.prise }}</span><span class="text-muted"> {% trans 'грн/шт (ціна з ПДВ)' %}</span></p>
                 </div>
                 <div class="shadow-none p-3 mb-3 bg-light rounded">
-                    <p><span style="color: red;">*</span>Кол-во</p>
-                    <p id="tip" style="display: none; color: red;"><svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>Максимальное кол-во: {{ special.count }}</p>
+                    <p><span style="color: red;">*</span>{% trans 'Кількість' %}</p>
+                    <p id="tip" style="display: none; color: red;"><svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>{% trans 'Максимальна кількість:' %} {{ special.count }}</p>
                     <div class="input-group">
                         <input type="number" name="quantity" value="1" max="{{ special.count }}" id="inputQuantity" class="form-control">
                         <div class="btn-group input-group-text p-0" role="group">
@@ -116,15 +110,15 @@
                         </div>
                     </div>
                     <div style="display: flex; justify-content: center;">
-                        <button type="button" class="btn btn-success mt-3" id="submit">Добавить в корзину</button>
+                        <button type="button" class="btn btn-success mt-3" id="submit">{% trans 'Додати до кошику' %}</button>
                     </div>
                 </div>
             {% else %}
                  <div class="alert alert-warning" role="alert">
-                    <h4 class="alert-heading">На данный момент такого товара нет на складе!</h4>
-                    <p>Но мы обещаем что скоро появится, проверьте снова эту страницу позже.</p>
+                    <h4 class="alert-heading">{% trans 'На даний момент такого товару немає на складі!' %}</h4>
+                    <p>{% trans "Але ми обіцяємо, що скоро з'явиться, перевірте знову цю сторінку пізніше." %}</p>
                     <hr>
-                    <p class="mb-0">Для связи с нами перейдите на страницу <a href="{% url 'contacts' %}" class="alert-link">контакты</a></p>
+                    <p class="mb-0">{% trans "Для зв'язку з нами перейдіть на сторінку" %} <a href="{% url 'contacts' %}" class="alert-link">{% trans 'контакти' %}</a></p>
                 </div>
             {% endif %}
         </div>

@@ -1,6 +1,9 @@
 from django.shortcuts import render
-from django.urls import reverse, reverse_lazy
+from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView
+from django.core.mail import send_mail
+from latkrok.settings import EMAIL_HOST_USER, RECIPIENTS_EMAIL, EMAIL_HOST_PASSWORD
+from django.template import loader
 from .models import *
 from .forms import *
 
@@ -17,9 +20,9 @@ def get_search_context(is_ord=False, is_spec=False, **kwargs) -> dict:
         'specials': spec,
         'articles': Article.objects.all(),
         'static_urls': {
-            'главная': reverse('index'), 'оренда': reverse('order'), 'лого': reverse('logo'), 'статьи': reverse('articles'),
-            'спец предложения': reverse('special'), 'корзина': reverse('cart'), 'про нас': reverse('about'),
-            'контакты': reverse('contacts'), 'производитель': reverse('maker')
+            'головна': reverse('index'), 'оренда': reverse('order'), 'лого': reverse('logo'), 'статті': reverse('articles'),
+            'спецпропозиції': reverse('special'), 'кошик': reverse('cart'), 'про нас': reverse('about'),
+            'контакти': reverse('contacts'), 'виробник': reverse('maker')
         }
     }
     kw = kwargs['kwargs'] if kwargs else kwargs
@@ -83,6 +86,29 @@ class LatkrokLogo(CreateView):
         context = super().get_context_data(**kwargs)
         return get_search_context(kwargs=context)
 
+    def form_valid(self, form):
+        first_name, last_name, mail, content = [
+            form.cleaned_data['first_name'], form.cleaned_data['last_name'],
+            form.cleaned_data['email'], form.cleaned_data['details']
+        ]
+        html_message = loader.render_to_string(
+            'main/mail.html',
+            {
+                'first_name': first_name,
+                'last_name': last_name,
+                'mail': mail,
+                'content': content
+            }
+        )
+        send_mail(
+            'Вашу заявку на замовлення успішно відправлено',
+            '', EMAIL_HOST_USER, [mail, *RECIPIENTS_EMAIL],
+            auth_user=EMAIL_HOST_USER, auth_password=EMAIL_HOST_PASSWORD,
+            fail_silently=False, html_message=html_message
+        )
+
+        return super(LatkrokLogo, self).form_valid(form)
+
 
 class LatkrokCart(CreateView):
     form_class = CartForm
@@ -93,6 +119,29 @@ class LatkrokCart(CreateView):
         context = super().get_context_data(**kwargs)
         return get_search_context(kwargs=context)
 
+    def form_valid(self, form):
+        first_name, last_name, mail, content = [
+            form.cleaned_data['first_name'], form.cleaned_data['last_name'],
+            form.cleaned_data['email'], form.cleaned_data['details']
+        ]
+        html_message = loader.render_to_string(
+            'main/mail.html',
+            {
+                'first_name': first_name,
+                'last_name': last_name,
+                'mail': mail,
+                'content': content
+            }
+        )
+        send_mail(
+            'Вашу заявку на замовлення успішно відправлено',
+            '', EMAIL_HOST_USER, [mail, *RECIPIENTS_EMAIL],
+            auth_user=EMAIL_HOST_USER, auth_password=EMAIL_HOST_PASSWORD,
+            fail_silently=False, html_message=html_message
+        )
+
+        return super(LatkrokCart, self).form_valid(form)
+
 
 class LatkrokArticle(ListView):
     model = Article
@@ -101,7 +150,7 @@ class LatkrokArticle(ListView):
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
-        return get_search_context(is_spec=True, kwargs=context)
+        return get_search_context(kwargs=context)
 
 
 class LatkrokDetailArticle(DetailView):

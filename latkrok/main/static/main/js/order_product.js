@@ -26,7 +26,7 @@ function alert(icon, message, type, islink) {
         wrapper.innerHTML = `<div class="alert alert-${type} alert-dismissible" role="alert">
         ${icon}
         ${message}
-        <a href="/cart" class="alert-link">Корзина</a>
+        <a href="/cart" class="alert-link">Кошик</a>
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`;
     } else {
         wrapper.innerHTML = `<div class="alert alert-${type} alert-dismissible" role="alert">
@@ -81,17 +81,17 @@ function getPrise(radio) {
 
 submit_btn.onclick = () => {
     const color = document.querySelector('#colorSelector').value;
-    if (color === '--- Выберете цвет ---'){
+    if (color === '--- Виберіть колір ---' || color === '--- Choose a color ---'){
         document.querySelector('#selector').style = 'color: red; border: 1px solid red;';
         window.location.href = '#';
-        alert('<svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>','Заполните все поля!', 'danger', false);
+        alert('<svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>','Заповніть всі поля!', 'danger', false);
     } else{
         const cart = {
             img: document.querySelector('#productImg').src,
             name: document.querySelector('#productTitle').innerHTML,
             model: "Iron-Horse",
             type: "Оренда",
-            money: "грн",
+            money: "грн/міс",
             color: color,
             count: document.querySelector('#inputQuantity').value,
             prise: getPrise(document.getElementsByName('prise_radio')),
@@ -100,6 +100,6 @@ submit_btn.onclick = () => {
         cartList.push(cart);
         localStorage.setItem("Iron-Horse_JSON", JSON.stringify(cartList));
         window.location.href = '#';
-        alert('<svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>', 'Товар успешно добавлен!', 'success', true);
+        alert('<svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>', 'Товар успішно доданий!', 'success', true);
     }
 }

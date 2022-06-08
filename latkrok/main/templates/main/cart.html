@@ -1,58 +1,60 @@
 {% extends 'main/base.html' %}
 {% load static %}
+{% load i18n %}
+{% load static i18n %}
 
 {% block link %}
-<link rel="stylesheet" type="text/css" href="{% static 'main/css/basket_style.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'main/css/cart_style.css' %}">
 {% endblock %}
 
 {% block title %}
-Корзина
+{% trans 'Кошик' %}
 {% endblock %}
 
 {% block content %}
 <div class="container p-3 rounded-3 border shadow-sm mt-3" style="background: none;">
 	<nav aria-label="breadcrumb" style="background: none;">
 		<ol class="breadcrumb">
-			<li class="breadcrumb-item"><a href="{% url 'index' %}">Главная</a></li>
-			<li class="breadcrumb-item"><a href="{% url 'order' %}">Аренда ковровых покрытий</a></li>
-			<li class="breadcrumb-item"><a href="{% url 'logo' %}">Коврик с логотипом</a></li>
-			<li class="breadcrumb-item"><a href="{% url 'special' %}">Спец предложения</a></li>
-			<li class="breadcrumb-item active" aria-current="page">Корзина</li>
+			<li class="breadcrumb-item"><a href="{% url 'index' %}">{% trans 'Головна' %}</a></li>
+			<li class="breadcrumb-item"><a href="{% url 'order' %}">{% trans 'Оренда килимових покриттів' %}</a></li>
+			<li class="breadcrumb-item"><a href="{% url 'logo' %}">{% trans 'Килимок з логотипом' %}</a></li>
+			<li class="breadcrumb-item"><a href="{% url 'special' %}">{% trans 'Спецпропозиції' %}</a></li>
+			<li class="breadcrumb-item active" aria-current="page">{% trans 'Кошик' %}</li>
 		</ol>
 	</nav>
 </div>
 <figure class="text-center mt-3">
 	<blockquote class="blockquote">
-		<h3>Корзина</h3>
+		<h3>{% trans 'Кошик' %}</h3>
 	</blockquote>
 </figure>
 <div id="cont" class="container-fluid">
 	<div id="basket_id" class="row p-4 pb-4 pl-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg">
 		<ul class="list-group list-group-horizontal">
-			<li class="col-6 col-sm-4 col-md-3 col-xl-2 list-group-item">Изображение</li>
-			<li class="col-6 col-sm-4 col-md-3 col-xl-2 list-group-item">Название</li>
-			<li class="col-6 col-sm-4 col-md-3 col-xl-2 list-group-item">Информация</li>
-			<li class="col-6 col-sm-4 col-md-3 col-xl-2 list-group-item">Количество</li>
-			<li class="col-6 col-sm-4 col-md-3 col-xl-2 list-group-item">Цена единицы</li>
-			<li class="col-6 col-sm-4 col-md-3 col-xl-2 list-group-item">Всего</li>
+			<li class="col-6 col-sm-4 col-md-3 col-xl-2 list-group-item">{% trans 'Зображення' %}</li>
+			<li class="col-6 col-sm-4 col-md-3 col-xl-2 list-group-item">{% trans 'Назва' %}</li>
+			<li class="col-6 col-sm-4 col-md-3 col-xl-2 list-group-item">{% trans 'Інформація' %}</li>
+			<li class="col-6 col-sm-4 col-md-3 col-xl-2 list-group-item">{% trans 'Кількість' %}</li>
+			<li class="col-6 col-sm-4 col-md-3 col-xl-2 list-group-item">{% trans 'Ціна одиниці' %}</li>
+			<li class="col-6 col-sm-4 col-md-3 col-xl-2 list-group-item">{% trans 'Всього' %}</li>
 		</ul>
 	</div>
 </div>
 <div id="form" style="display: none;">
 	<div class="container alert alert-primary text-center" role="alert">
-		<p class="fs-5">После указания своей электронной почты вам будет отправлено письмо с успешным оформлением заказа!</p>
+		<p class="fs-5">{% trans 'Після вказівки своєї електронної пошти вам буде надіслано листа з успішним оформленням замовлення!' %}</p>
 	</div>
 	<div class="container p-4 rounded-3 border">
 		<figure class="text-center">
 			<blockquote class="blockquote">
-				<p>Заявка на заказ</p>
+				<p>{% trans 'Заявка на замовлення' %}</p>
 			</blockquote>
 		</figure>
 		<hr>
 		<form class="row g-3 was-validated" method="post">
 			{% csrf_token %}
 		  <div class="col-md-6">
-			<label for="first_name" class="form-label">Имя*</label>
+			<label for="first_name" class="form-label">{% trans "Ім'я*" %}</label>
 			<div class="input-group">
 				<span class="input-group-text" id="inputGroupName"><ion-icon name="accessibility-outline"></ion-icon></span>
 				{{ form.first_name }}
@@ -60,7 +62,7 @@
 			<span style="color: #bf1515;">{{ form.first_name.errors }}</span>
 		  </div>
 		  <div class="col-md-6">
-			<label for="last_name" class="form-label">Фамилия*</label>
+			<label for="last_name" class="form-label">{% trans 'Прізвище*' %}</label>
 			 <div class="input-group">
 				<span class="input-group-text" id="inputGroupLastName"><ion-icon name="accessibility-outline"></ion-icon></span>
 				{{ form.last_name }}
@@ -68,7 +70,7 @@
 			 <span style="color: #bf1515;">{{ form.last_name.errors }}</span>
 		  </div>
 		  <div class="col-md-6">
-			<label for="phone" class="form-label">Номер телефона*</label>
+			<label for="phone" class="form-label">{% trans 'Номер телефону*' %}</label>
 			<div class="input-group">
 				<span class="input-group-text" id="inputGroupPhone"><ion-icon name="call-outline"></ion-icon></span>
 				{{ form.phone }}
@@ -76,7 +78,7 @@
 			<span style="color: #bf1515;">{{ form.phone.errors }}</span>
 		  </div>
 		  <div class="col-md-6">
-			<label for="email" class="form-label">Адрес электронной почты*</label>
+			<label for="email" class="form-label">{% trans 'Адреса електронної пошти*' %}</label>
 			<div class="input-group">
 				<span class="input-group-text" id="inputGroupMail">@</span>
 				{{ form.email }}
@@ -84,7 +86,7 @@
 			<span style="color: #bf1515;">{{ form.email.errors }}</span>
 		  </div>
 		  <div class="col-md-3">
-			<label for="city" class="form-label">Город*</label>
+			<label for="city" class="form-label">{% trans 'Місто*' %}</label>
 			 <div class="input-group">
 				<span class="input-group-text" id="inputGroupCity"><ion-icon name="navigate-outline"></ion-icon></span>
 				{{ form.city }}
@@ -92,7 +94,7 @@
 			 <span style="color: #bf1515;">{{ form.city.errors }}</span>
 		  </div>
 		  <div class="col-md-9">
-			<label for="address" class="form-label">Адрес*</label>
+			<label for="address" class="form-label">{% trans 'Адреса*' %}</label>
 			<div class="input-group">
 				<span class="input-group-text" id="inputGroupAddr"><ion-icon name="globe-outline"></ion-icon></span>
 				{{ form.address }}
@@ -100,7 +102,7 @@
 			<span style="color: #bf1515;">{{ form.address.errors }}</span>
 		  </div>
 		  <div class="col-md-9">
-			<label for="captcha" class="form-label">Капча*</label>
+			<label for="captcha" class="form-label">{% trans 'Капча*' %}</label>
 			<div class="input-group">
 				{{ form.captcha }}
 		  	</div>
@@ -112,13 +114,11 @@
 			<div class="form-check">
 			  <input class="form-check-input" type="checkbox" id="validationServer07" required>
 			  <label class="form-check-label" for="validationServer07">
-					Я разрешаю связаться с Latkrok*
+					{% trans "Я дозволяю зв'язатися із Latkrok*" %}
 			  </label>
 			</div>
 		  </div>
-		  <div class="col-12">
-				<button type="submit" class="btn btn-primary m-2">Оформить</button>
-		  </div>
+		  <button type="submit" class="btn btn-primary m-2 mx-auto">{% trans 'Оформити' %}</button>
 		</form>
 	</div>
 </div>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="uk">
+    <head>
+    </head>
+    <body style="background-color: #21201e; color: #ccc; text-align: center;">
+        <div style="padding: 10px;">
+            <img src="https://latkrok.com.ua/image/catalog/latkrok-logo.png">
+            <hr>
+            <h1>Доброго дня {{ first_name }} {{ last_name }}!</h1>
+            <h3>Ми отримали вашу заявку і незабаром зв'яжемося з вами.</h3>
+            <br>
+            <br>
+            <h2>Інформація про ваше замовлення</h2>
+            <br>
+            <p><font size="3">{{ content|linebreaksbr }}</font></p>
+        </div>
+        <div style="margin-top: 30px; background-color: #000; color: #ccc; padding: 7px;">
+            <p>Ви отримали цей лист, оскільки на сайті</p><a href="https://latkrok.in.ua/">latkrok.in.ua</a>
+            <p>було оформлено замовлення на адресу {{ mail }}</p>
+            <p>З повагою, команда Latkrok</p>
+            <hr>
+            <p>07400, г. Бровари, бул. Незалежності 26/2</p>
+        </div>
+    </body>
+</html>

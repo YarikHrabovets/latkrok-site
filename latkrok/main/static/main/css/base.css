@@ -14,6 +14,7 @@ body {
 #elastic {
     height: 3em;
     width: 100%;
+    border: 1px solid #bbbbbb;
     border-radius: 4px;
 }
 

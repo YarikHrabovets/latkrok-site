@@ -1,23 +1,25 @@
 {% extends 'main/base.html' %}
 {% load static %}
+{% load i18n %}
+{% load static i18n %}
 
 {% block link %}
 <link rel="stylesheet" type="text/css" href="{% static 'main/css/special_style.css' %}">
 {% endblock %}
 
 {% block title %}
-Спец предложения
+{% trans 'Спецпропозиції' %}
 {% endblock %}
 
 {% block content %}
 <div class="container p-3 rounded-3 border shadow-sm mt-3">
 	<nav aria-label="breadcrumb" style="background: none;">
 	  <ol class="breadcrumb">
-		  <li class="breadcrumb-item"><a href="{% url 'index' %}">Главная</a></li>
-		  <li class="breadcrumb-item"><a href="{% url 'order' %}">Аренда ковровых покрытий</a></li>
-		  <li class="breadcrumb-item"><a href="{% url 'logo' %}">Коврик с логотипом</a></li>
-		  <li class="breadcrumb-item active" aria-current="page">Спец предложения</li>
-		  <li class="breadcrumb-item"><a href="{% url 'cart' %}">Корзина</a></li>
+		  <li class="breadcrumb-item"><a href="{% url 'index' %}">{% trans 'Головна' %}</a></li>
+		  <li class="breadcrumb-item"><a href="{% url 'order' %}">{% trans 'Оренда килимових покриттів' %}</a></li>
+		  <li class="breadcrumb-item"><a href="{% url 'logo' %}">{% trans 'Килимок з логотипом' %}</a></li>
+		  <li class="breadcrumb-item active" aria-current="page">{% trans 'Спецпропозиції' %}</li>
+		  <li class="breadcrumb-item"><a href="{% url 'cart' %}">{% trans 'Кошик' %}</a></li>
 	  </ol>
 	</nav>
 </div>
@@ -33,15 +35,15 @@
 							<h5 class="card-title">{{ i.title }}</h5>
 							<hr>
 							<p class="card-text">{{ i.description|truncatechars:100 }}</p>
-							<div class="d-flex"><p class="card-text">{{ i.prise }}</p><p style="margin-left: 3px;">грн</p></div>
-							<a href="{{ i.get_absolute_url }}" class="btn btn-success">Добавить</a>
+							<p class="card-text">{{ i.prise }}грн {% trans '(ціна з ПДВ)' %}</p>
+							<a href="{{ i.get_absolute_url }}" class="btn btn-success">{% trans 'Деталі' %}</a>
 						</div>
 					</div>
 				</div>
 			{% endfor %}
 		{% else %}
 			<div class="alert alert-warning shadow-lg text-center" role="alert">
-				<p class="fs-3">Сейчас нет товаров</p>
+				<p class="fs-3">{% trans 'Зараз немає товарів' %}</p>
 			</div>
 		{% endif %}
 	</div>

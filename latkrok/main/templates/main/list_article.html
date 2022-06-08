@@ -1,4 +1,11 @@
 {% extends 'main/base.html' %}
+{% load static %}
+{% load i18n %}
+{% load static i18n %}
+
+{% block title %}
+{% trans 'Статті' %}
+{% endblock %}
 
 {% block content %}
 {% if articles %}
@@ -8,7 +15,7 @@
         }
     </style>
     <div class="container p-sm-5 mt-5 shadow p-3 mb-5 bg-body rounded">
-        <p class="text-muted">Список статей</p>
+        <p class="text-muted">{% trans 'Список статей' %}</p>
         <div class="list-group">
             {% for i in articles %}
                 {% if forloop.counter|divisibleby:2 %}
@@ -21,7 +28,7 @@
     </div>
 {% else %}
     <div class="alert alert-warning shadow-lg text-center" role="alert">
-        <p class="fs-3">Сейчас нету статей</p>
+        <p class="fs-3">{% trans 'Зараз немає статей' %}</p>
     </div>
 {% endif %}
 {% endblock %}

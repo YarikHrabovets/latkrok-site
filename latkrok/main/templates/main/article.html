@@ -1,5 +1,7 @@
 {% extends 'main/base.html' %}
 {% load static %}
+{% load i18n %}
+{% load static i18n %}
 
 {% block title %}
 {{ article.title }}
@@ -23,7 +25,7 @@
         <div class="col-md-8">
             <p class="fs-5 pb-3">{{ article.content|linebreaksbr }}</p>
             <p>{{ article.time_create }}</p>
-            <a href="{% url 'articles' %}" class="btn btn-outline-primary btn-lg" role="button">Назад к статьям</a>
+            <a href="{% url 'articles' %}" class="btn btn-outline-primary btn-lg" role="button">{% trans 'Назад до статей' %}</a>
         </div>
     </div>
 </div>

@@ -1,15 +1,24 @@
 {% extends 'main/base.html' %}
 {% load static %}
+{% load i18n %}
+{% load static i18n %}
 
 {% block link %}
 <link rel="stylesheet" type="text/css" href="{% static 'main/css/index_style.css' %}">
 {% endblock %}
 
 {% block title %}
-Latkrok
+{% trans 'Латкрок-Сервіс' %}
 {% endblock %}
 
 {% block content %}
+<div class="carousel slide mb-3">
+    <img src="{% static 'main/images/ukraine.webp' %}" class="d-block w-100" alt="Ukraine">
+    <div class="carousel-caption fw-bold">
+        <h5 class="fs-1">#standWithUkraine</h5>
+        <a href="https://savelife.in.ua/" target="_blank" class="fs-3 text-decoration-underline" style="color: #fff;">Благодійність тут</a>
+    </div>
+</div>
 <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
 	<div class="carousel-indicators">
       <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" aria-label="Slide 1" class="active" aria-current="true"></button>
@@ -32,10 +41,10 @@ Latkrok
 	<div class="row">
 		<div class="col-md-6 mt-5">
 			<div class="col mb-3">
-				<div class="p-3 border bg-light fs-4">Аренда и комплексное обслуживание грязезащитных ковров</div>
+				<div class="p-3 border bg-light fs-4">{% trans 'Оренда та комплексне обслуговування брудозахисних килимів' %}</div>
 			</div>
 			<div class="col">
-				<div class="p-3 border bg-light fs-4">Хотите получать чистый коврик каждую неделю и при этом не переплачивать? Отлично! Мы Вам в этом поможем.</div>
+				<div class="p-3 border bg-light fs-4">{% trans 'Бажаєте отримувати чистий килимок щотижня і при цьому не переплачувати? Чудово! Ми вам у цьому допоможемо.' %}</div>
 			</div>
 		</div>
 		<div class="col-md-6 mt-5">
@@ -43,8 +52,8 @@ Latkrok
 				<iframe class="img-thumbnail" src="https://www.youtube.com/embed/jTdxPEA_sxI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 			</div>
 			<div class="col">
-				<a class="btn btn-success btn-lg mt-2" href="https://t.me/Latkrok" role="button" style="color: #000;">Уточнить</a>
-				<a class="btn btn-success btn-lg mt-2" href="https://t.me/Latkrok" role="button" style="color: #000;">Консультация</a>
+				<a class="btn btn-success btn-lg mt-2" href="https://t.me/Latkrok" role="button" style="color: #000;">{% trans 'Уточнити' %}</a>
+				<a class="btn btn-success btn-lg mt-2" href="https://t.me/Latkrok" role="button" style="color: #000;">{% trans 'Консультація' %}</a>
 			</div>
 		</div>
 	</div>
@@ -54,41 +63,41 @@ Latkrok
 		<div class="col-sm-4">
 			<div class="col"><h3>80%</h3></div>
 			<div class="col">
-				<p class="fs-5">загрязнений попадают в помещение через входную зону*</p>
+				<p class="fs-5">{% trans 'забруднень потрапляють у приміщення через вхідну зону*' %}</p>
 			</div>
 		</div>
 		<div class="col-sm-4">
 			<div class="col"><h3>70%</h3></div>
 			<div class="col">
-				<p class="fs-5">затрат на услуги по уборке приходится на очистку напольных покрытий*</p>
+				<p class="fs-5">{% trans 'витрат на послуги з прибирання приходиться на очищення підлогових покриттів*' %}</p>
 			</div>
 		</div>
 		<div class="col-sm-4">
 			<div class="col"><h3>60%</h3></div>
 			<div class="col">
-				<p class="fs-5">несчастных случаев происходит в результате подскальзывания или спотыкания*</p>
+				<p class="fs-5">{% trans 'нещасних випадків відбувається в результаті підскальзування або спотикання*' %}</p>
 			</div>
 		</div>
 	</div>
 </div>
-<p class="text-center fs-1 mt-3">Как работает наш сервис?</p>
+<p class="text-center fs-1 mt-3">{% trans 'Як працює наш сервіс?' %}</p>
 <div class="container">
 	<div class="row">
 		<div class="col-sm-4">
-			<p class="text-center fs-5"><img loading="lazy" class="img-fluid" src="{% static 'main/images/mat.png' %}">1. Вместе с вами мы определяем нужное количество (мы работаем даже с 1 ковром), цвет и размеры ковров</p>
+			<p class="text-center fs-5"><img loading="lazy" class="img-fluid" src="{% static 'main/images/mat.png' %}">1. {% trans 'Разом з вами ми визначаємо потрібну кількість (ми працюємо навіть з 1 килимом), колір та розміри килимів' %}</p>
 		</div>
 		<div class="col-sm-4">
-			<p class="text-center fs-5"><img loading="lazy" class="img-fluid" src="{% static 'main/images/truck.png' %}">2. В заранее оговоренный день мы будем заменять грязные ковры в ваших помещениях на чистые.</p>
+			<p class="text-center fs-5"><img loading="lazy" class="img-fluid" src="{% static 'main/images/truck.png' %}">2. {% trans 'У заздалегідь обумовлений день ми замінятимемо брудні килими у ваших приміщеннях чистими.' %}</p>
 		</div>
 		<div class="col-sm-4">
-			<p class="text-center fs-5"><img loading="lazy" class="img-fluid" src="{% static 'main/images/benefit.png' %}">3. Вы наслаждаетесь чистотой.</p>
+			<p class="text-center fs-5"><img loading="lazy" class="img-fluid" src="{% static 'main/images/benefit.png' %}">3. {% trans 'Ви насолоджуєтеся чистотою.' %}</p>
 		</div>
 	</div>
 	<div class="container text-center mt-5">
-		<a class="btn btn-success btn-lg mt-2" href="{% url 'order' %}" style="color: #000;">Перейти к аренде</a>
+		<a class="btn btn-success btn-lg mt-2" href="{% url 'order' %}" style="color: #000;">{% trans 'Перейти до оренди' %}</a>
 	</div>
 </div>
-<div class="container p-3 rounded-3 border shadow-lg text-center mt-5">Стирка ковров</div>
+<div class="container p-3 rounded-3 border shadow-lg text-center mt-5">{% trans 'Прання килимів' %}</div>
 <div class="container">
 	<div class="row g-2">
 		<div class="col mt-4">
@@ -108,7 +117,7 @@ Latkrok
 		</div>
   </div>
 </div>
-<div class="container p-3 rounded-3 border shadow-lg text-center mt-5">Доставка ковров</div>
+<div class="container p-3 rounded-3 border shadow-lg text-center mt-5">{% trans 'Доставка килимів' %}</div>
 <div class="container">
 	<div class="row g-2">
 		<div class="col mt-4">
@@ -132,7 +141,7 @@ Latkrok
 	<div class="accordion-item">
 		<h2 class="accordion-header" id="headingOne">
 			<button class="accordion-button text-center collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-			Наши клиенты
+			{% trans 'Наші клієнти' %}
 			</button>
 		</h2>
 		<div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordion">

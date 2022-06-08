@@ -1,6 +1,8 @@
 {% extends 'main/base.html' %}
 {% load static %}
 {% load main_tags %}
+{% load i18n %}
+{% load static i18n %}
 
 {% block title %}
 {{ order.title }}
@@ -58,25 +60,25 @@
                     <table class="table table-bordered">
                         <thead>
                             <tr>
-                                <td colspan="2"><strong>Материал</strong></td>
+                                <td colspan="2"><strong>{% trans 'Матеріал' %}</strong></td>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td>Пряжа</td>
-                                <td>Волокно High-Twist Nylon (HTN) – окрашенные насквозь</td>
+                                <td>{% trans 'Пряжа' %}</td>
+                                <td>{% trans 'Волокно High-Twist Nylon (HTN) – пофарбовані наскрізь' %}</td>
                             </tr>
                             <tr>
-                                <td>Основание</td>
-                                <td>100% нитриловый каучук</td>
+                                <td>{% trans 'Основа' %}</td>
+                                <td>{% trans '100% нітриловий каучук' %}</td>
                             </tr>
                             <tr>
-                                <td>Высота ворса</td>
-                                <td>10 мм</td>
+                                <td>{% trans 'Висота ворсу' %}</td>
+                                <td>{% trans '10 мм' %}</td>
                             </tr>
                             <tr>
-                                <td>Общая высота мата</td>
-                                <td>11 мм</td>
+                                <td>{% trans 'Загальна висота мату' %}</td>
+                                <td>{% trans '11 мм' %}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -87,21 +89,21 @@
             <h5 id="productTitle">{{ order.title }}</h5>
             <div class="shadow-none p-2 ps-3 mb-2 bg-light rounded">
                 <ul class="list-unstyled mt-2">
-                    <li>Бренд: <a href="https://latkrok.com.ua/ru/bermud" style="text-decoration: none; color: #009577;">Kleen-tex</a></li>
-                    <li>Код товара: <span class="text-muted">Iron-Horse</span></li>
-                    <li>Доступность:
+                    <li>{% trans 'Бренд:' %} <a href="https://latkrok.com.ua/ru/bermud" style="text-decoration: none; color: #009577;">Kleen-tex</a></li>
+                    <li>{% trans 'Код товару:' %} <span class="text-muted">Iron-Horse</span></li>
+                    <li>{% trans 'Доступність:' %}
                         {% if order.status %}
-                            <span style="color: #008002;">На складе</span>
+                            <span style="color: #008002;">{% trans 'На складі' %}</span>
                         {% else %}
-                            <span style="color: red;">Нет в наличие</span>
+                            <span style="color: red;">{% trans 'Немає у наявності' %}</span>
                         {% endif %}
                     </li>
                 </ul>
             </div>
             {% if order.status %}
-                <p class="fs-5 mt-5">Доступные опции</p>
+                <p class="fs-5 mt-5">{% trans 'Доступні опції' %}</p>
                 <div class="shadow-none p-3 mb-3 bg-light rounded">
-                    <p><span style="color: red;">*</span>Количество обменов ковров</p>
+                    <p><span style="color: red;">*</span>{% trans 'Кількість обмінів килимів (ціна з ПДВ)' %}</p>
                     <hr>
                     {% for i in prise_fields %}
                         <div class="form-check">
@@ -111,23 +113,23 @@
                                 <input class="form-check-input" type="radio" name="prise_radio" id="{{ i }}" value="{% value i order.slug %}">
                             {% endif %}
                             <label class="form-check-label" for="{{ i }}">
-                                {{ i|name }}  ({% value i order.slug %} грн/мес)
+                                {{ i|name }}  ({% value i order.slug %} грн/міс)
                             </label>
                         </div>
                     {% endfor %}
                 </div>
                 <div id="selector" class="shadow-none p-3 mb-3 bg-light rounded">
-                    <p><span style="color: red;">*</span>Цвет</p>
+                    <p><span style="color: red;">*</span>{% trans 'Колір' %}</p>
                     <select id="colorSelector" class="form-select" aria-label="Color selector">
-                        <option selected>--- Выберете цвет ---</option>
-                        <option value="Сталь">Сталь</option>
-                        <option value="Гранит">Гранит</option>
-                        <option value="Кедр">Кедр</option>
+                        <option selected>--- {% trans 'Виберіть колір' %} ---</option>
+                        <option value="Сталь">{% trans 'Сталь' %}</option>
+                        <option value="Гранит">{% trans 'Граніт' %}</option>
+                        <option value="Кедр">{% trans 'Кедр' %}</option>
                     </select>
                 </div>
                 <div class="shadow-none p-3 mb-3 bg-light rounded">
-                    <p><span style="color: red;">*</span>Кол-во</p>
-                    <p id="tip" style="display: none; color: red;"><svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>Максимальное кол-во: 50</p>
+                    <p><span style="color: red;">*</span>{% trans 'Кількість' %}</p>
+                    <p id="tip" style="display: none; color: red;"><svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>{% trans 'Максимальна кількість: 50' %}</p>
                     <div class="input-group">
                         <input type="number" name="quantity" value="1" max="50" id="inputQuantity" class="form-control">
                         <div class="btn-group input-group-text p-0" role="group">
@@ -136,15 +138,15 @@
                         </div>
                     </div>
                     <div style="display: flex; justify-content: center;">
-                        <button type="button" class="btn btn-success mt-3" id="submit">Добавить в корзину</button>
+                        <button type="button" class="btn btn-success mt-3" id="submit">{% trans 'Додати до кошику' %}</button>
                     </div>
                 </div>
             {% else %}
                 <div class="alert alert-warning" role="alert">
-                    <h4 class="alert-heading">На данный момент такого товара нет на складе!</h4>
-                    <p>Но мы обещаем что скоро появится, проверьте снова эту страницу позже.</p>
+                    <h4 class="alert-heading">{% trans 'На даний момент такого товару немає на складі!' %}</h4>
+                    <p>{% trans "Але ми обіцяємо, що скоро з'явиться, перевірте знову цю сторінку пізніше." %}</p>
                     <hr>
-                    <p class="mb-0">Для связи с нами перейдите на страницу <a href="{% url 'contacts' %}" class="alert-link">контакты</a></p>
+                    <p class="mb-0">{% trans "Для зв'язку з нами перейдіть на сторінку" %} <a href="{% url 'contacts' %}" class="alert-link">{% trans 'контакти' %}</a></p>
                 </div>
             {% endif %}
         </div>
