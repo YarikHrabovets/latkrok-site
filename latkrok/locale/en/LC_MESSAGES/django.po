@@ -1,0 +1,582 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-06-07 15:52+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: main/templates/main/about.html:7 main/templates/main/about.html:13
+#: main/templates/main/base.html:245
+msgid "Про нас"
+msgstr "About us"
+
+#: main/templates/main/about.html:16
+msgid ""
+"ТОВ «Латкрок-Сервіс» засноване 1996 р. Ми на ринку України понад 14 років. "
+"За цей час ми стали стабільними та надійними партнерами для наших клієнтів. "
+"У зв'язку з реорганізацією компанії в 2008 році було змінено ім'я ТОВ "
+"Латкрок на ТОВ Латкрок-Сервіс. Основним видом діяльності підприємства є "
+"задоволення потреб населення та підприємств у сфері надання послуг із "
+"утримання житлових, офісних та виробничих приміщень у чистому стані."
+msgstr ""
+"Latkrok-Service LLC was founded in 1996. We have been on the Ukrainian market for over 14 years."
+"During this time, we have become stable and reliable partners for our customers."
+"In connection with the reorganization of the company in 2008, the name of the company was changed"
+"Latkrok on LLC Latkrok-Service. The main activity of the enterprise is"
+"meeting the needs of the population and enterprises in the field of providing services with"
+"keeping residential, office and industrial premises clean."
+
+#: main/templates/main/about.html:16
+msgid ""
+"З початку своєї діяльності підприємство розвивається виключно за рахунок "
+"власних фінансових та технологічних можливостей, постійно збільшуючи обсяги "
+"надання послуг."
+msgstr ""
+"From the beginning of its activity the enterprise develops exclusively at the expense of"
+"own financial and technological capabilities, constantly increasing volumes"
+"provision of services."
+
+#: main/templates/main/article.html:28
+msgid "Назад до статей"
+msgstr "Back to articles"
+
+#: main/templates/main/base.html:41 main/templates/main/base.html:150
+#: main/templates/main/base.html:190
+msgid "Пошук"
+msgstr "Search"
+
+#: main/templates/main/base.html:70 main/templates/main/base.html:115
+#: main/templates/main/cart.html:19 main/templates/main/logo.html:19
+#: main/templates/main/order.html:11 main/templates/main/order.html:19
+#: main/templates/main/special.html:19
+msgid "Оренда килимових покриттів"
+msgstr "Rental of carpets"
+
+#: main/templates/main/base.html:78 main/templates/main/base.html:123
+#: main/templates/main/cart.html:20 main/templates/main/logo.html:11
+#: main/templates/main/logo.html:20 main/templates/main/order.html:20
+#: main/templates/main/special.html:20
+msgid "Килимок з логотипом"
+msgstr "Rug with a logo"
+
+#: main/templates/main/base.html:86 main/templates/main/base.html:131
+#: main/templates/main/cart.html:21 main/templates/main/logo.html:21
+#: main/templates/main/order.html:21 main/templates/main/special.html:11
+#: main/templates/main/special.html:21
+msgid "Спецпропозиції"
+msgstr "Special offers"
+
+#: main/templates/main/base.html:94 main/templates/main/base.html:177
+#: main/templates/main/list_article.html:7
+msgid "Статті"
+msgstr "Articles"
+
+#: main/templates/main/base.html:102 main/templates/main/base.html:139
+#: main/templates/main/cart.html:11 main/templates/main/cart.html:22
+#: main/templates/main/cart.html:28 main/templates/main/logo.html:22
+#: main/templates/main/order.html:22 main/templates/main/special.html:22
+msgid "Кошик"
+msgstr "Cart"
+
+#: main/templates/main/base.html:234
+msgid "Закрити"
+msgstr "Close"
+
+#: main/templates/main/base.html:244 main/templates/main/success.html:37
+msgid "На головну"
+msgstr "Home"
+
+#: main/templates/main/base.html:246 main/templates/main/contacts.html:11
+msgid "Контакти"
+msgstr "Contacts"
+
+#: main/templates/main/base.html:247 main/templates/main/maker.html:7
+#: main/templates/main/maker.html:13
+msgid "Виробник"
+msgstr "Producer"
+
+#: main/templates/main/cart.html:18 main/templates/main/logo.html:18
+#: main/templates/main/order.html:18 main/templates/main/special.html:18
+msgid "Головна"
+msgstr "Home"
+
+#: main/templates/main/cart.html:34
+msgid "Зображення"
+msgstr "Image"
+
+#: main/templates/main/cart.html:35
+msgid "Назва"
+msgstr "Name"
+
+#: main/templates/main/cart.html:36
+msgid "Інформація"
+msgstr "Information"
+
+#: main/templates/main/cart.html:37 main/templates/main/order_product.html:131
+#: main/templates/main/special_product.html:103
+msgid "Кількість"
+msgstr "Count"
+
+#: main/templates/main/cart.html:38
+msgid "Ціна одиниці"
+msgstr "Unit price"
+
+#: main/templates/main/cart.html:39
+msgid "Всього"
+msgstr "Total"
+
+#: main/templates/main/cart.html:45 main/templates/main/logo.html:102
+msgid ""
+"Після вказівки своєї електронної пошти вам буде надіслано листа з успішним "
+"оформленням замовлення!"
+msgstr ""
+"After sending your e-mail, you will be sent a letter with a "
+"successful order!!"
+
+#: main/templates/main/cart.html:50
+msgid "Заявка на замовлення"
+msgstr "Application for order"
+
+#: main/templates/main/cart.html:57 main/templates/main/logo.html:108
+msgid "Ім'я*"
+msgstr "Name*"
+
+#: main/templates/main/cart.html:65 main/templates/main/logo.html:116
+msgid "Прізвище*"
+msgstr "Last name*"
+
+#: main/templates/main/cart.html:73 main/templates/main/logo.html:132
+msgid "Номер телефону*"
+msgstr "Phone number*"
+
+#: main/templates/main/cart.html:81 main/templates/main/logo.html:124
+msgid "Адреса електронної пошти*"
+msgstr "Email address*"
+
+#: main/templates/main/cart.html:89
+msgid "Місто*"
+msgstr "City*"
+
+#: main/templates/main/cart.html:97
+msgid "Адреса*"
+msgstr "Address*"
+
+#: main/templates/main/cart.html:105 main/templates/main/logo.html:147
+msgid "Капча*"
+msgstr "Captcha*"
+
+#: main/templates/main/cart.html:117 main/templates/main/logo.html:157
+msgid "Я дозволяю зв'язатися із Latkrok*"
+msgstr "I allow you to contact Latkrok*"
+
+#: main/templates/main/cart.html:122
+msgid "Оформити"
+msgstr "Make out"
+
+#: main/templates/main/contacts.html:16
+msgid "Зв'яжіться з нами!"
+msgstr "Contact us!"
+
+#: main/templates/main/contacts.html:22
+msgid "Номера"
+msgstr "Phone numbers"
+
+#: main/templates/main/contacts.html:31
+msgid "Пошта"
+msgstr "Mail"
+
+#: main/templates/main/contacts.html:39
+msgid "Швидкий зв'язок"
+msgstr "Fast connection"
+
+#: main/templates/main/contacts.html:48
+msgid "Графік роботи"
+msgstr "Work schedule"
+
+#: main/templates/main/contacts.html:52
+msgid "Будні: з 9:00 до 20:00"
+msgstr "Weekdays: 09:00 to 20:00"
+
+#: main/templates/main/index.html:11
+msgid "Латкрок-Сервіс"
+msgstr "Latkrok-Service"
+
+#: main/templates/main/index.html:44
+msgid "Оренда та комплексне обслуговування брудозахисних килимів"
+msgstr "Rental and comprehensive maintenance of dirt carpets"
+
+#: main/templates/main/index.html:47
+msgid ""
+"Бажаєте отримувати чистий килимок щотижня і при цьому не переплачувати? "
+"Чудово! Ми вам у цьому допоможемо."
+msgstr ""
+"Do you want to get a clean rug every week and not overpay? "
+"Great! We'll help you with that."
+
+#: main/templates/main/index.html:55
+msgid "Уточнити"
+msgstr "Clarify"
+
+#: main/templates/main/index.html:56
+msgid "Консультація"
+msgstr "Advice"
+
+#: main/templates/main/index.html:66
+msgid "забруднень потрапляють у приміщення через вхідну зону*"
+msgstr "contaminants enter the room through the entrance area*"
+
+#: main/templates/main/index.html:72
+msgid ""
+"витрат на послуги з прибирання приходиться на очищення підлогових покриттів*"
+msgstr ""
+"the cost of cleaning services is accounted for by cleaning the floor*"
+
+#: main/templates/main/index.html:78
+msgid ""
+"нещасних випадків відбувається в результаті підскальзування або спотикання*"
+msgstr ""
+"Accidents occur as a result of slipping or tripping*"
+
+
+#: main/templates/main/index.html:83
+msgid "Як працює наш сервіс?"
+msgstr "How does our service work?"
+
+#: main/templates/main/index.html:87
+msgid ""
+"Разом з вами ми визначаємо потрібну кількість (ми працюємо навіть з 1 "
+"килимом), колір та розміри килимів"
+msgstr ""
+"Together with you we determine the required number (we work even with 1"
+"carpet), color and size of carpets"
+
+#: main/templates/main/index.html:90
+msgid ""
+"У заздалегідь обумовлений день ми замінятимемо брудні килими у ваших "
+"приміщеннях чистими."
+msgstr ""
+"On a pre-arranged day, we will replace the dirty carpets in your"
+"the premises are clean."
+
+#: main/templates/main/index.html:93
+msgid "Ви насолоджуєтеся чистотою."
+msgstr "You enjoy purity."
+
+#: main/templates/main/index.html:97
+msgid "Перейти до оренди"
+msgstr "Go to rent"
+
+#: main/templates/main/index.html:100
+msgid "Прання килимів"
+msgstr "Washing carpets"
+
+#: main/templates/main/index.html:120
+msgid "Доставка килимів"
+msgstr "Delivery of carpets"
+
+#: main/templates/main/index.html:144
+msgid "Наші клієнти"
+msgstr "Our customers"
+
+#: main/templates/main/list_article.html:18
+msgid "Список статей"
+msgstr "List of articles"
+
+#: main/templates/main/list_article.html:31
+msgid "Зараз немає статей"
+msgstr "There are currently no articles"
+
+#: main/templates/main/logo.html:27
+msgid "Дивитись колекцію"
+msgstr "See the collection"
+
+#: main/templates/main/logo.html:77
+msgid "спроектований для персоналізації."
+msgstr "designed for personalization."
+
+#: main/templates/main/logo.html:78
+msgid ""
+"Професійний килимок з логотипом призначений для розміщення перед входом до "
+"компанії або ресепшн. Досконало затримує пил і бруд, а також контролює "
+"вологу в приміщеннях. Ідеальний біля входів до будівель суспільної "
+"корисності та компаній, які хочуть зберегти свої входи чистими та "
+"представницькими. Маючи 2-річну гарантію на виробничі дефекти, а також при "
+"використанні новітньої технології швидкого кольорового друку, килимок Jet-"
+"Print виглядатиме як новий, навіть після багатьох циклів прання та "
+"використання його для щоденного пішого руху"
+msgstr ""
+"Professional rug with a logo designed to be placed in front of the entrance to"
+"company or reception. Perfectly retains dust and dirt, as well as controls"
+"indoor moisture. Ideal at the entrances to public buildings"
+"utilities and companies that want to keep their entrances clean and"
+"representative. Having a 2-year warranty on manufacturing defects, as well as"
+"Using the latest technology of fast color printing, Jet-"
+"Print will look like new, even after many washing cycles and"
+"use it for daily walking"
+
+#: main/templates/main/logo.html:99
+msgid "Зробити запит"
+msgstr "Make a request"
+
+#: main/templates/main/logo.html:140
+msgid "Деталі запиту: продукт, розмір, колір, кількість тощо.*"
+msgstr "Query details: product, size, color, quantity, etc. *"
+
+#: main/templates/main/logo.html:161
+msgid "Надіслати"
+msgstr "Send"
+
+#: main/templates/main/maker.html:15
+msgid "Ми є офіційними дистриб'юторами Kleen-Tex!"
+msgstr "We are the official distributors of Kleen-Tex!"
+
+#: main/templates/main/maker.html:17
+msgid ""
+"Kleen-Tex – один з найбільших виробників килимків у світі – виник у 1967 в "
+"американському містечку Лагранж (LaGrange, GA). Вже через 3 роки було "
+"розпочато перше виробництво килимків на гумовій основі з можливістю прання, "
+"що дало початок загальносвітовому успіху компанії. Сьогодні Kleen-Tex можна "
+"знайти у 3 європейських місцях: місцезнаходження у Куфштайн (Австрія), "
+"найбільша фабрика килимків у Сухеднюві (Польща), а також відділ у Болтоні "
+"(Великобританія). Крім того, компанія має свої відділи в Японії, Таїланді, "
+"Південній Африці та Бразилії."
+msgstr ""
+"Kleen-Tex - one of the largest manufacturers of rugs in the world - emerged in 1967 "
+"American town of LaGrange (LaGrange, GA). In 3 years it was "
+"The first production of washable rubber mats has started, "
+"which gave rise to the worldwide success of the company. Today Kleen-Tex can "
+"find in 3 European places: location in Kufstein (Austria), "
+"the largest rug factory in Sukhedniw (Poland), as well as a department in Bolton "
+"(UK). In addition, the company has branches in Japan, Thailand, "
+"South Africa and Brazil."
+
+#: main/templates/main/order.html:37
+msgid "Від"
+msgstr "From"
+
+#: main/templates/main/order.html:37 main/templates/main/special.html:38
+msgid "(ціна з ПДВ)"
+msgstr "(price including VAT)"
+
+#: main/templates/main/order.html:38 main/templates/main/special.html:39
+msgid "Деталі"
+msgstr "Details"
+
+#: main/templates/main/order.html:45 main/templates/main/special.html:46
+msgid "Зараз немає товарів"
+msgstr "There are currently no products"
+
+#: main/templates/main/order_product.html:63
+msgid "Матеріал"
+msgstr "Material"
+
+#: main/templates/main/order_product.html:68
+msgid "Пряжа"
+msgstr "Yarn"
+
+#: main/templates/main/order_product.html:69
+msgid "Волокно High-Twist Nylon (HTN) – пофарбовані наскрізь"
+msgstr "High-Twist Nylon (HTN) fiber - dyed through"
+
+#: main/templates/main/order_product.html:72
+msgid "Основа"
+msgstr "Basis"
+
+#: main/templates/main/order_product.html:73
+#, python-format
+msgid "100%% нітриловий каучук"
+msgstr "100%% nitrile rubber"
+
+#: main/templates/main/order_product.html:76
+msgid "Висота ворсу"
+msgstr "Pile height"
+
+#: main/templates/main/order_product.html:77
+msgid "10 мм"
+msgstr "10 mm"
+
+#: main/templates/main/order_product.html:80
+msgid "Загальна висота мату"
+msgstr "Total height of the mat"
+
+#: main/templates/main/order_product.html:81
+msgid "11 мм"
+msgstr "11 mm"
+
+#: main/templates/main/order_product.html:92
+#: main/templates/main/special_product.html:84
+msgid "Бренд:"
+msgstr "Brand:"
+
+#: main/templates/main/order_product.html:93
+#: main/templates/main/special_product.html:85
+msgid "Product code:"
+msgstr ""
+
+#: main/templates/main/order_product.html:94
+#: main/templates/main/special_product.html:86
+msgid "Доступність:"
+msgstr "Accessibility:"
+
+#: main/templates/main/order_product.html:96
+#: main/templates/main/special_product.html:88
+msgid "На складі"
+msgstr "In stock"
+
+#: main/templates/main/order_product.html:98
+#: main/templates/main/special_product.html:90
+msgid "Немає у наявності"
+msgstr "Not available"
+
+#: main/templates/main/order_product.html:104
+msgid "Доступні опції"
+msgstr "Options available"
+
+#: main/templates/main/order_product.html:106
+msgid "Кількість обмінів килимів (ціна з ПДВ)"
+msgstr "Number of carpet exchanges (price including VAT)"
+
+#: main/templates/main/order_product.html:122
+msgid "Колір"
+msgstr "Color"
+
+#: main/templates/main/order_product.html:124
+msgid "Виберіть колір"
+msgstr "Choose a color"
+
+#: main/templates/main/order_product.html:125
+msgid "Сталь"
+msgstr "Steel"
+
+#: main/templates/main/order_product.html:126
+msgid "Граніт"
+msgstr "Granite"
+
+#: main/templates/main/order_product.html:127
+msgid "Кедр"
+msgstr "Cedar"
+
+#: main/templates/main/order_product.html:132
+msgid "Максимальна кількість: 50"
+msgstr "Maximum count: 50"
+
+#: main/templates/main/order_product.html:141
+#: main/templates/main/special_product.html:113
+msgid "Додати до кошику"
+msgstr "Add to cart"
+
+#: main/templates/main/order_product.html:146
+#: main/templates/main/special_product.html:118
+msgid "На даний момент такого товару немає на складі!"
+msgstr "At the moment this product is not in stock!"
+
+#: main/templates/main/order_product.html:147
+#: main/templates/main/special_product.html:119
+msgid ""
+"Але ми обіцяємо, що скоро з'явиться, перевірте знову цю сторінку пізніше."
+msgstr ""
+"But we promise it will appear soon, check this page again later."
+
+#: main/templates/main/order_product.html:149
+#: main/templates/main/special_product.html:121
+msgid "Для зв'язку з нами перейдіть на сторінку"
+msgstr "To contact us, go to the page"
+
+#: main/templates/main/order_product.html:149
+#: main/templates/main/special_product.html:121
+msgid "контакти"
+msgstr "contacts"
+
+#: main/templates/main/special_product.html:60
+msgid "Чому вибрати килимок Jet-Print?"
+msgstr "Why choose a Jet-Print rug?"
+
+#: main/templates/main/special_product.html:62
+msgid "Простий у догляді"
+msgstr "Easy to care for"
+
+#: main/templates/main/special_product.html:63
+msgid "Можливість нанесення унікального лого"
+msgstr "Ability to apply a unique logo"
+
+#: main/templates/main/special_product.html:64
+msgid "Хороші очисні властивості"
+msgstr "Good cleaning properties"
+
+#: main/templates/main/special_product.html:65
+msgid "Протиковзка гума (основа)"
+msgstr "Anti-slip rubber (base)"
+
+#: main/templates/main/special_product.html:66
+msgid "Протестовано згідно з EN 13501-1"
+msgstr "Tested in accordance with EN 13501-1"
+
+#: main/templates/main/special_product.html:67
+msgid "Не містить PVC"
+msgstr "Does not contain PVC"
+
+#: main/templates/main/special_product.html:68
+msgid "Не вигоряє"
+msgstr "Does not burn out"
+
+#: main/templates/main/special_product.html:70
+msgid "Характеристика матеріалу:"
+msgstr "Characteristics of the material:"
+
+#: main/templates/main/special_product.html:72
+msgid "Пряжа - Волокно High-Twist Nylon (HTN) – пофарбовані наскрізь"
+msgstr "Yarn - High-Twist Nylon (HTN) - dyed through"
+
+#: main/templates/main/special_product.html:73
+#, python-format
+msgid "Основа - 100%% нітриловий каучук"
+msgstr "The basis is 100%% nitrile rubber"
+
+#: main/templates/main/special_product.html:74
+msgid "Висота ворсу – 10 мм."
+msgstr "Pile height - 10 mm."
+
+#: main/templates/main/special_product.html:75
+msgid "Загальна висота мату - 11 мм"
+msgstr "The total height of the mat is 11 mm"
+
+#: main/templates/main/special_product.html:97
+msgid "Колір:"
+msgstr "Color:"
+
+#: main/templates/main/special_product.html:100
+msgid "Ціна:"
+msgstr "Price:"
+
+#: main/templates/main/special_product.html:100
+msgid "грн/шт (ціна з ПДВ)"
+msgstr "UAH/piece (price with VAT)"
+
+#: main/templates/main/special_product.html:104
+msgid "Максимальна кількість:"
+msgstr "Maximum count:"
+
+#: main/templates/main/success.html:12
+msgid "Успіх"
+msgstr "Success"
+
+#: main/templates/main/success.html:36
+msgid ""
+"Ми отримали вашу заявку, вам має прийти лист про успішне оформлення "
+"замовлення!"
+msgstr ""
+"We have received your application, you must receive a letter of successful completion"
+"order!"
