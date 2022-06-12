@@ -4,11 +4,6 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
-'''i18n_urls = (
-    re_path(r'^admin/', include(admin.site.urls)),
-    re_path(r'^i18n/', include('django.conf.urls.i18n')),
-)'''
-
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('captcha/', include('captcha.urls')),
