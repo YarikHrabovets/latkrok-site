@@ -42,7 +42,7 @@
 </div>
 <div id="form" style="display: none;">
 	<div class="container alert alert-primary text-center" role="alert">
-		<p class="fs-5">{% trans 'Після вказівки своєї електронної пошти вам буде надіслано листа з успішним оформленням замовлення!' %}</p>
+		<p class="fs-5">{% trans 'Після заповнення форми вам буде надіслано лист про успішне оформлення замовлення!' %}</p>
 	</div>
 	<div class="container p-4 rounded-3 border">
 		<figure class="text-center">
@@ -50,7 +50,7 @@
 				<p>{% trans 'Заявка на замовлення' %}</p>
 			</blockquote>
 		</figure>
-		<hr>
+		<hr style="padding-bottom: 3px;">
 		<form class="row g-3 was-validated" method="post">
 			{% csrf_token %}
 		  <div class="col-md-6">
@@ -126,4 +126,5 @@
 
 {% block script %}
 <script type="text/javascript" src="{% static 'main/js/cart.js' %}"></script>
+<script src="{% static 'main/js/phone.js' %}"></script>
 {% endblock %}

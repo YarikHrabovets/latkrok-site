@@ -1,0 +1,11 @@
+#header, .module caption, #changelist-filter > h2, .module > h2, .submit-row > input, input[type=submit].default {
+    background: #009577;
+}
+
+.submit-row > input:hover, input[type=submit].default:hover {
+    background: #01876c;
+}
+
+div.breadcrumbs {
+    background: #01876c;
+}

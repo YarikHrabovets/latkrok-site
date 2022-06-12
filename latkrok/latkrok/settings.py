@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-ba+7vxz&uw_w&lv04lv0ps7_c^&05&x)_yxncu-_ry_^31f^(1
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -39,7 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'debug_toolbar',
     'captcha',
+    'tinymce',
     'main.apps.MainConfig',
 ]
 
@@ -52,6 +54,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'latkrok.urls'
@@ -59,7 +62,7 @@ ROOT_URLCONF = 'latkrok.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -150,3 +153,7 @@ EMAIL_HOST_PASSWORD = 'vkjm zmuc nhqh avin'
 RECIPIENTS_EMAIL = ['pro100yarik12@gmail.com', 'ua.latkrok@gmail.com']
 DEFAULT_FROM_EMAIL = 'latkrokhelp@gmail.com'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+INTERNAL_IPS = [
+    '127.0.0.1',
+]

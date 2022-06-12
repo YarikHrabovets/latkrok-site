@@ -14,7 +14,7 @@ class LogoForm(ModelForm):
             'first_name': TextInput(attrs={'class': 'form-control is-invalid', 'id': 'first_name'}),
             'last_name': TextInput(attrs={'class': 'form-control is-invalid', 'id': 'last_name'}),
             'email': TextInput(attrs={'class': 'form-control is-invalid', 'id': 'email', 'aria-describedby': 'inputGroupPrepend'}),
-            'phone': TextInput(attrs={'type': 'number', 'class': 'form-control is-invalid', 'id': 'phone'}),
+            'phone': TextInput(attrs={'type': 'tel', 'onkeyup': "javascript:mask('phone', '+38(000)000-00-00', event);", 'class': 'form-control is-invalid', 'id': 'phone'}),
             'details': Textarea(attrs={'class': 'form-control is-invalid', 'id': 'details'})
         }
 
@@ -32,6 +32,13 @@ class LogoForm(ModelForm):
 
         return last_name
 
+    def clean_phone(self):
+        phone = self.cleaned_data['phone']
+        if len(phone) != 17:
+            raise ValidationError('Введіть коректний номер телефону')
+
+        return phone
+
 
 class CartForm(ModelForm):
     captcha = CaptchaField()
@@ -42,7 +49,7 @@ class CartForm(ModelForm):
         widgets = {
             'first_name': TextInput(attrs={'type': 'text', 'class': 'form-control is-invalid', 'id': 'first_name'}),
             'last_name': TextInput(attrs={'type': 'text', 'class': 'form-control is-invalid', 'id': 'last_name'}),
-            'phone': TextInput(attrs={'type': 'number', 'class': 'form-control is-invalid', 'id': 'phone'}),
+            'phone': TextInput(attrs={'type': 'tel', 'onkeyup': "javascript:mask('phone', '+38(000)000-00-00', event);", 'class': 'form-control is-invalid', 'id': 'phone'}),
             'email': TextInput(attrs={'class': 'form-control is-invalid', 'id': 'email'}),
             'city': TextInput(attrs={'type': 'text', 'class': 'form-control is-invalid', 'id': 'city'}),
             'address': TextInput(attrs={'class': 'form-control', 'id': 'address is-invalid'}),
@@ -62,6 +69,13 @@ class CartForm(ModelForm):
             raise ValidationError('Введіть правильне прізвище')
 
         return last_name
+
+    def clean_phone(self):
+        phone = self.cleaned_data['phone']
+        if len(phone) != 17:
+            raise ValidationError('Введіть коректний номер телефону')
+
+        return phone
 
     def clean_city(self):
         city = self.cleaned_data['city']

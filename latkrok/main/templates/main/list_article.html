@@ -4,7 +4,7 @@
 {% load static i18n %}
 
 {% block title %}
-{% trans 'Статті' %}
+{% trans 'Статті | ТОВ «Латкрок-Сервіс»' %}
 {% endblock %}
 
 {% block content %}
@@ -15,7 +15,8 @@
         }
     </style>
     <div class="container p-sm-5 mt-5 shadow p-3 mb-5 bg-body rounded">
-        <p class="text-muted">{% trans 'Список статей' %}</p>
+        <p class="fs-4 fw-bold text-muted">{% trans 'Список статей' %}</p>
+        <hr style="padding-bottom: 4px;">
         <div class="list-group">
             {% for i in articles %}
                 {% if forloop.counter|divisibleby:2 %}

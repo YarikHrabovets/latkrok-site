@@ -46,15 +46,15 @@
             </div>
             <ul class="nav nav-tabs" id="myTab" role="tablist">
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link active" id="description-tab" data-bs-toggle="tab" data-bs-target="#description" type="button" role="tab" aria-controls="description" aria-selected="true">Описание</button>
+                    <button class="nav-link active" id="description-tab" data-bs-toggle="tab" data-bs-target="#description" type="button" role="tab" aria-controls="description" aria-selected="true">{% trans 'Опис' %}</button>
                 </li>
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="char-tab" data-bs-toggle="tab" data-bs-target="#char" type="button" role="tab" aria-controls="char" aria-selected="false">Характеристики</button>
+                    <button class="nav-link" id="char-tab" data-bs-toggle="tab" data-bs-target="#char" type="button" role="tab" aria-controls="char" aria-selected="false">{% trans 'Характеристика' %}</button>
                 </li>
             </ul>
             <div class="tab-content shadow-sm p-3 mb-5 bg-body rounded" id="myTabContent">
                 <div class="tab-pane mt-3 fade show active" id="description" role="tabpanel" aria-labelledby="description-tab">
-                    <p>{{ order.description }}</p>
+                    <p>{{ order.description|safe }}</p>
                 </div>
                 <div class="tab-pane fade" id="char" role="tabpanel" aria-labelledby="char-tab">
                     <table class="table table-bordered">
@@ -89,7 +89,7 @@
             <h5 id="productTitle">{{ order.title }}</h5>
             <div class="shadow-none p-2 ps-3 mb-2 bg-light rounded">
                 <ul class="list-unstyled mt-2">
-                    <li>{% trans 'Бренд:' %} <a href="https://latkrok.com.ua/ru/bermud" style="text-decoration: none; color: #009577;">Kleen-tex</a></li>
+                    <li>{% trans 'Бренд:' %} <span style="color: #009577;">Kleen-tex</span></li>
                     <li>{% trans 'Код товару:' %} <span class="text-muted">Iron-Horse</span></li>
                     <li>{% trans 'Доступність:' %}
                         {% if order.status %}
@@ -108,12 +108,12 @@
                     {% for i in prise_fields %}
                         <div class="form-check">
                             {% if i == 'prise_1' %}
-                                <input class="form-check-input" type="radio" name="prise_radio" id="{{ i }}" value="{% value i order.slug %}" checked>
+                                <input class="form-check-input" type="radio" name="prise_radio" id="{{ i }}" value="{% value order i %}" checked>
                             {% else %}
-                                <input class="form-check-input" type="radio" name="prise_radio" id="{{ i }}" value="{% value i order.slug %}">
+                                <input class="form-check-input" type="radio" name="prise_radio" id="{{ i }}" value="{% value order i %}">
                             {% endif %}
                             <label class="form-check-label" for="{{ i }}">
-                                {{ i|name }}  ({% value i order.slug %} грн/міс)
+                                {{ i|name }}  ({% value order i %} грн/міс)
                             </label>
                         </div>
                     {% endfor %}
@@ -123,7 +123,7 @@
                     <select id="colorSelector" class="form-select" aria-label="Color selector">
                         <option selected>--- {% trans 'Виберіть колір' %} ---</option>
                         <option value="Сталь">{% trans 'Сталь' %}</option>
-                        <option value="Гранит">{% trans 'Граніт' %}</option>
+                        <option value="Граніт">{% trans 'Граніт' %}</option>
                         <option value="Кедр">{% trans 'Кедр' %}</option>
                     </select>
                 </div>

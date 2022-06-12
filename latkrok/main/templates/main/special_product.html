@@ -46,23 +46,23 @@
             </div>
             <ul class="nav nav-tabs" id="myTab" role="tablist">
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link active" id="description-tab" data-bs-toggle="tab" data-bs-target="#description" type="button" role="tab" aria-controls="description" aria-selected="true">Описание</button>
+                    <button class="nav-link active" id="description-tab" data-bs-toggle="tab" data-bs-target="#description" type="button" role="tab" aria-controls="description" aria-selected="true">{% trans 'Опис' %}</button>
                 </li>
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="char-tab" data-bs-toggle="tab" data-bs-target="#char" type="button" role="tab" aria-controls="char" aria-selected="false">Характеристики</button>
+                    <button class="nav-link" id="char-tab" data-bs-toggle="tab" data-bs-target="#char" type="button" role="tab" aria-controls="char" aria-selected="false">{% trans 'Характеристика' %}</button>
                 </li>
             </ul>
             <div class="tab-content shadow-sm p-3 mb-5 bg-body rounded" id="myTabContent">
                 <div class="tab-pane mt-3 fade show active" id="description" role="tabpanel" aria-labelledby="description-tab">
-                    <p>{{ special.description }}</p>
+                    <p>{{ special.description|safe }}</p>
                 </div>
                 <div class="tab-pane fade" id="char" role="tabpanel" aria-labelledby="char-tab">
-                    <p>{% trans 'Чому вибрати килимок Jet-Print?' %}</p>
+                    <p>{% trans 'Чому варто обрати саме Jet-Print?' %}</p>
                     <ul>
                         <li>{% trans 'Простий у догляді' %}</li>
                         <li>{% trans 'Можливість нанесення унікального лого' %}</li>
                         <li>{% trans 'Хороші очисні властивості' %}</li>
-                        <li>{% trans 'Протиковзка гума (основа)' %}</li>
+                        <li>{% trans 'Протиковзна гума (основа)' %}</li>
                         <li>{% trans 'Протестовано згідно з EN 13501-1' %}</li>
                         <li>{% trans 'Не містить PVC' %}</li>
                         <li>{% trans 'Не вигоряє' %}</li>
@@ -81,7 +81,7 @@
             <h5 id="productTitle">{{ special.title }}</h5>
             <div class="shadow-none p-2 ps-3 mb-2 bg-light rounded">
                 <ul class="list-unstyled mt-2">
-                    <li>{% trans 'Бренд:' %} <a href="https://latkrok.com.ua/ru/bermud" style="text-decoration: none; color: #009577;">Kleen-tex</a></li>
+                    <li>{% trans 'Бренд:' %} <span style="color: #009577;">Kleen-tex</span></li>
                     <li>{% trans 'Код товару:' %} <span class="text-muted">Iron-Horse</span></li>
                     <li>{% trans 'Доступність:' %}
                         {% if special.status %}

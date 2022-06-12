@@ -8,7 +8,7 @@
 {% endblock %}
 
 {% block title %}
-{% trans 'Килимок з логотипом' %}
+{% trans 'Килимок з логотипом | ТОВ «Латкрок-Сервіс»' %}
 {% endblock %}
 
 {% block content %}
@@ -75,7 +75,7 @@
 	<div class="row">
 	  <div class="col-md-7">
 		<h2 class="featurette-heading">Jet-Print<span class="text-muted">  {% trans 'спроектований для персоналізації.' %}</span></h2>
-		<p class="lead">{% trans 'Професійний килимок з логотипом призначений для розміщення перед входом до компанії або ресепшн. Досконало затримує пил і бруд, а також контролює вологу в приміщеннях. Ідеальний біля входів до будівель суспільної корисності та компаній, які хочуть зберегти свої входи чистими та представницькими. Маючи 2-річну гарантію на виробничі дефекти, а також при використанні новітньої технології швидкого кольорового друку, килимок Jet-Print виглядатиме як новий, навіть після багатьох циклів прання та використання його для щоденного пішого руху' %}</p>
+		<p class="lead">{% trans 'Професійний килимок з логотипом призначений для розміщення перед входом до компанії або ресепшн. Досконало затримує пил і бруд, а також контролює вологу в приміщеннях. Ідеальний біля входів до будівель та компаній, які хочуть зберегти свої входи чистими та представницькими. Маючи 2-річну гарантію на виробничі дефекти, а також при використанні новітньої технології швидкого кольорового друку, килимок Jet-Print виглядатиме як новий, навіть після багатьох циклів прання та використання його для щоденного пішого руху' %}</p>
 	  </div>
 	  <div class="col-md-5">
 			<img src="{% static 'main/images/Mat-placement.jpg' %}" class="img-fluid">
@@ -85,21 +85,87 @@
 	<div class="row">
 		<div class="col-md-6">
 			<img src="{% static 'main/images/Jet-Print-Light-d.jpg' %}" class="img-fluid">
+			<div class="ms-lg-3 mt-5">
+				<p class="fs-3 mt-3 fw-bold" style="color: #404040;">{% trans 'Технічні деталі' %}</p>
+				<hr>
+				<div class="d-flex">
+					<p class="fs-5 fw-bolder" style="color: #404040;">{% trans 'ПРИМІТКА' %}</p>
+					<p class="fs-6 text-break text-muted ms-5">{% trans 'Для використання в будівлі<br>Затримує бруд від потрапляння у ваш дім' %}</p>
+				</div>
+				<div class="d-flex mt-5">
+					<p class="fs-5 fw-bolder" style="color: #404040;">{% trans 'МАТЕРІАЛ' %}</p>
+					<p class="fs-6 text-break text-muted ms-5">{% trans '100% нейлонова поверхність<br>Основа - 100% нітрилова гума(каучук)' %}</p>
+				</div>
+				<div class="d-flex mt-5">
+					<p class="fs-5 fw-bolder me-2" style="color: #404040;">{% trans 'РОЗМІРИ' %}</p>
+					<p class="fs-6 text-break text-muted ms-5">{% trans 'Ширина: 60, 75, 85, 115, 150, 200 см<br>Довжина: до 4м<br>Також можуть бути індивідуальні розміри' %}</p>
+				</div>
+			</div>
 		</div>
 		<div class="col-md-6">
-			<img src="{% static 'main/images/Jet-Print-text.jpg' %}" class="img-fluid">
+			<p class="fs-3 mt-3 fw-bold" style="color: #404040;">{% trans 'Чому варто обрати саме Jet-Print?' %}</p>
+			<hr>
+			<div class="d-flex">
+				<i class="fa fa-check-circle-o" aria-hidden="true" style="color: #11598E; font-size: 32px;"></i>
+				<p class="fs-5 text-muted mt-2 ms-2">{% trans 'Можливість нанесення унікального лого' %}</p>
+			</div>
+			<div class="d-flex">
+				<i class="fa fa-check-circle-o" aria-hidden="true" style="color: #11598E; font-size: 32px;"></i>
+				<p class="fs-5 text-muted mt-2 ms-2">{% trans 'Набивання детальні, точно передають колір, не вигораютьо' %}</p>
+			</div>
+			<div class="d-flex">
+				<i class="fa fa-check-circle-o" aria-hidden="true" style="color: #11598E; font-size: 32px;"></i>
+				<p class="fs-5 text-muted mt-2 ms-2">{% trans 'Пропонується у багатьох розмірах' %}</p>
+			</div>
+			<div class="d-flex">
+				<i class="fa fa-check-circle-o" aria-hidden="true" style="color: #11598E; font-size: 32px;"></i>
+				<p class="fs-5 text-muted mt-2 ms-2">{% trans 'Вміщується під низько розташованими дверима' %}</p>
+			</div>
+			<div class="d-flex">
+				<i class="fa fa-check-circle-o" aria-hidden="true" style="color: #11598E; font-size: 32px;"></i>
+				<p class="fs-5 text-muted mt-2 ms-2">{% trans 'Виготовляється з міцного поліаміду та еластичної нітрилової гуми' %}</p>
+			</div>
+			<div class="d-flex">
+				<i class="fa fa-check-circle-o" aria-hidden="true" style="color: #11598E; font-size: 32px;"></i>
+				<p class="fs-5 text-muted mt-2 ms-2">{% trans 'Не містить шкідливий PVC, не ламається, не кришиться і не коробиться' %}</p>
+			</div>
+			<div class="d-flex">
+				<i class="fa fa-check-circle-o" aria-hidden="true" style="color: #11598E; font-size: 32px;"></i>
+				<p class="fs-5 text-muted mt-2 ms-2">{% trans 'Має протиковзний низ' %}</p>
+			</div>
+			<div class="d-flex">
+				<i class="fa fa-check-circle-o" aria-hidden="true" style="color: #11598E; font-size: 32px;"></i>
+				<p class="fs-5 text-muted mt-2 ms-2">{% trans 'Добре затримує забруднення та вологу' %}</p>
+			</div>
+			<div class="d-flex">
+				<i class="fa fa-check-circle-o" aria-hidden="true" style="color: #11598E; font-size: 32px;"></i>
+				<p class="fs-5 text-muted mt-2 ms-2">{% trans 'Можна прати в пральній машині за 60 °C' %}</p>
+			</div>
+			<div class="d-flex">
+				<i class="fa fa-check-circle-o" aria-hidden="true" style="color: #11598E; font-size: 32px;"></i>
+				<p class="fs-5 text-muted mt-2 ms-2">{% trans 'Ви отримаєте 2 роки гарантії під час професійного обслуговування килимів' %}</p>
+			</div>
+			<div class="d-flex">
+				<i class="fa fa-check-circle-o" aria-hidden="true" style="color: #11598E; font-size: 32px;"></i>
+				<p class="fs-5 text-muted mt-2 ms-2">{% trans 'Не містить шкідливих речовин' %}</p>
+			</div>
+			<div class="d-flex">
+				<i class="fa fa-check-circle-o" aria-hidden="true" style="color: #11598E; font-size: 32px;"></i>
+				<p class="fs-5 text-muted mt-2 ms-2">{% trans 'Вироблено у Європі' %}</p>
+			</div>
 		</div>
 	</div>
-	<hr class="mt-5">
 	<div class="row">
-	  <div class="col-md-12 pt-3">
+	  <div class="col-md-12 mt-5">
+		  <h1 class="ms-1 fw-bold" style="color: #404040;">{% trans 'Кольори' %}</h1>
+		  <hr style="padding-bottom: 3px;">
 		  <img src="{% static 'main/images/Jet-Print-Light.jpg' %}" class="img-fluid">
 	  </div>
 	  <div class="col-md-12">
-		<h2 class="text-muted">{% trans 'Зробити запит' %}</h2>
-		<hr>
+		<h1 class="mt-5 fw-bold" style="color: #404040;">{% trans 'Зробити запит' %}</h1>
+		<hr style="padding-bottom: 3px;">
 		<div class="container alert alert-primary text-center mb-5" role="alert">
-			<p class="fs-5">{% trans 'Після вказівки своєї електронної пошти вам буде надіслано листа з успішним оформленням замовлення!' %}</p>
+			<p class="fs-5">{% trans 'Після заповнення форми вам буде надіслано лист про успішне оформлення замовлення!' %}</p>
 		</div>
 		<div class="container p-4 rounded-3 border">
 			<form class="row g-3 was-validated" method="post">
@@ -164,4 +230,7 @@
 	  </div>
 	</div>
 </div>
+{% endblock %}
+{% block script %}
+<script src="{% static 'main/js/phone.js' %}"></script>
 {% endblock %}

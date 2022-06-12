@@ -8,7 +8,7 @@
 {% endblock %}
 
 {% block title %}
-{% trans 'Спецпропозиції' %}
+{% trans 'Спецпропозиції | ТОВ «Латкрок-Сервіс»' %}
 {% endblock %}
 
 {% block content %}
@@ -34,7 +34,7 @@
 						<div class="card-body">
 							<h5 class="card-title">{{ i.title }}</h5>
 							<hr>
-							<p class="card-text">{{ i.description|truncatechars:100 }}</p>
+							<p class="card-text">{{ i.description|safe|truncatechars:100 }}</p>
 							<p class="card-text">{{ i.prise }}грн {% trans '(ціна з ПДВ)' %}</p>
 							<a href="{{ i.get_absolute_url }}" class="btn btn-success">{% trans 'Деталі' %}</a>
 						</div>

@@ -3,27 +3,31 @@
 {% load i18n %}
 {% load static i18n %}
 
+{% block link %}
+<link rel="stylesheet" type="text/css" href="{% static 'main/css/article_style.css' %}">
+{% endblock %}
+
 {% block title %}
 {{ article.title }}
 {% endblock %}
 
 {% block content %}
-<style>
-    @media only screen and (max-width: 768px) {
-        img {
-            display: block;
-        }
-    }
-</style>
+<div class="view" id="image-view">
+    <a href="#" type="button" class="close btn-close btn-close-white" aria-label="Close"></a>
+    <div class="container mt-5">
+        <div class="ratio ratio-16x9"><img class="img-fluid" src="{{ article.img.url }}"></div>
+    </div>
+</div>
 <p class="fs-2 mt-5 text-muted" style="display: flex; justify-content: center;">{{ article.title }}</p>
 <hr>
 <div class="container">
     <div class="row">
         <div class="col-md-4 pb-3">
-            <img src="{{ article.img.url }}" class="img-thumbnail" style="position: -webkit-sticky; position: sticky; top: 5em;">
+            <a href="#image-view"><img src="{{ article.img.url }}" class="img-thumbnail" style="position: -webkit-sticky; position: sticky; top: 5em;"></a>
         </div>
         <div class="col-md-8">
-            <p class="fs-5 pb-3">{{ article.content|linebreaksbr }}</p>
+            <p class="fs-5 pb-3">{{ article.content|safe }}</p>
+            <hr>
             <p>{{ article.time_create }}</p>
             <a href="{% url 'articles' %}" class="btn btn-outline-primary btn-lg" role="button">{% trans 'Назад до статей' %}</a>
         </div>

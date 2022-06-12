@@ -8,7 +8,7 @@
 {% endblock %}
 
 {% block title %}
-{% trans 'Оренда килимових покриттів' %}
+{% trans 'Оренда килимових покриттів, Київ' %}
 {% endblock %}
 
 {% block content %}
@@ -33,7 +33,7 @@
 						<div class="card-body">
 							<h5 class="card-title">{{ i.title }}</h5>
 							<hr>
-							<p class="card-text">{{ i.description|truncatechars:100 }}</p>
+							<p class="card-text">{{ i.description|safe|truncatechars:100 }}</p>
 							<div class="d-flex pb-3"><p  class="card-text">{% trans 'Від' %} {{ i.prise_1 }}грн/міс {% trans '(ціна з ПДВ)' %}</p></div>
 							<a class="btn btn-success" href="{{ i.get_absolute_url }}">{% trans 'Деталі' %}</a>
 						</div>

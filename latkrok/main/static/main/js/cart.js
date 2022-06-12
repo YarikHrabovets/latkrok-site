@@ -66,13 +66,13 @@ function fillDetailField(){
 
     if (Number(cart.innerHTML) == 0) {
         for (i in iron_objs){
-            cart.innerHTML += `Имя: ${iron_objs[i]['name']},\n`;
+            cart.innerHTML += `Ім´я: ${iron_objs[i]['name']},\n`;
             cart.innerHTML += `Модель: ${iron_objs[i]['model']},\n`;
-            cart.innerHTML += `Цвет: ${iron_objs[i]['color']},\n`;
+            cart.innerHTML += `Колір: ${iron_objs[i]['color']},\n`;
             cart.innerHTML += `Тип: ${iron_objs[i]['type']},\n`;
-            cart.innerHTML += `Количество: ${iron_objs[i]['count']},\n`;
-            cart.innerHTML += `Цена одного: ${iron_objs[i]['prise']} ${iron_objs[i]['money']},\n`;
-            cart.innerHTML += `Вся цена: ${iron_objs[i]['all_prise']} ${iron_objs[i]['money']}\n\n\n`;
+            cart.innerHTML += `Кількість: ${iron_objs[i]['count']},\n`;
+            cart.innerHTML += `Ціна одиниці: ${iron_objs[i]['prise']} ${iron_objs[i]['money']},\n\n\n`;
+            cart.innerHTML += `Вся ціна: ${iron_objs[i]['all_prise']} ${iron_objs[i]['money']}\n\n\n`;
         }
     }
 };

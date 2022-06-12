@@ -1,0 +1,37 @@
+.view {
+    display: none;
+}
+
+.view:target {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgb(0, 0, 0, .7);
+    z-index: 100;
+    animation: showImage 1s;
+}
+
+@keyframes showImage {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.close {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+}
+
+@media only screen and (max-width: 768px) {
+    img {
+        display: block;
+    }
+}

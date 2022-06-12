@@ -11,6 +11,18 @@ body {
 	transform: scale(1.1);
 }
 
+.search-link {
+    width: 15rem;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    margin-right: -1px;
+}
+
+.dropdown-header {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
 #elastic {
     height: 3em;
     width: 100%;
@@ -34,7 +46,7 @@ body {
 }
 
 .i-search.fa + #elastic {
-    padding-left: 25px;
+    padding-left: 35px;
 }
 
 #search-items > li.hide {
