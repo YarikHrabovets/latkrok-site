@@ -12,19 +12,57 @@
     display: inline-block;
     vertical-align: middle;
     box-shadow: 0px 4px 12px -4px rgba(0, 0, 0, 0.35);
+    position: relative;
     transition: all 0.3s ease-in;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.form-label:before,
+.form-label:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: var(--bs-success);
+    top: 0;
+    left: -100%;
+    opacity: 0.5;
+    transition: 0.5s;
+}
+
+.form-label:after {
+    opacity: 0.9;
+    transition-delay: 0.1s;
 }
 
 .name {
+    position: relative;
     font-weight: 600;
     margin-bottom: 3px;
+    z-index: 1;
 }
 
 .prise {
+    position: relative;
     letter-spacing: 0.5px;
+    color: #ccc;
+    z-index: 1;
 }
 
 input[type='radio']:checked + .form-label {
-    border-color: var(--bs-primary);
+    border-color: var(--bs-success);
     box-shadow: none;
+}
+
+input[type='radio']:checked + .form-label div {
+    color: #fff !important;
+}
+
+input[type='radio']:checked + .form-label:before {
+    left: 0;
+}
+
+input[type='radio']:checked + .form-label:after {
+    left: 0;
 }
