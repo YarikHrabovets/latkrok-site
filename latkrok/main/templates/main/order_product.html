@@ -4,6 +4,10 @@
 {% load i18n %}
 {% load static i18n %}
 
+{% block link %}
+<link rel="stylesheet" type="text/css" href="{% static 'main/css/order_product_style.css' %}">
+{% endblock %}
+
 {% block title %}
 {{ order.title }}
 {% endblock %}
@@ -20,7 +24,7 @@
 <div class="container mt-3">
     <div id="liveAlertPlaceholder"></div>
     <div class="row">
-        <div class="col-sm-8">
+        <div class="col-md-8">
             <div class="shadow p-1 mb-5 bg-body rounded">
                 <div id="carousel" class="carousel slide">
                     <div class="carousel-inner">
@@ -85,7 +89,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-sm-4">
+        <div class="col-md-4">
             <h5 id="productTitle">{{ order.title }}</h5>
             <div class="shadow-none p-2 ps-3 mb-2 bg-light rounded">
                 <ul class="list-unstyled mt-2">
@@ -106,14 +110,15 @@
                     <p><span style="color: red;">*</span>{% trans 'Кількість обмінів килимів (ціна з ПДВ)' %}</p>
                     <hr>
                     {% for i in prise_fields %}
-                        <div class="form-check">
+                        <div class="container">
                             {% if i == 'prise_1' %}
-                                <input class="form-check-input" type="radio" name="prise_radio" id="{{ i }}" value="{% value order i %}" checked>
+                                <input class="form-radio" type="radio" name="prise_radio" id="{{ i }}" value="{% value order i %}" checked>
                             {% else %}
-                                <input class="form-check-input" type="radio" name="prise_radio" id="{{ i }}" value="{% value order i %}">
+                                <input class="form-radio" type="radio" name="prise_radio" id="{{ i }}" value="{% value order i %}">
                             {% endif %}
-                            <label class="form-check-label" for="{{ i }}">
-                                {{ i|name }}  ({% value order i %} грн/міс)
+                            <label class="form-label" for="{{ i }}">
+                                <div class="name">{{ i|name }}</div>
+                                <div class="prise text-muted">{% value order i %} грн/міс</div>
                             </label>
                         </div>
                     {% endfor %}
