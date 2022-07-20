@@ -26,7 +26,8 @@ def get_search_context(is_ord=False, is_spec=False, **kwargs) -> dict:
         }
     }
     kw = kwargs['kwargs'] if kwargs else kwargs
-    return context | kw
+    context.update(kw)
+    return context
 
 
 def index(request):
@@ -182,3 +183,7 @@ def contacts(request):
 
 def maker(request):
     return render(request, 'main/maker.html', context=get_search_context())
+
+
+def page_not_found_view(request, exception):
+    return render(request, 'main/404.html', status=404)
